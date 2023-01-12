@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('donation', function (Blueprint $table) {
+        Schema::create('donations', function (Blueprint $table) {
             $table->id('id');
             $table->dateTime('timestamp');
             $table->string('status');
@@ -23,11 +23,13 @@ return new class extends Migration
             $table->boolean('shoutout');
             $table->string('contact_method');
             $table->string('discord_username')->nullable();
-            $table->integer('discord_id')->nullable();
+            $table->string('discord_id')->nullable();
             $table->string('nookazon_username')->nullable();
             $table->string('nookazon_link')->nullable();
             $table->string('currencies')->nullable();
             $table->text('items')->nullable();
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
         });
     }
 
