@@ -23,9 +23,9 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('Welcomecopy');
 
-Route::get('/welcome', function () {
+Route::get('/home', function () {
     return Inertia::render('Welcomecopy', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),

@@ -9,10 +9,12 @@ export default function Welcome(props) {
             <nav className="bg-white border-gray-200 py-2.5 rounded dark:bg-black-550">
                 <div className="flex flex-wrap items-center w-full">
                     <div className="flex">
-                        <a href="#" className="flex items-center">
+                        <Link href="/home" className="flex items-center">
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Giftaway</span>
-                        </a>
-                        <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-black-550 dark:border-gray-700"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
+                        </Link>
+                        <Link href="/DonorRegistration" className="flex items-center">
+                            <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-black-550 dark:border-gray-700"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
+                        </Link>
                         <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-black-550 dark:border-gray-700"><i className="fa-regular fa-square-plus px-2"></i>Register for a giveaway</span>
                     </div>
                     <form className="mx-auto">   
