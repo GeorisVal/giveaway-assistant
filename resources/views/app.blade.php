@@ -14,6 +14,8 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
+        @vite('resources/css/app.css')
+        <script src="https://kit.fontawesome.com/a71d3d52db.js" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
         @inertia
