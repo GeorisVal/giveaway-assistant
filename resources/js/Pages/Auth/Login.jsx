@@ -5,7 +5,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -75,13 +75,6 @@ export default function Login({ status, canResetPassword }) {
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
                         <span className="ml-2 text-sm text-gray-600">Remember me</span>
                     </label>
-                </div>
-
-                <div className="flex items-center justify-center mt-4">
-                    <Link href=""
-                       className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Login With Google
-                    </Link>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
