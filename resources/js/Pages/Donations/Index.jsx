@@ -2,7 +2,7 @@ import React from 'react';
 import Donation from '@/Components/Donation';
 import { useForm, Head } from '@inertiajs/react';
 
-export default function Index({donations}) {
+export default function Index({Donation}) {
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500">
@@ -44,7 +44,8 @@ export default function Index({donations}) {
                 </tr>
                 </thead>
                 <tbody>
-                    {donations.map(donation => <Donation key={donation.id} donation={donation} />)}
+                {Donation.map(donation =>
+                    <Donation key={donation.id} donation={donation} />)};
                 </tbody>
             </table>
         </div>

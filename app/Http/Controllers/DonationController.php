@@ -16,8 +16,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        $donations = DB::table('donations')->get();
-        return Inertia::render('Donations/Index');
+        return Inertia::render('Donations/Index', [$donations = DB::table('donations')->get()]);
     }
 
     /**
