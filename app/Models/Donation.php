@@ -9,7 +9,4 @@ class Donation extends Model
 {
     use HasFactory;
     protected $fillable = ['notes', 'schedule_date', 'status'];
-    public function donation() {
-        return $this->belongsTo(Donation::items);
-    }
 }

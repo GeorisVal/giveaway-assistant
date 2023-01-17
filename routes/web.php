@@ -35,4 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index']);
+
 require __DIR__.'/auth.php';
