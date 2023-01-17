@@ -1,40 +1,40 @@
 import React from 'react';
 
-export default function Donation({donations}) {
+export default function Donation({timestamp, status, notes, schedule_date, platform, shoutout, contact_method, discord_username, discord_id, items, currencies, nookazon_username, nookazon_link}) {
     return (
     <tr className="bg-white border-b">
         <td className="px-6 py-2">
             <a href="#" className="font-medium text-lightgreen-500 hover:underline"><i className="fa-solid fa-pen-to-square"></i></a>
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.timestamp}
+            {timestamp}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.status}
+            {status}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.notes}
+            {notes}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.schedule_date}
+            {schedule_date}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.platform}
+            {platform}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.contact_method}
+            {contact_method}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.discord_username}
+            {discord_username}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.discord_id}
+            {discord_id}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.currencies}
+            {currencies}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {donations.items}
+            {items}
         </td>
     </tr>
     );

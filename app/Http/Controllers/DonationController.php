@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donation;
+use App\Models\donation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +16,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Donations/Index', [$donations = DB::table('donations')->get()]);
+        return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->get()]);
     }
 
     /**
@@ -43,10 +43,10 @@ class DonationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  \App\Models\donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function show(Donation $donation)
+    public function show(donation $donation)
     {
         //
     }
@@ -54,10 +54,10 @@ class DonationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  \App\Models\donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donation $donation)
+    public function edit(donation $donation)
     {
         //
     }
@@ -66,10 +66,10 @@ class DonationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Donation  $donation
+     * @param  \App\Models\donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donation $donation)
+    public function update(Request $request, donation $donation)
     {
         //
     }
@@ -77,10 +77,10 @@ class DonationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  \App\Models\donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donation $donation)
+    public function destroy(donation $donation)
     {
         //
     }
