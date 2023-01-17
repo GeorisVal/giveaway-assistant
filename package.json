@@ -39,6 +39,7 @@
     },
     "homepage": "https://github.com/GeorisVal/giveaway-assistant#readme",
     "dependencies": {
-        "@inertiajs/react": "^1.0.0"
+        "@inertiajs/react": "^1.0.0",
+        "tailwind": "^4.0.0"
     }
 }

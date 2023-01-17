@@ -12,7 +12,7 @@ export default function Welcome(props) {
                         <a href="#" className="flex items-center">
                             <span className="self-center text-xl font-semibold whitespace-nowrap">Giftaway</span>
                         </a>
-                        <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white md:dark:bg-black-550"><i className="fa-regular fa-square-plus px-2"></i>Create</span>
+                        <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i className="fa-regular fa-square-plus px-2"></i>Create</span>
                     </div>
                     <form className="mx-auto">
                         <label for="default-search" className="mb-2 text-sm font-medium text-black-550 sr-only"><i className="fa-solid fa-magnifying-glass"></i></label>
@@ -22,7 +22,7 @@ export default function Welcome(props) {
                         </div>
                     </form>
                     <div className="w-full md:block md:w-auto" id="navbar-default">
-                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white md:dark:bg-black-550">
+                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                             <li>
                             <a href="#" className="block py-2 pl-3 pr-4 text-white bg-lightgreen-500 rounded md:bg-transparent md:text-lightgreen-500 md:p-0" aria-current="page">Home</a>
                             </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Donation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class DonationController extends Controller
 {
@@ -15,9 +16,8 @@ class DonationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Donations/List', [
-            'donations' => Donation::with('all')->latest()->get()]);
-    ]
+        $donations = DB::table('donations')->get();
+        return Inertia::render('Donations/Index');
     }
 
     /**
