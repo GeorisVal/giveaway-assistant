@@ -4,7 +4,7 @@ import NavLink from '@/Components/NavLink';
 export default function DonorRegister(props) {
     return (
         <>
-        <Head title="Donor Registration" />
+        <Head title="Winner Registration" />
         <div className='mx-20'>
         <header>
         <NavLink></NavLink>

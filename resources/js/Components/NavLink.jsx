@@ -12,7 +12,6 @@ export default function NavLink({ href, active, children }) {
                         <Link href="/DonorRegistration" className="flex items-center">
                             <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-black-550 dark:border-gray-700"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
                         </Link>
-                        <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-black-550 dark:border-gray-700"><i className="fa-regular fa-square-plus px-2"></i>Register for a giveaway</span>
                     </div>
                     <form className="mx-auto">   
                         <label for="default-search" className="mb-2 text-sm font-medium text-black-550 sr-only dark:text-white"><i className="fa-solid fa-magnifying-glass"></i></label>
