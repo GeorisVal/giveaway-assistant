@@ -59,7 +59,7 @@ class DonationController extends Controller
      */
     public function edit(donation $donation)
     {
-        //
+
     }
 
     /**
@@ -71,7 +71,8 @@ class DonationController extends Controller
      */
     public function update(Request $request, donation $donation)
     {
-        //
+        $status = $request->get('status');
+        $donation->update($status);
     }
 
     /**
