@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
-export default function Donation({timestamp, status, notes, schedule_date, platform, shoutout, contact_method, discord_username, discord_id, items, currencies, nookazon_username, nookazon_link}) {
+export default function Donation({timestamp, status, notes, schedule_date, platform, shoutout, contact_method, discord_username, discord_id, items, currencies, nookazon_username, nookazon_link, id}) {
     return (
     <tr className="bg-white border-b leading-tight">
         <td className="px-6 py-2">
@@ -10,7 +11,7 @@ export default function Donation({timestamp, status, notes, schedule_date, platf
             {timestamp}
         </td>
         <td className="px-6 py-4 truncate ...">
-            <select name="status" id="status" value={status} className="leading-3">
+            <select name="status" id={"status"+id} value={status} className="leading-3">
                 <option value="invalid">Invalid</option>
                 <option value="dnr">DNR</option>
                 <option value="contacted">Contacted</option>
