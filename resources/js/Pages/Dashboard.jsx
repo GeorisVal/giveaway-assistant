@@ -1,6 +1,8 @@
-import { Link, Head } from '@inertiajs/inertia-react';
+// import { Link, Head } from '@inertiajs/inertia-react';
 import NavLink from '@/Components/NavLink';
 // import NavLink from '/vendor/laravel/breeze/stubs/inertia-react/resources/js/Components/NavLink';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { Head } from '@inertiajs/react';
 
 export default function Welcome(props) {
     return (

@@ -1,4 +1,4 @@
-import { Link, Head } from '@inertiajs/inertia-react';
+import { Link, Head } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
 
 export default function DonorRegister(props) {
