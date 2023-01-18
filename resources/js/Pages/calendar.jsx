@@ -386,8 +386,9 @@ export default function Example() {
                     </Menu>
                 </div>
             </header>
-            <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
-                <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
+            /*Begin of the body...............................................*/
+            <div className="shadow ring-4 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col m-2">
+                <div className="grid grid-cols-7 gap-1 border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none lg:gap-1">
                     <div className="bg-white py-2">
                         M<span className="sr-only sm:not-sr-only">on</span>
                     </div>
@@ -410,8 +411,9 @@ export default function Example() {
                         S<span className="sr-only sm:not-sr-only">un</span>
                     </div>
                 </div>
+
                 <div className="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
-                    <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
+                    <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-1">
                         {days.map((day) => (
                             <div
                                 key={day.date}
