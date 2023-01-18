@@ -1,9 +1,13 @@
 import React from 'react';
 import Donation from '@/Components/Donation';
+import NavLink from '@/Components/NavLink'
 import { useForm, Head } from '@inertiajs/react';
 
-export default function Index({Donation}) {
+export default function Index({ donations }) {
+    console.log(donations);
     return (
+        <>
+        <NavLink></NavLink>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-black-550 uppercase bg-gray-50">
@@ -44,10 +48,11 @@ export default function Index({Donation}) {
                 </tr>
                 </thead>
                 <tbody>
-                {Donation.map(donation =>
-                    <Donation key={donation.id} donation={donation} />)};
+                {donations.map((donation) =>
+                    <Donation key={donation.id} timestamp={donation.timestamp} status={donation.status} notes={donation.notes} schedule_date={donation.schedule_date} platform={donation.platform} shoutout={donation.shoutout} contact_method={donation.contact_method} discord_username={donation.discord_username} discord_id={donation.discord_id} nookazon_username={donation.nookazon_username} nookazon_link={donation.nookazon_link} currencies={donation.currencies} items={donation.items} />)};
                 </tbody>
             </table>
         </div>
+        </>
     );
 }

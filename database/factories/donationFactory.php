@@ -18,7 +18,7 @@ class donationFactory extends Factory
     {
         return [
             'timestamp' => now(),
-            'status' => fake()->randomElement(['Contacted', 'Collected', 'Scheduled Web', 'Scheduled Discord', 'Done']),
+            'status' => fake()->randomElement(['invalid', 'dnr', 'contacted', 'pending_pickup', 'collected', 'scheduled_web', 'scheduled_discord', 'scheduled_programs', 'done', 'cancelled']),
             'platform' => fake()->randomElement(['Discord', 'Website']),
             'shoutout' => fake()->randomElement(['1', '0']),
             'contact_method' => fake()->randomElement(['Discord', 'Website']),
