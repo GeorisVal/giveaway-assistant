@@ -1,7 +1,5 @@
-// import { Link, Head } from '@inertiajs/inertia-react';
 import NavLink from '@/Components/NavLink';
 import Buttons from '@/Components/Buttons';
-// import NavLink from '/vendor/laravel/breeze/stubs/inertia-react/resources/js/Components/NavLink';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
