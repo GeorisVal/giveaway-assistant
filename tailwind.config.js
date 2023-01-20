@@ -16,10 +16,22 @@ module.exports = {
             },
             colors: {
                 lightgreen: {
-                    500: '#AFD584',
+                    500: '#afd584',
                 },
                 red: {
                     550: '#FF5757',
+                },
+                cream: {
+                    500: '#FFE2C0',
+                },
+                darkbrown: {
+                    500: '#6a4b3d',
+                },
+                sapin: {
+                    500: '#80955c'
+                },
+                warmpink: {
+                    500: '#d584c3',
                 },
                 black: {
                     550: '#363537',
