@@ -64,4 +64,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index']);
 
+Route::get('/calendar', function () {
+    return Inertia::render('calendar');
+});
+
 require __DIR__.'/auth.php';
