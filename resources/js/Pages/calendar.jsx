@@ -136,7 +136,7 @@ function classNames(...classes) {
 export default function Example() {
     return (
         <div className="lg:flex lg:h-full lg:flex-col">
-            <header className="flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
+            <header className="flex items-center justify-between border-b border-gray-200 py-4 px-8 lg:flex-none">
                 <h1 className="text-lg font-semibold text-sapin-500">
                     <time dateTime="2022-01">January 2022</time>
                 </h1>
@@ -388,27 +388,28 @@ export default function Example() {
                 </div>
             </header>
             {/*Begin of the body*/}
-            <div className="shadow ring-4 ring-sapin-500 ring-opacity-4 lg:flex lg:flex-auto lg:flex-col m-2">
+            {/*shadow ring-4 ring-sapin-500 ring-opacity-4*/}
+            <div className="border-4 border-sapin-500 rounded-lg lg:flex lg:flex-auto lg:flex-col m-4 md:m-6 lg:m-8">
                 <div className="grid grid-cols-7 gap-px border-b-4 border-sapin-500 bg-sapin-500 text-center text-m font-bold leading-6 text-sapin-500 lg:flex-none lg:gap-1">
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         M<span className="sr-only sm:not-sr-only">on</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         T<span className="sr-only sm:not-sr-only">ue</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         W<span className="sr-only sm:not-sr-only">ed</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         T<span className="sr-only sm:not-sr-only">hu</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         F<span className="sr-only sm:not-sr-only">ri</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         S<span className="sr-only sm:not-sr-only">at</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         S<span className="sr-only sm:not-sr-only">un</span>
                     </div>
                 </div>
