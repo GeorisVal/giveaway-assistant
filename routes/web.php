@@ -34,6 +34,15 @@ Route::get('/home', function () {
     ]);
 });
 
+Route::get('/calendar', function () {
+    return Inertia::render('Example', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
 Route::get('/DonorRegistration', function () {
     return Inertia::render('DonorRegistration', [
         'canLogin' => Route::has('login'),
