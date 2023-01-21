@@ -1,52 +1,71 @@
 import React from 'react';
+import {useForm, usePage} from '@inertiajs/react'
 
-export default function Donation({timestamp, status, notes, schedule_date, platform, shoutout, contact_method, discord_username, discord_id, items, currencies, nookazon_username, nookazon_link}) {
+const Donation = (props) => {
+    const {data, setData, put, processing, errors} = useForm({
+        id: props.id,
+        status: props.status,
+    })
+
+    function handleChange(e) {
+        setData('status', e.target.value);
+        console.log("Changed")
+    }
+    function handleSubmit(e) {
+        e.preventDefault()
+        put('/donations/'+props.id, props.status)
+        console.log("Submitted")
+    }
     return (
     <tr className="bg-white border-b leading-tight">
         <td className="px-6 py-2">
             <a href="#" className="font-medium text-lightgreen-500 hover:underline"><i className="fa-solid fa-pen-to-square"></i></a>
         </td>
         <td className="px-6 py-4 truncate ...">
-            {timestamp}
+            {props.timestamp}
         </td>
         <td className="px-6 py-4 truncate ...">
-            <select name="status" id="status" value={status} className="leading-3">
-                <option value="invalid">Invalid</option>
-                <option value="dnr">DNR</option>
-                <option value="contacted">Contacted</option>
-                <option value="pending_pickup">Pending Pickup</option>
-                <option value="collected">Collected</option>
-                <option value="scheduled_web">Scheduled Web</option>
-                <option value="scheduled_discord">Scheduled Discord</option>
-                <option value="scheduled_programs">Scheduled Programs</option>
-                <option value="done">Done</option>
-                <option value="cancelled">Cancelled</option>
-            </select>
+            <form id={"form"+props.id} action={"/donations"} method={"put"} onChange={handleSubmit}>
+                <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className="leading-3" errors={errors.status} onChange={handleChange}>
+                    <option value="invalid">Invalid</option>
+                    <option value="dnr">DNR</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="pending_pickup">Pending Pickup</option>
+                    <option value="collected">Collected</option>
+                    <option value="scheduled_web">Scheduled Web</option>
+                    <option value="scheduled_discord">Scheduled Discord</option>
+                    <option value="scheduled_programs">Scheduled Programs</option>
+                    <option value="done">Done</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </form>
         </td>
         <td className="px-6 py-4 truncate ...">
-            {notes}
+            {props.notes}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {schedule_date}
+            {props.schedule_date}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {platform}
+            {props.platform}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {contact_method}
+            {props.contact_method}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {discord_username}
+            {props.discord_username}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {discord_id}
+            {props.discord_id}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {currencies}
+            {props.currencies}
         </td>
         <td className="px-6 py-4 truncate ...">
-            {items}
+            {props.items}
         </td>
     </tr>
     );
 }
+
+export default Donation;

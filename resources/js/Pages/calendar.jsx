@@ -144,7 +144,7 @@ export default function Example() {
         <div className='mx-20'>
         <NavLink></NavLink>
         <div className="lg:flex lg:h-full lg:flex-col">
-            <header className="flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
+            <header className="flex items-center justify-between border-b border-gray-200 py-4 px-8 lg:flex-none">
                 <h1 className="text-lg font-semibold text-sapin-500">
                     <time dateTime="2022-01">January 2022</time>
                 </h1>
@@ -398,37 +398,40 @@ export default function Example() {
             <div className="shadow ring-4 ring-sapin-500 ring-opacity-4 lg:flex lg:flex-auto lg:flex-col m-2">
                 <div className="grid grid-cols-7 gap-1 border-b-2 border-sapin-500 bg-sapin-500 text-center text-xs font-semibold leading-6 text-sapin-500 lg:flex-none lg:gap-1">
                     <div className="bg-cream-500 py-2">
+
                         M<span className="sr-only sm:not-sr-only">on</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         T<span className="sr-only sm:not-sr-only">ue</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         W<span className="sr-only sm:not-sr-only">ed</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         T<span className="sr-only sm:not-sr-only">hu</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         F<span className="sr-only sm:not-sr-only">ri</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         S<span className="sr-only sm:not-sr-only">at</span>
                     </div>
-                    <div className="bg-cream-500 py-2">
+                    <div className="bg-cream-500 py-2 rounded-lg">
                         S<span className="sr-only sm:not-sr-only">un</span>
                     </div>
                 </div>
 
-                <div className="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
+                {/*Body of the calendar*/}
+
+                <div className="flex bg-sapin-500 text-xs leading-6 text-gray-700 lg:flex-auto">
                     <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-1">
                         {days.map((day) => (
                             <div
                                 key={day.date}
                                 className={classNames(
                                     day.isCurrentMonth
-                                        ? "bg-white"
-                                        : "bg-gray-50 text-gray-500",
+                                        ? "bg-stone-100"
+                                        : "bg-stone-200 text-grey-500",
                                     "relative py-2 px-3"
                                 )}
                             >
@@ -453,14 +456,14 @@ export default function Example() {
                                                     href={event.href}
                                                     className="group flex"
                                                 >
-                                                    <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
+                                                    <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-sapin-500">
                                                         {event.name}
                                                     </p>
                                                     <time
                                                         dateTime={
                                                             event.datetime
                                                         }
-                                                        className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
+                                                        className="ml-3 hidden flex-none text-gray-500 group-hover:text-sapin-500 xl:block"
                                                     >
                                                         {event.time}
                                                     </time>
@@ -477,6 +480,9 @@ export default function Example() {
                             </div>
                         ))}
                     </div>
+
+                    {/*Mobile first*/}
+
                     <div className="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
                         {days.map((day) => (
                             <button
@@ -484,14 +490,14 @@ export default function Example() {
                                 type="button"
                                 className={classNames(
                                     day.isCurrentMonth
-                                        ? "bg-white"
-                                        : "bg-gray-50",
+                                        ? "bg-stone-100"
+                                        : "bg-stone-200",
                                     (day.isSelected || day.isToday) &&
                                         "font-semibold",
                                     day.isSelected && "text-white",
                                     !day.isSelected &&
                                         day.isToday &&
-                                        "text-indigo-600",
+                                        "text-sapin-500",
                                     !day.isSelected &&
                                         day.isCurrentMonth &&
                                         !day.isToday &&
@@ -507,10 +513,10 @@ export default function Example() {
                                     dateTime={day.date}
                                     className={classNames(
                                         day.isSelected &&
-                                            "flex h-6 w-6 items-center justify-center rounded-full",
+                                            "flex h-6 w-6 items-center justify-center rounded-full bg-sapin-500 font-semibold text-white",
                                         day.isSelected &&
                                             day.isToday &&
-                                            "bg-indigo-600",
+                                            "bg-sapin-500",
                                         day.isSelected &&
                                             !day.isToday &&
                                             "bg-gray-900",
@@ -530,7 +536,7 @@ export default function Example() {
                                         {day.events.map((event) => (
                                             <span
                                                 key={event.id}
-                                                className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"
+                                                className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-sapin-500"
                                             />
                                         ))}
                                     </span>
@@ -540,6 +546,7 @@ export default function Example() {
                     </div>
                 </div>
             </div>
+            {/*Event*/}
             {selectedDay?.events.length > 0 && (
                 <div className="py-10 px-4 sm:px-6 lg:hidden">
                     <ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-2 ring-sapin-500 ring-opacity-2">

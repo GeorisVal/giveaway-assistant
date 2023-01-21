@@ -59,7 +59,7 @@ class DonationController extends Controller
      */
     public function edit(donation $donation)
     {
-        //
+
     }
 
     /**
@@ -71,7 +71,12 @@ class DonationController extends Controller
      */
     public function update(Request $request, donation $donation)
     {
-        //
+        $data = $request->validate(['status' => 'required']);
+        // $donation->update($data);
+
+        DB::table('donations')
+            ->where('id', $request->id)
+            ->update(array('status' => $data["status"]));
     }
 
     /**
