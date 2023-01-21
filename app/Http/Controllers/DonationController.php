@@ -69,12 +69,14 @@ class DonationController extends Controller
      * @param  \App\Models\donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donation $donation)
+    public function update(Request $request, donation $donation)
     {
-        $request->validate(['status' => 'required', 'notes' => 'nullable', 'scheduled_date' => 'nullable']);
-        dd($request);
-        $donation = donation::create($request->all());
-        return ["status" => 1, "data" => $donation];
+        $data = $request->validate(['status' => 'required']);
+        // $donation->update($data);
+
+        DB::table('donations')
+            ->where('id', $request->id)
+            ->update(array('status' => $data["status"]));
     }
 
     /**
