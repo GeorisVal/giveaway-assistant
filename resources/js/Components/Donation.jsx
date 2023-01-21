@@ -9,13 +9,12 @@ const Donation = (props) => {
 
     function handleChange(e) {
         setData('status', e.target.value);
-        const brutId = e.target.id.replace('status', '');
-        console.log(brutId);
+        console.log("Changed")
     }
     function handleSubmit(e) {
         e.preventDefault()
         put('/donations/'+props.id, props.status)
-        console.log(e)
+        console.log("Submitted")
     }
     return (
     <tr className="bg-white border-b leading-tight">
@@ -26,8 +25,8 @@ const Donation = (props) => {
             {props.timestamp}
         </td>
         <td className="px-6 py-4 truncate ...">
-            <form id={"form"+props.id} method={"put"} onChange={handleSubmit}>
-                <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className="leading-3" errors={errors.status} onChange={handleChange} onSelect={(event) => this.handleSubmit(event)}>
+            <form id={"form"+props.id} action={"/donations"} method={"put"} onChange={handleSubmit}>
+                <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className="leading-3" errors={errors.status} onChange={handleChange}>
                     <option value="invalid">Invalid</option>
                     <option value="dnr">DNR</option>
                     <option value="contacted">Contacted</option>
