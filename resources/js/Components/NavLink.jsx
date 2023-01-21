@@ -9,8 +9,11 @@ export default function NavLink({ href, active, children }) {
                         <Link href="/home" className="flex items-center">
                             <span className="self-center text-xl font-semibold whitespace-nowrap ">Giftaway</span>
                         </Link>
-                        <Link href="/DonorRegistration" className="flex items-center">
+                        <Link href="/DonorRegistration" className="flex items-center hover:text-lightgreen-500">
                             <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
+                        </Link>
+                        <Link href="/DonorRegistration" className="flex items-center hover:text-lightgreen-500">
+                            <span className="mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i class="fa-solid fa-calendar-days px-2"></i>View calendar</span>
                         </Link>
                     </div>
                     <form className="mx-auto">
@@ -26,12 +29,13 @@ export default function NavLink({ href, active, children }) {
                                 <a href="#" className="block py-2 pl-3 pr-4 text-white bg-lightgreen-500 rounded md:bg-transparent md:text-lightgreen-500 md:p-0" aria-current="page">Home</a>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Log out<i className="fa-solid fa-right-from-bracket px-2"></i></a>
+                                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lightgreen-500 md:p-0">Log out<i className="fa-solid fa-right-from-bracket px-2"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            <h2 className="text-2xl">Welcome back, Idris.</h2>
         </>
     );
 }
