@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DonationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/donations', [DonationController::class, 'indexAPI']);
+Route::get('/donations/{id}', [DonationController::class, 'showAPI']);
+Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
