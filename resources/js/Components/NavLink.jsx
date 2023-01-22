@@ -12,7 +12,7 @@ export default function NavLink({ href, active, children }) {
                         <Link href="/DonorRegistration" className="flex items-center hover:text-lightgreen-500">
                             <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
                         </Link>
-                        <Link href="/DonorRegistration" className="flex items-center hover:text-lightgreen-500">
+                        <Link href="/calendar" className="flex items-center hover:text-lightgreen-500">
                             <span className="mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i class="fa-solid fa-calendar-days px-2"></i>View calendar</span>
                         </Link>
                     </div>
