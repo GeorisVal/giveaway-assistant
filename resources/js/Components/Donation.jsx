@@ -19,7 +19,7 @@ const Donation = (props) => {
     return (
     <tr className="bg-white border-b leading-tight">
         <td className="px-6 py-2">
-            <a href="#" className="font-medium text-lightgreen-500 hover:underline"><i className="fa-solid fa-pen-to-square"></i></a>
+            <a href="#" className="font-medium text-sapin-500 hover:underline"><i className="fa-solid fa-pen-to-square"></i></a>
         </td>
         <td className="px-6 py-4 truncate ...">
             {props.timestamp}
