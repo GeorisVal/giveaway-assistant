@@ -23,7 +23,7 @@ class donationFactory extends Factory
             'platform' => fake()->randomElement(['Discord', 'Website']),
             'shoutout' => fake()->randomElement(['1', '0']),
             'contact_method' => fake()->randomElement(['Discord', 'Website']),
-            'discord_username' => fake()->userName().'#'.fake()->numberBetween(0000, 9999),
+            'discord_username' => fake()->userName().'#'.fake()->numberBetween(1000, 9999),
             'discord_id' => fake()->numberBetween(1000000000000000, 11000000000000000),
             'nookazon_username' => fake()->userName(),
             'nookazon_link' => 'https://nookazon.com/profile/'.fake()->numberBetween(0000000000, 9999999999),
