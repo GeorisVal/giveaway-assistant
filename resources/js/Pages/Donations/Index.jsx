@@ -34,16 +34,22 @@ export default function Index({ donations }) {
                         Platform
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Contact
+                        Shoutout ?
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Nookazon username
+                        Contact Method
+                    </th>
+                    <th scope="col" className="px-6 py-3 truncate ...">
+                        Discord username
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Discord ID
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Currencies
+                        Nookazon username
+                    </th>
+                    <th scope="col" className="px-6 py-3 truncate ...">
+                        Bells/NMTs
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Items
