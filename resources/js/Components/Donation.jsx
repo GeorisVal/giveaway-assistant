@@ -30,7 +30,16 @@ const Donation = (props) => {
                 console.log(response);
             });
     };
-
+    const handleDateChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
+        axios
+            .put("/api/donations/" + props.id, {
+                schedule_date: e.target.value,
+            })
+            .then((response) => {
+                console.log(response);
+            });
+    };
     return (
         <tr className="bg-white border-b leading-tight">
             <td className="px-6 py-2">
@@ -63,7 +72,8 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
-                {moment(props.schedule_date).format('Do MMM. YYYY')}
+                <input type="date" defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.platform}
