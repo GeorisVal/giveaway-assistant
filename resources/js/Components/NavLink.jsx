@@ -7,8 +7,8 @@ export default function NavLink({ href, active, children }) {
                 <div className="flex flex-wrap items-center w-full">
                     <div className="flex">
                         <Link href="/home" className="flex items-center">
-                            <img src="ga.png" class="h-20 mr-3" alt="logo" />
-                            <span className="self-center text-xl font-semibold whitespace-nowrap hidden">Giftaway</span>
+                            <img src="ga.png" class="h-20 mr-3 sm:max-xl:hidden" alt="logo" />
+                            <span className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
                         </Link>
                         <Link href="/DonorRegistration" className="flex items-center hover:text-sapin-500">
                             <span className="p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"><i className="fa-regular fa-square-plus px-2"></i>Give an item</span>
