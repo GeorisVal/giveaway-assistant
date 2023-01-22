@@ -1,13 +1,13 @@
 import NavLink from '@/Components/NavLink';
 import Buttons from '@/Components/Buttons';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import Footer from '@/Components/Footer';
 import { Head } from '@inertiajs/react';
 
 export default function Welcome(props) {
     return (
         <>
         <Head title="Donations' List" />
-        
         <div className='mx-20'>
         <header>
         <NavLink></NavLink>
@@ -94,7 +94,7 @@ export default function Welcome(props) {
             </div>
         </main>
         <Buttons></Buttons>
-
+        <Footer></Footer>
         </div>
         </>
     );
