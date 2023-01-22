@@ -19,18 +19,17 @@ class DonationController extends Controller
         return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->get()]);
     }
 
-    public function indexAPI()
-    {
-        return DB::table('donations')->get();
-    }
-    public function showAPI($id)
-    {
-        return DB::table('donations')->where('id', $id)->get();
-    }
+//    public function indexAPI()
+//    {
+//        return DB::table('donations')->get();
+//    }
+//    public function showAPI($id)
+//    {
+//        return DB::table('donations')->where('id', $id)->get();
+//    }
     public function updateAPI(Request $request, $id)
     {
-        $data = $request->validate(['status' => 'required']);
-
+        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable']);
         DB::table('donations')
             ->where('id', $id)
             ->update($data);
