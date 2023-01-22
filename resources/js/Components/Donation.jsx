@@ -10,6 +10,8 @@ const Donation = (props) => {
     const [note, setNote] = React.useState({note: props.notes});
     {/*{moment(props.schedule_date).format('MMMM Do YYYY')}*/}
 
+    const [checkbox, setCheckbox] = React.useState(0);
+
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -41,11 +43,12 @@ const Donation = (props) => {
             });
     };
     return (
-        <tr className="bg-white border-b leading-tight">
+        <tr className={checkbox ? "bg-yellow-300 border-b leading-tight" : "bg-white border-b leading-tight"}>
             <td className="px-6 py-2">
-                <a href="#" className="font-medium text-lightgreen-500 hover:underline">
-                    <i className="fa-solid fa-pen-to-square"></i>
-                </a>
+                {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
+                {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
+                {/*</a>*/}
+                <input type="checkbox" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.timestamp}
