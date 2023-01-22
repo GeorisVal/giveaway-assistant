@@ -6,7 +6,6 @@ import Footer from '@/Components/Footer';
 import { useForm, Head } from '@inertiajs/react';
 
 export default function Index({ donations }) {
-    console.log(donations);
     return (
         <>
         <div className='mx-20'>
