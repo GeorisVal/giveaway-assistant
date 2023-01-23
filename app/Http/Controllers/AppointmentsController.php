@@ -6,6 +6,8 @@ use App\Models\Appointments;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use Spatie\GoogleCalendar\Event;
+use Carbon\Carbon;
 
 class AppointmentsController extends Controller
 {
@@ -53,6 +55,11 @@ class AppointmentsController extends Controller
             'appointment_type' => 'donor',
             'created_at' => now(),
         ]);
+//        $event = new Event;
+//        $event->name = 'Meeting with the donor ' . $data["nookazon_username"] ? $data["nookazon_username"] : $data["discord_username"];
+//        $event->description = 'Contact them via ' . $data["contact_method"];
+//        $event->startDateTime = Carbon::make($data["appointment_time"].$data["appointment_date"]);
+//        $event->save();
         return redirect(route('thanks'));
 //        Appointments::create($request->validate([
 //            'nookazon_username' => ['nullable', 'max:20'],
