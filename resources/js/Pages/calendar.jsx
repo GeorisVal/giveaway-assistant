@@ -143,7 +143,7 @@ export default function Example() {
         <>
         <div className='mx-20'>
         <NavLink></NavLink>
-        <div className="lg:flex lg:h-full lg:flex-col">
+        <div className="lg:flex lg:h-full lg:flex-col mb-10">
             <header className="flex items-center justify-between border-b border-gray-200 py-4 px-8 lg:flex-none">
                 <h1 className="text-lg font-semibold text-sapin-500">
                     <time dateTime="2022-01">January 2022</time>
