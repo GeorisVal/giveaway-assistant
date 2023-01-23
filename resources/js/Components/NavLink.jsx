@@ -37,7 +37,6 @@ export default function NavLink({ href, active, children }) {
                     </div>
                 </div>
             </nav>
-            <h2 className="text-2xl mt-5">Welcome back, Idris.</h2>
         </>
     );
 }
