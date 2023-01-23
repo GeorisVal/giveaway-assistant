@@ -41,7 +41,7 @@ Route::get('/calendar', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('calendar');
 
 Route::get('/DonorRegistration', function () {
     return Inertia::render('DonorRegistration', [
@@ -71,7 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update']);
+Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth', 'verified']);
+
+Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index']);
 
 Route::get('/calendar', function () {
     return Inertia::render('calendar');

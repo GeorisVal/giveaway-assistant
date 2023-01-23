@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
              'name' => 'admin',
              'email' => 'a@a.a',
          ]);
+        \App\Models\donation::factory(10)->create();
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('timestamp');
             $table->string('status');
             $table->string('notes')->nullable();
-            $table->dateTime('schedule_date')->nullable();
+            $table->date('schedule_date')->nullable();
             $table->string('platform');
             $table->boolean('shoutout');
             $table->string('contact_method');
