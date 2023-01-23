@@ -75,7 +75,7 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
-                <input type="date" defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
             <td className="px-6 py-4 truncate ...">
