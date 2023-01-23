@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Appointments extends Model
 {
     use HasFactory;
+    protected $fillable = ['nookazon_username', 'discord_username', 'appointment_date', 'appointment_time', 'contact_method'];
+    protected $hidden = ['appointment_type'];
 }

@@ -15,7 +15,10 @@ export default function Index({ appointments }) {
                         <thead className="text-xs text-black-550 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3 truncate ...">
-                                Meeting with
+                                Nookazon username
+                            </th>
+                            <th scope="col" className="px-6 py-3 truncate ...">
+                                Discord username
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
                                 Meeting time
@@ -27,7 +30,7 @@ export default function Index({ appointments }) {
                         </thead>
                         <tbody>
                         {appointments.map((appointment) =>
-                            <Appointment key={appointment.id} id={appointment.id} appointment={appointment.appointment} username={appointment.username} contact={appointment.contact_method} />)};
+                            <Appointment key={appointment.id} id={appointment.id} date={appointment.appointment_date} time={appointment.appointment_time} nookazon_username={appointment.nookazon_username} discord_username={appointment.discord_username} contact={appointment.contact_method} type={appointment.appointment_type}/>)}
                         </tbody>
                     </table>
                 </div>

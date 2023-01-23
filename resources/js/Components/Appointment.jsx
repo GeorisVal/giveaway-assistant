@@ -4,12 +4,15 @@ import moment from 'moment';
 
 const Appointment = (props) => {
     return (
-        <tr className="bg-white border-b leading-tight">
+        <tr className={props.type == "donor" ? "bg-blue-100 border-b leading-tight" : "bg-green-100 border-b leading-tight" }>
             <td className="px-6 py-4 truncate ...">
-                {props.username}
+                {props.nookazon_username}
             </td>
             <td className="px-6 py-4 truncate ...">
-                {moment(props.appointment).format('dddd DD MMMM YYYY')+', at '+moment(props.appointment).format('HH:mm')}
+                {props.discord_username}
+            </td>
+            <td className="px-6 py-4 truncate ...">
+                {moment(props.date).format('dddd DD MMMM YYYY')+', at '+props.time}
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.contact}

@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth', 'verified']);
 
-Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index']);
+Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store']);
 
 Route::get('/calendar', function () {
     return Inertia::render('calendar');

@@ -37,7 +37,30 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nookazon_username' => ['nullable', 'max:20'],
+            'discord_username' => ['nullable', 'max:20'],
+            'appointment_date' => ['required', 'date'],
+            'appointment_time' => ['required'],
+            'contact_method' => ['required'],
+        ]);
+        DB::table('appointments')->insert([
+            'nookazon_username' => $data["nookazon_username"],
+            'discord_username' => $data["discord_username"],
+            'appointment_date' => $data["appointment_date"],
+            'appointment_time' => $data["appointment_time"],
+            'contact_method' => $data["contact_method"],
+            'appointment_type' => 'donor',
+            'created_at' => now(),
+        ]);
+//        Appointments::create($request->validate([
+//            'nookazon_username' => ['nullable', 'max:20'],
+//            'discord_username' => ['nullable', 'max:20'],
+//            'appointment_date' => ['required'],
+//            'appointment_time' => ['required'],
+//            'contact_method' => ['required'],
+//            'appointment_type' => ['required']
+//        ]));
     }
 
     /**
