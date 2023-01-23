@@ -77,6 +77,10 @@ Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::c
 
 Route::get('/calendar', function () {
     return Inertia::render('calendar');
-});
+})->name('calendar');
+
+Route::get('/thanks', function () {
+    return Inertia::render('Thanks');
+})->name('thanks');
 
 require __DIR__.'/auth.php';

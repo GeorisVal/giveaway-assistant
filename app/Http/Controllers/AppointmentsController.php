@@ -53,6 +53,7 @@ class AppointmentsController extends Controller
             'appointment_type' => 'donor',
             'created_at' => now(),
         ]);
+        return redirect(route('thanks'));
 //        Appointments::create($request->validate([
 //            'nookazon_username' => ['nullable', 'max:20'],
 //            'discord_username' => ['nullable', 'max:20'],
