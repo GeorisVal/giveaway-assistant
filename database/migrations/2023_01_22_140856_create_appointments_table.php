@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->dateTime('timestamp');
-            $table->string('username');
-            $table->dateTime('appointment');
+            $table->string('nookazon_username')->nullable();
+            $table->string('discord_username')->nullable();
+            $table->date('appointment_date');
+            $table->time('appointment_time');
             $table->string('contact_method');
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
