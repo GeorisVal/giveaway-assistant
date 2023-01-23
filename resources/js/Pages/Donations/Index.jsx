@@ -17,7 +17,7 @@ export default function Index({ donations }) {
                         <th scope="col" className="px-6 py-3">
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Timestamp
+                        Date
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Status
@@ -26,31 +26,31 @@ export default function Index({ donations }) {
                         Notes
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Scheduled date
-                    </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
                         Platform
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Shoutout ?
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Contact Method
+                        Contact
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Discord username
+                        Discord user
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Discord ID
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Nookazon username
+                        Nookazon user
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Bells/NMTs
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Items
+                    </th>
+                    <th scope="col" className="px-6 py-3 truncate ...">
+                        Scheduled date
                     </th>
                 </tr>
                 </thead>
