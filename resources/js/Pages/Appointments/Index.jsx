@@ -8,6 +8,7 @@ import { useForm, Head } from '@inertiajs/react';
 export default function Index({ appointments }) {
     return (
         <>
+            <Head title="Appointments List" />
             <div className='mx-20'>
                 <NavLink></NavLink>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -34,7 +35,6 @@ export default function Index({ appointments }) {
                         </tbody>
                     </table>
                 </div>
-                <Buttons></Buttons>
                 <Footer></Footer>
             </div>
         </>

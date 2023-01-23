@@ -8,8 +8,11 @@ import { useForm, Head } from '@inertiajs/react';
 export default function Index({ donations }) {
     return (
         <>
+            <Head title="Items List" />
         <div className='mx-20'>
-            <NavLink></NavLink>
+            <header>
+                <NavLink></NavLink>
+            </header>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black-550 uppercase bg-gray-50">
