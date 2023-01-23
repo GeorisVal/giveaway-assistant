@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('notes')->nullable();
             $table->date('schedule_date')->nullable();
             $table->string('platform');
-            $table->boolean('shoutout');
+            $table->string('shoutout');
             $table->string('contact_method');
             $table->string('discord_username')->nullable();
             $table->string('discord_id')->nullable();

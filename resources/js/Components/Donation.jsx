@@ -12,6 +12,17 @@ const Donation = (props) => {
 
     const [checkbox, setCheckbox] = React.useState(0);
 
+    const shoutout = () => {
+        console.log("read")
+        switch (props.shoutout) {
+            case "Yes - shout out my Nookazon account":
+                return "Yes - Nookazon"
+            case "Yes - shout out my Discord account":
+                return "Yes - Discord"
+            default:
+                return "No"
+        }
+    }
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -51,7 +62,7 @@ const Donation = (props) => {
                 <input type="checkbox" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
             <td className="px-6 py-4 truncate ...">
-                {props.timestamp}
+                {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
             <td className="px-6 py-4 truncate ...">
                 <form id={"form" + props.id}>
@@ -75,14 +86,10 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
-                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
-                {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
-            </td>
-            <td className="px-6 py-4 truncate ...">
                 {props.platform}
             </td>
             <td className="px-6 text-center py-4 truncate ...">
-                {props.shoutout ? 'Yes' : 'No'}
+                {shoutout()}
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.contact_method}
@@ -101,6 +108,10 @@ const Donation = (props) => {
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.items}
+            </td>
+            <td className="px-6 py-4 truncate ...">
+                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
         </tr>
     );
