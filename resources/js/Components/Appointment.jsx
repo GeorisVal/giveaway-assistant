@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const Appointment = (props) => {
     return (
-        <tr className={props.type == "donor" ? "bg-blue-100 border-b leading-tight" : "bg-green-100 border-b leading-tight" }>
+        <tr className={props.type == "donor" ? "bg-yellow-200 border-b leading-tight" : "bg-green-100 border-b leading-tight" }>
             <td className="px-6 py-4 truncate ...">
                 {props.nookazon_username}
             </td>
