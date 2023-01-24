@@ -425,8 +425,8 @@ export default function Example() {
                         </div>
                     </header>
                     <div className="shadow ring-4 ring-sapin-500 ring-opacity-4 lg:flex lg:flex-auto lg:flex-col m-2">
-                        <div className="grid grid-cols-7 gap-1 border-b-2 border-sapin-500 bg-sapin-500 text-center text-xs font-semibold leading-6 text-sapin-500 lg:flex-none lg:gap-1">
-                            <div className="bg-cream-500 py-2">
+                        <div className="grid grid-cols-7 gap-4 border-b-2 border-sapin-500 bg-sapin-500 text-center text-s font-bold leading-6 text-sapin-500 lg:flex-none lg:gap-1">
+                            <div className="bg-cream-500 py-2 rounded-lg">
                                 M
                                 <span className="sr-only sm:not-sr-only">
                                     on
