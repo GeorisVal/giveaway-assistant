@@ -35,9 +35,9 @@ class AppointmentsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
         $data = $request->validate([
             'nookazon_username' => ['nullable', 'max:20'],
@@ -61,14 +61,6 @@ class AppointmentsController extends Controller
 //        $event->startDateTime = Carbon::make($data["appointment_time"].$data["appointment_date"]);
 //        $event->save();
         return redirect(route('thanks'));
-//        Appointments::create($request->validate([
-//            'nookazon_username' => ['nullable', 'max:20'],
-//            'discord_username' => ['nullable', 'max:20'],
-//            'appointment_date' => ['required'],
-//            'appointment_time' => ['required'],
-//            'contact_method' => ['required'],
-//            'appointment_type' => ['required']
-//        ]));
     }
 
     /**
