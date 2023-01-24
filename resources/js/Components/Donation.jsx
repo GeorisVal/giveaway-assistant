@@ -23,6 +23,33 @@ const Donation = (props) => {
                 return "No"
         }
     }
+    const status = () => {
+        // console.log("read")
+        switch (data.status) {
+            case "pending_pickup":
+                return "bg-cream-550 truncate ..."
+            case "dnr":
+                return "bg-red-575 truncate ..."
+            case "scheduled_programs":
+                return "bg-purple-550 truncate ..."
+            case "scheduled_web":
+                return "bg-lightgreen-550 truncate ..."
+            case "scheduled_discord":
+                return "bg-discord-550 truncate ..."
+            case "contacted":
+                return "bg-yellow-550 truncate ..."
+            case "collected":
+                return "bg-orange-550 truncate ..."
+            case "invalid":
+                return "bg-red-575 truncate ..."
+            case "cancelled":
+                return "bg-red-575 truncate ..."
+            case "done":
+                return "bg-gris-550 truncate ..."
+            default:
+                return "bg-white"
+        }
+    }
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -64,9 +91,9 @@ const Donation = (props) => {
             <td className="px-6 py-4 truncate ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="">
                 <form id={"form" + props.id}>
-                    <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className="leading-3" onChange={handleStatusChange}>
+                    <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
                         <option value="invalid">Invalid</option>
                         <option value="dnr">DNR</option>
                         <option value="contacted">Contacted</option>
