@@ -11,6 +11,21 @@ use Carbon\Carbon;
 
 class AppointmentsController extends Controller
 {
+    public function indexAPI()
+    {
+        return DB::table('appointments')->get();
+    }
+    public function showAPI($id)
+    {
+        return DB::table('appointments')->where('id', $id)->get();
+    }
+    public function postAPI(Request $request, $id)
+    {
+        $data = $request->validate(['nookazon_username' => 'nullable', 'discord_username' => 'nullable', 'appointment_date' => 'required', 'appointment_time' => 'required', 'contact_method' => 'required']);
+        DB::table('appointments')
+            ->where('id', $id)
+            ->update($data);
+    }
     /**
      * Display a listing of the resource.
      *
