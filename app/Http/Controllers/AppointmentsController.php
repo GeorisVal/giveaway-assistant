@@ -6,6 +6,8 @@ use App\Models\Appointments;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use Spatie\GoogleCalendar\Event;
+use Carbon\Carbon;
 
 class AppointmentsController extends Controller
 {
@@ -33,11 +35,32 @@ class AppointmentsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
-        //
+        $data = $request->validate([
+            'nookazon_username' => ['nullable', 'max:20'],
+            'discord_username' => ['nullable', 'max:20'],
+            'appointment_date' => ['required', 'date'],
+            'appointment_time' => ['required'],
+            'contact_method' => ['required'],
+        ]);
+        DB::table('appointments')->insert([
+            'nookazon_username' => $data["nookazon_username"],
+            'discord_username' => $data["discord_username"],
+            'appointment_date' => $data["appointment_date"],
+            'appointment_time' => $data["appointment_time"],
+            'contact_method' => $data["contact_method"],
+            'appointment_type' => 'donor',
+            'created_at' => now(),
+        ]);
+//        $event = new Event;
+//        $event->name = 'Meeting with the donor ' . $data["nookazon_username"] ? $data["nookazon_username"] : $data["discord_username"];
+//        $event->description = 'Contact them via ' . $data["contact_method"];
+//        $event->startDateTime = Carbon::make($data["appointment_time"].$data["appointment_date"]);
+//        $event->save();
+        return redirect(route('thanks'));
     }
 
     /**

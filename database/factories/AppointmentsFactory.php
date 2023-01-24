@@ -17,10 +17,12 @@ class AppointmentsFactory extends Factory
     public function definition()
     {
         return [
-        'timestamp' => fake()->dateTimeInInterval('-1 year'),
-        'username' => fake()->userName(),
-        'appointment' => fake()->dateTimeThisMonth(),
-        'contact_method' => fake()->randomElement(['Discord', 'Website'])
+        'nookazon_username' => fake()->userName(),
+        'discord_username' => fake()->userName().'#'.fake()->numberBetween(1000, 9999),
+        'appointment_date' => date('Y-m-d'),
+        'appointment_time' => fake()->time('H:i:s'),
+        'contact_method' => fake()->randomElement(['Discord', 'Website']),
+        'appointment_type' => fake()->randomElement(['donor', 'winner'])
     ];
     }
 }

@@ -21,7 +21,7 @@ class donationFactory extends Factory
             'status' => fake()->randomElement(['invalid', 'dnr', 'contacted', 'pending_pickup', 'collected', 'scheduled_web', 'scheduled_discord', 'scheduled_programs', 'done', 'cancelled']),
             'schedule_date' => fake()->randomElement([null, fake()->dateTimeThisMonth()]),
             'platform' => fake()->randomElement(['Discord', 'Website']),
-            'shoutout' => fake()->randomElement(['1', '0']),
+            'shoutout' => fake()->randomElement(['Yes - shout out my Nookazon account', 'Yes - shout out my Discord account', 'No - I would like to remain anonymous']),
             'contact_method' => fake()->randomElement(['Discord', 'Website']),
             'discord_username' => fake()->userName().'#'.fake()->numberBetween(1000, 9999),
             'discord_id' => fake()->numberBetween(1000000000000000, 11000000000000000),

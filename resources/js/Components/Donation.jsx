@@ -12,6 +12,44 @@ const Donation = (props) => {
 
     const [checkbox, setCheckbox] = React.useState(0);
 
+    const shoutout = () => {
+        console.log("read")
+        switch (props.shoutout) {
+            case "Yes - shout out my Nookazon account":
+                return "Yes - Nookazon"
+            case "Yes - shout out my Discord account":
+                return "Yes - Discord"
+            default:
+                return "No"
+        }
+    }
+    const status = () => {
+        // console.log("read")
+        switch (data.status) {
+            case "pending_pickup":
+                return "bg-cream-550 truncate ..."
+            case "dnr":
+                return "bg-red-575 truncate ..."
+            case "scheduled_programs":
+                return "bg-purple-550 truncate ..."
+            case "scheduled_web":
+                return "bg-lightgreen-550 truncate ..."
+            case "scheduled_discord":
+                return "bg-discord-550 truncate ..."
+            case "contacted":
+                return "bg-yellow-550 truncate ..."
+            case "collected":
+                return "bg-orange-550 truncate ..."
+            case "invalid":
+                return "bg-red-575 truncate ..."
+            case "cancelled":
+                return "bg-red-575 truncate ..."
+            case "done":
+                return "bg-gris-550 truncate ..."
+            default:
+                return "bg-white"
+        }
+    }
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -51,11 +89,11 @@ const Donation = (props) => {
                 <input type="checkbox" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
             <td className="px-6 py-4 truncate ...">
-                {props.timestamp}
+                {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="">
                 <form id={"form" + props.id}>
-                    <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className="leading-3" onChange={handleStatusChange}>
+                    <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
                         <option value="invalid">Invalid</option>
                         <option value="dnr">DNR</option>
                         <option value="contacted">Contacted</option>
@@ -75,14 +113,10 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
-                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
-                {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
-            </td>
-            <td className="px-6 py-4 truncate ...">
                 {props.platform}
             </td>
             <td className="px-6 text-center py-4 truncate ...">
-                {props.shoutout ? 'Yes' : 'No'}
+                {shoutout()}
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.contact_method}
@@ -101,6 +135,10 @@ const Donation = (props) => {
             </td>
             <td className="px-6 py-4 truncate ...">
                 {props.items}
+            </td>
+            <td className="px-6 py-4 truncate ...">
+                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
         </tr>
     );
