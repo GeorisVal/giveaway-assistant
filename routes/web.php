@@ -19,7 +19,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Dashboard', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+//
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -28,7 +28,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return Inertia::render('Dashboard', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+//        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -37,7 +37,7 @@ Route::get('/home', function () {
 Route::get('/calendar', function () {
     return Inertia::render('Example', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+//        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -46,7 +46,7 @@ Route::get('/calendar', function () {
 Route::get('/DonorRegistration', function () {
     return Inertia::render('DonorRegistration', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+//        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -55,7 +55,7 @@ Route::get('/DonorRegistration', function () {
 Route::get('/WinnerRegistration', function () {
     return Inertia::render('WinnerRegistration', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+//        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
