@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\AppointmentsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/donations', [DonationController::class, 'indexAPI']);
 Route::get('/donations/{id}', [DonationController::class, 'showAPI']);
 Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
+
+Route::get('/appointments', [AppointmentsController::class, 'indexAPI']);
+Route::get('/appointments/{id}', [AppointmentsController::class, 'showAPI']);
+Route::post('/appointments/{id}', [AppointmentsController::class, 'postAPI']);

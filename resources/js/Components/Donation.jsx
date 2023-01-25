@@ -50,6 +50,9 @@ const Donation = (props) => {
                 return "bg-white"
         }
     }
+
+    const today = moment(new Date()).format("YYYY-MM-DD");
+
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -137,7 +140,7 @@ const Donation = (props) => {
                 {props.items}
             </td>
             <td className="px-6 py-4 truncate ...">
-                <input type="date" className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                <input type="date" min={today} className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
         </tr>
