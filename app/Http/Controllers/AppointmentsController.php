@@ -8,7 +8,6 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Spatie\GoogleCalendar\Event;
 use Carbon\Carbon;
-
 class AppointmentsController extends Controller
 {
     public function indexAPI()
@@ -25,6 +24,22 @@ class AppointmentsController extends Controller
         DB::table('appointments')
             ->where('id', $id)
             ->update($data);
+    }
+
+    public function createAPI(Request $request)
+    {
+        
+        Appointments::create([
+            'nookazon_username' => $request->nookazon_username,
+            'discord_username' => $request->discord_username,
+            'appointment_date' => $request->appointment_date,
+            'appointment_time' => $request->appointment_time,
+            'contact_method' => $request->contact_method,
+            !empty($request->email) ? 'email' : null => $request->email
+        ]);
+        return response()->json([
+            DB::table('appointments')->get()
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -121,5 +136,11 @@ class AppointmentsController extends Controller
     public function destroy(Appointments $appointments)
     {
         //
+    }
+
+    public function calendarPage(){
+        return Inertia::render('Calendar/Index', [
+            'appointments' => DB::table('appointments')->get()
+        ]);
     }
 }
