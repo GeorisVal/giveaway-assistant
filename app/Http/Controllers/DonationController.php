@@ -16,7 +16,12 @@ class DonationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->get()]);
+        return Inertia::render('Donations/Index', ['donations' =>
+            DB::table('donations')
+                ->join('status', 'donations.status', '=', 'status.status')
+                ->where('visible', '=', '1')
+                ->get()
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +40,11 @@ class DonationController extends Controller
     public function indexAPI()
     {
         return DB::table('donations')->get();
+
+    }
+    public function statusAPI()
+    {
+        return DB::table('status')->get();
     }
     public function scheduleNoDateAPI()
     {

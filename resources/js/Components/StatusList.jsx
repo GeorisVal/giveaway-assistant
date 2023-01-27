@@ -25,7 +25,7 @@ export default function Filters(props) {
 
 return (
     <>
-        <p onClick={toggleFilters}>status</p>
+        <p onClick={toggleFilters} className="cursor-default">status</p>
         {show && <div className="w-auto h-auto bg-white absolute top-[3em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed">
             <label className="mr-6">
                 <Checkbox id="cbdnr" name="cbdnr" value={data.remember} handleChange={onHandleChange} />

@@ -21,40 +21,40 @@ export default function Index({ donations }) {
                     <tr>
                         <th scope="col" className="px-6 py-3">
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Date
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         <Filters />
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Notes
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Platform
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Shoutout ?
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Contact
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Discord user
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Discord ID
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Nookazon user
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Bells/NMTs
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Items
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Scheduled date
                     </th>
                 </tr>
