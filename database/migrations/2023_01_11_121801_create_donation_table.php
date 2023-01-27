@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('nookazon_link')->nullable();
             $table->string('currencies')->nullable();
             $table->text('items')->nullable();
+            $table->boolean('visible');
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
         });

@@ -16,7 +16,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->get()]);
+        return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->where('visible', '=', '1')->get()]);
     }
 
     public function indexAPI()
@@ -29,7 +29,7 @@ class DonationController extends Controller
     }
     public function updateAPI(Request $request, $id)
     {
-        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable']);
+        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable', 'visible' => 'nullable']);
         DB::table('donations')
             ->where('id', $id)
             ->update($data);
