@@ -25,8 +25,8 @@ return new class extends Migration
             ['status' => 'pending', 'visible' => 1],
             ['status' => 'collected', 'visible' => 1],
             ['status' => 'scheduled_web', 'visible' => 1],
-            ['status' => 'scheduled_disc', 'visible' => 1],
-            ['status' => 'scheduled_progs', 'visible' => 1],
+            ['status' => 'scheduled_discord', 'visible' => 1],
+            ['status' => 'scheduled_programs', 'visible' => 1],
             ['status' => 'done', 'visible' => 0],
             ['status' => 'cancelled', 'visible' => 0]]);
     }
