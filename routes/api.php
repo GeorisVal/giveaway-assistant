@@ -27,3 +27,4 @@ Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
 Route::get('/appointments', [AppointmentsController::class, 'indexAPI']);
 Route::get('/appointments/{id}', [AppointmentsController::class, 'showAPI']);
 Route::post('/appointments/{id}', [AppointmentsController::class, 'postAPI']);
+Route::post('/appointments', [AppointmentsController::class, 'createAPI']);
