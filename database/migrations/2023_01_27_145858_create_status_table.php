@@ -15,8 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('status', function (Blueprint $table) {
-            $table->id();
-            $table->string('status');
+            $table->string('status')->primary();
             $table->boolean('visible');
         });
         DB::table('status')->insert([
