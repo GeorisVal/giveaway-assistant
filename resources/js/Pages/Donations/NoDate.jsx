@@ -1,6 +1,5 @@
 import React from 'react';
 import Donation from '@/Components/Donation';
-import Filters from '@/Components/StatusList'
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
 import Footer from '@/Components/Footer';
@@ -9,7 +8,7 @@ import { Head, useForm } from '@inertiajs/react';
 export default function Index({ donations }) {
     return (
         <>
-            <Head title="Items List" />
+            <Head title="Scheduled w/o dates" />
             <div className='mx-20'>
                 <header>
                     <NavLink></NavLink>
@@ -24,7 +23,7 @@ export default function Index({ donations }) {
                                 Date
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
-                                <Filters />
+                                Status
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
                                 Notes
