@@ -35,6 +35,7 @@ export default function Index({ appointments }) {
                         </tbody>
                     </table>
                 </div>
+                <Buttons />
                 <Footer></Footer>
             </div>
         </>
