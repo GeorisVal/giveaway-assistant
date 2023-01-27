@@ -54,24 +54,9 @@ const Donation = (props) => {
 
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
-        const $visible = () => {
-            switch (e.target.value) {
-                case "dnr":
-                    return 0
-                case "closed":
-                    return 0
-                case "cancelled":
-                    return 0
-                case "invalid":
-                    return 0
-                default:
-                    return 1
-            }
-        }
         axios
             .put("/api/donations/" + props.id, {
                 status: e.target.value,
-                visible: $visible()
             })
             .then((response) => {
                 // console.log(response);
