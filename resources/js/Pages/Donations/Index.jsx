@@ -4,7 +4,6 @@ import Filters from '@/Components/StatusList'
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
 import Footer from '@/Components/Footer';
-import Dropdown from '@/Components/Dropdown';
 import { Head, useForm } from '@inertiajs/react';
 
 export default function Index({ donations }) {
@@ -26,7 +25,7 @@ export default function Index({ donations }) {
                         Date
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
-                        Status
+                        <Filters />
                     </th>
                     <th scope="col" className="px-6 py-3 truncate ...">
                         Notes
@@ -67,7 +66,6 @@ export default function Index({ donations }) {
             </table>
         </div>
         <Buttons></Buttons>
-        <Filters />
         <Footer></Footer>
         </div>
         </>
