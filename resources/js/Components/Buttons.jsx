@@ -6,8 +6,8 @@ export default function Buttons({ href, active, children }) {
     return (
         <>
             <div className="my-4 mb-10">
-                <PrimaryButton>Donations</PrimaryButton>
-                <SecondaryButton>No date!</SecondaryButton>
+                <Link href={'donations'}><PrimaryButton>Donations</PrimaryButton></Link>
+                <Link href={'donations-nodate'}><SecondaryButton>No date!</SecondaryButton></Link>
                 <PrimaryButton>Scheduled giveaways</PrimaryButton>
             </div>
         </>
