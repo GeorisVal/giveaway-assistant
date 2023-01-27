@@ -70,32 +70,28 @@ const Calendar = (props) => {
     }
 
     return (
-        <div className="mx-auto max-w-7xl">
-            <div className="flex flex-row justify-between w-full my-4">
+        <div className="mx-auto max-w-7xl bg-stone-300">
+            <div className="flex justify-evenly w-full my-4">
                 <div className="flex flex-row gap-4">
                     <button
-                        className="
-                    bg-[#66a2e2] text-white rounded-lg w-24 py-2
-                    "
+                        className="bg-sapin-500 text-lightgreen-500 rounded-lg w-24 py-2 hover:bg-lightgreen-500 hover:text-sapin-500"
                         onClick={prevMonth}
                     >
                         Previous
                     </button>
+                    <h1 className="text-sapin-500 p-2 font-bold">
+                        {monthName} {currentDate.getFullYear()}
+                    </h1>
                     <button
-                        className="
-                    bg-[#66a2e2] text-white rounded-lg w-24 py-2
-                    "
+                        className="bg-sapin-500 text-lightgreen-500 rounded-lg w-24 py-2 hover:bg-lightgreen-500 hover:text-sapin-500"
                         onClick={nextMonth}
                     >
                         Next
                     </button>
                 </div>
-                <h1>
-                    {monthName} {currentDate.getFullYear()}
-                </h1>
             </div>
 
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7">
                 {days.map((day, index) => (
                     <div
                         className={
@@ -103,9 +99,9 @@ const Calendar = (props) => {
                             currentDate.getMonth() === new Date().getMonth() &&
                             currentDate.getFullYear() ===
                                 new Date().getFullYear()
-                                ? "border-[#66a2e2]"
-                                : "border-[#dee2e6]") +
-                            " w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-[#1f2937]"
+                                ? "border-lightgreen-500"
+                                : "border-sapin-500") +
+                            " w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-stone-200"
                         }
                         key={index}
                         defaultValue={day}
@@ -119,7 +115,7 @@ const Calendar = (props) => {
                         }}
                     >
                         <div className="flex gap-2 items-center justify-center">
-                            <h4 className="text-sm text-gray-400">
+                            <h4 className="text-sm text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
                                     currentDate.getMonth(),
@@ -131,7 +127,7 @@ const Calendar = (props) => {
                                     .slice(0, 3)}
                             </h4>
                             <h1 className="text-lg font-semibold">{day}</h1>
-                            <h4 className="text-sm text-gray-400">
+                            <h4 className="text-sm text-sapin-500">
                                 {currentDate.getFullYear()}
                             </h4>
                         </div>
@@ -142,8 +138,8 @@ const Calendar = (props) => {
                                     new Date().getMonth() &&
                                 currentDate.getFullYear() ===
                                     new Date().getFullYear()
-                                    ? "border-[#66a2e2] border-1 w-4/5 mx-auto"
-                                    : "border-[#dee2e6] border-1 w-4/5 mx-auto"
+                                    ? "border-lightgreen-500 border-1 w-4/5 mx-auto"
+                                    : "border-sapin-500 border-1 w-4/5 mx-auto"
                             }
                         />
                         {props.auth.user != null &&
@@ -166,7 +162,7 @@ const Calendar = (props) => {
                                             className="flex flex-col gap-2 items-center justify-center"
                                             key={index}
                                         >
-                                            <h1 className="text-sm text-gray-400">
+                                            <h1 className="text-sm text-gray-500">
                                                 {techTalk.appointment_time}{" "}
                                                 {techTalk.nookazon_username}
                                             </h1>
@@ -183,7 +179,7 @@ const Calendar = (props) => {
                     className="fixed inset-0 z-10 overflow-y-auto"
                     onClose={setDayClicked}
                 >
-                    <div className="min-h-screen px-4 text-center bg-black bg-opacity-40">
+                    <div className="min-h-screen px-4 text-center bg-sapin-500 bg-opacity-60">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -211,26 +207,26 @@ const Calendar = (props) => {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-[#373f50] shadow-xl rounded-2xl">
+                            <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gray-300 shadow-xl rounded-2xl">
                                 <Dialog.Title
                                     as="h3"
-                                    className="text-lg font-medium leading-6 text-white"
+                                    className="text-xl font-bold leading-6 text-sapin-500 text-center p-2"
                                 >
-                                    Create a tech-talk
+                                    Create an appointment
                                 </Dialog.Title>
                                 <div className="mt-2">
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-6">
                                             <label
                                                 htmlFor="username"
-                                                className="block mb-2 text-sm font-medium text-gray-900"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
                                             >
                                                 Nookazon Username
                                             </label>
                                             <input
                                                 type="text"
                                                 id="username"
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                 placeholder="Username"
                                                 name="nookazon_username"
                                             />
@@ -238,14 +234,14 @@ const Calendar = (props) => {
                                         <div className="mb-6">
                                             <label
                                                 htmlFor="username"
-                                                className="block mb-2 text-sm font-medium text-gray-900"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
                                             >
                                                 Discord Username
                                             </label>
                                             <input
                                                 type="text"
                                                 id="username"
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                 placeholder="Username"
                                                 name="discord_username"
                                             />
@@ -253,19 +249,19 @@ const Calendar = (props) => {
                                         <div className="mb-6">
                                             <label
                                                 for="email"
-                                                className="block mb-2 text-sm font-medium text-gray-900"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
                                             >
                                                 email (optional)
                                             </label>
                                             <input
                                                 type="email"
                                                 id="email"
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                 placeholder="email"
                                                 name="appointment_email"
                                             />
                                         </div>
-                                        <p className="block mb-2 text-sm font-medium text-gray-900">
+                                        <p className="block mb-1 text-base font-semibold text-sapin-500">
                                             Preferred date & time for the
                                             exchange
                                         </p>
@@ -273,12 +269,12 @@ const Calendar = (props) => {
                                             <div className="mb-6 w-full mr-2">
                                                 <label
                                                     htmlFor="date"
-                                                    className="block mb-2 text-sm font-medium text-gray-900"
+                                                    className="block mb-2 text-base font-semibold text-gray-500"
                                                 ></label>
                                                 <input
                                                     type="date"
                                                     id="date"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                    className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                     placeholder=""
                                                     required
                                                     name="appointment_date"
@@ -287,14 +283,14 @@ const Calendar = (props) => {
                                             <div className="mb-6 w-full mr-2">
                                                 <label
                                                     htmlFor="time"
-                                                    className="block mb-2 text-sm font-medium text-gray-900"
+                                                    className="block mb-2 text-base font-semibold text-gray-500"
                                                 ></label>
                                                 <input
                                                     type="time"
                                                     id="time"
                                                     min="13:00"
                                                     max="21:30"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                    className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                     placeholder=""
                                                     required
                                                     name="appointment_time"
@@ -302,7 +298,7 @@ const Calendar = (props) => {
                                             </div>
                                         </div>
                                         <div className="mb-6">
-                                            <p className="block mb-2 text-sm font-medium text-gray-900">
+                                            <p className="block mb-2 text-base font-semibold text-sapin-500">
                                                 Preferred way to be contacted
                                             </p>
                                             <div className="flex flex-col">
@@ -312,10 +308,11 @@ const Calendar = (props) => {
                                                         id="discord"
                                                         value="Discord"
                                                         name="contact_method"
+                                                        className="hover:bg-lightgreen-500"
                                                     />
                                                     <label
                                                         htmlFor="discord"
-                                                        className="pl-2"
+                                                        className="pl-2 text-gray-500"
                                                     >
                                                         Discord
                                                     </label>
@@ -325,10 +322,11 @@ const Calendar = (props) => {
                                                         type="radio"
                                                         id="website"
                                                         value="Website"
+                                                        className="hover:bg-lightgreen-500"
                                                     />
                                                     <label
                                                         htmlFor="website"
-                                                        className="pl-2"
+                                                        className="pl-2 text-gray-500"
                                                     >
                                                         Website
                                                     </label>
@@ -337,7 +335,7 @@ const Calendar = (props) => {
                                         </div>
                                         <button
                                             type="submit"
-                                            className="text-white bg-sapin-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800"
+                                            className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800"
                                         >
                                             Submit
                                         </button>
