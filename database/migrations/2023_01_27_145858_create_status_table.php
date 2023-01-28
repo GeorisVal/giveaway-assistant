@@ -19,16 +19,16 @@ return new class extends Migration
             $table->boolean('visible');
         });
         DB::table('status')->insert([
-            ['status' => 'invalid', 'visible' => 0],
-            ['status' => 'dnr', 'visible' => 0],
+            ['status' => 'invalid', 'visible' => 1],
+            ['status' => 'dnr', 'visible' => 1],
             ['status' => 'contacted', 'visible' => 1],
             ['status' => 'pending', 'visible' => 1],
             ['status' => 'collected', 'visible' => 1],
             ['status' => 'scheduled_web', 'visible' => 1],
             ['status' => 'scheduled_discord', 'visible' => 1],
             ['status' => 'scheduled_programs', 'visible' => 1],
-            ['status' => 'done', 'visible' => 0],
-            ['status' => 'cancelled', 'visible' => 0]]);
+            ['status' => 'done', 'visible' => 1],
+            ['status' => 'cancelled', 'visible' => 1]]);
     }
 
     /**
