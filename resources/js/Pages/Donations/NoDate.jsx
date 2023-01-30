@@ -11,7 +11,7 @@ export default function Index({ donations }) {
             <Head title="Scheduled w/o dates" />
             <div className='mx-20'>
                 <header>
-                    <NavLink></NavLink>
+                    <NavLink auth={{user: "logged"}}></NavLink>
                 </header>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">

@@ -10,7 +10,7 @@ export default function Welcome(props) {
         <Head title="Donations' List" />
         <div className='mx-20'>
             <header>
-                <NavLink></NavLink>
+                <NavLink auth={props.auth}></NavLink>
             </header>
             <main>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -18,7 +18,7 @@ export default function Welcome(props) {
                             <thead className="text-xs text-black-550 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        
+
                                     </th>
                                     <th scope="col" className="px-6 py-3 truncate ...">
                                         Timestamp

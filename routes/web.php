@@ -71,13 +71,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth', 'verified']);
-Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate');
+Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth']);
+Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth']);
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
 
-Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store']);
+Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);
 
-Route::get('/calendar', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar');
+Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar');
 
 Route::get('/thanks', function () {
     return Inertia::render('Thanks');
