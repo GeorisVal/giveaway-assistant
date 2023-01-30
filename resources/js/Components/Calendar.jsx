@@ -1,16 +1,18 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
+import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
 
 const Calendar = (props) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [dayClicked, setDayClicked] = useState(false);
+    const [mouseOver, setMouseOver] = useState(false);
     const [dayValue, setDayValue] = useState({
         day: null,
         month: null,
         year: null,
     });
-    const [hour, setHour] = useState("13:30");
+    const next = props.isNext;
     const [appointments, setAppointments] = useState(props.appointments);
     console.log(appointments);
     const nextMonth = () => {
@@ -37,6 +39,16 @@ const Calendar = (props) => {
         days.push(i);
     }
 
+    const dayNames = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+
     const monthNames = [
         "January",
         "February",
@@ -51,18 +63,20 @@ const Calendar = (props) => {
         "November",
         "December",
     ];
-    const monthName = monthNames[currentDate.getMonth()];
+    const monthName = next ? monthNames[currentDate.getMonth()+1] : monthNames[currentDate.getMonth()] ;
+    const dayName = dayNames[currentDate.getDay()];
 
     function handleSubmit(e) {
         e.preventDefault();
         const data = {
             nookazon_username: e.target.nookazon_username.value,
             discord_username: e.target.discord_username.value,
-            appointment_date: e.target.appointment_date.value,
+            appointment_date: moment([dayValue["day"], dayValue["month"], dayValue["year"]], "DD-MM-YYYY").format("YYYY-MM-DD"),
             appointment_time: e.target.appointment_time.value,
             contact_method: e.target.contact_method.value,
             email: e.target.email.value,
         };
+        console.log(data);
         axios.post("/api/appointments", data).then((res) => {
             setAppointments(res.data[0]);
         });
@@ -70,7 +84,7 @@ const Calendar = (props) => {
     }
 
     return (
-        <div className="mx-auto max-w-7xl bg-stone-300">
+        <div className="mx-auto max-w-7xl mb-5">
             <div className="flex justify-evenly w-full my-4">
                 <div className="flex flex-row gap-4">
                     <button
@@ -111,6 +125,7 @@ const Calendar = (props) => {
                                 month: currentDate.getMonth() + 1,
                                 year: currentDate.getFullYear(),
                             });
+                            console.log(dayValue);
                             setDayClicked(true);
                         }}
                     >
@@ -143,9 +158,9 @@ const Calendar = (props) => {
                             }
                         />
                         {props.auth.user != null &&
-                            appointments.map((techTalk, index) => {
+                            appointments.map((appointment, index) => {
                                 if (
-                                    techTalk.appointment_date ===
+                                    appointment.appointment_date ===
                                     `${currentDate.getFullYear()}-${
                                         currentDate.getMonth().toString()
                                             .length == 1
@@ -163,8 +178,7 @@ const Calendar = (props) => {
                                             key={index}
                                         >
                                             <h1 className="text-sm text-gray-500">
-                                                {techTalk.appointment_time}{" "}
-                                                {techTalk.nookazon_username}
+                                                {moment(appointment.appointment_time, 'HH:mm:ss').format("HH:mm") + " " + appointment.nookazon_username}
                                             </h1>
                                         </div>
                                     );
@@ -262,24 +276,10 @@ const Calendar = (props) => {
                                             />
                                         </div>
                                         <p className="block mb-1 text-base font-semibold text-sapin-500">
-                                            Preferred date & time for the
+                                            Time for the
                                             exchange
                                         </p>
                                         <div className="flex flex-row justify-between">
-                                            <div className="mb-6 w-full mr-2">
-                                                <label
-                                                    htmlFor="date"
-                                                    className="block mb-2 text-base font-semibold text-gray-500"
-                                                ></label>
-                                                <input
-                                                    type="date"
-                                                    id="date"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
-                                                    placeholder=""
-                                                    required
-                                                    name="appointment_date"
-                                                />
-                                            </div>
                                             <div className="mb-6 w-full mr-2">
                                                 <label
                                                     htmlFor="time"
