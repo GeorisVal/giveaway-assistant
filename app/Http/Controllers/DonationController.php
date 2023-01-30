@@ -66,6 +66,10 @@ class DonationController extends Controller
             ->where('id', $id)
             ->update($data);
     }
+    public function updateStatusVisibilityAPI(Request $request, $status)
+    {
+        DB::table('status')->select('visible')->update($request);
+    }
     /**
      * Show the form for creating a new resource.
      *
