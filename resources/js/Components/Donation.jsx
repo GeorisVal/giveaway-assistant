@@ -13,7 +13,6 @@ const Donation = (props) => {
     const [checkbox, setCheckbox] = React.useState(0);
 
     const shoutout = () => {
-        console.log("read")
         switch (props.shoutout) {
             case "Yes - shout out my Nookazon account":
                 return "Yes - Nookazon"
@@ -60,7 +59,7 @@ const Donation = (props) => {
                 status: e.target.value,
             })
             .then((response) => {
-                console.log(response);
+                // console.log(response);
             });
     };
     const handleNoteSubmit = (e) => {

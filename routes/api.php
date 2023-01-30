@@ -23,7 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/donations', [DonationController::class, 'indexAPI']);
 Route::get('/donations/{id}', [DonationController::class, 'showAPI']);
 Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
+Route::get('/donations-nodate', [DonationController::class, 'scheduleNoDate']);
 
 Route::get('/appointments', [AppointmentsController::class, 'indexAPI']);
 Route::get('/appointments/{id}', [AppointmentsController::class, 'showAPI']);
 Route::post('/appointments/{id}', [AppointmentsController::class, 'postAPI']);
+Route::post('/appointments', [AppointmentsController::class, 'createAPI']);

@@ -14,8 +14,7 @@ class donationFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'timestamp' => now(),
             'status' => fake()->randomElement(['invalid', 'dnr', 'contacted', 'pending_pickup', 'collected', 'scheduled_web', 'scheduled_discord', 'scheduled_programs', 'done', 'cancelled']),
@@ -28,7 +27,7 @@ class donationFactory extends Factory
             'nookazon_username' => fake()->userName(),
             'nookazon_link' => 'https://nookazon.com/profile/'.fake()->numberBetween(0000000000, 9999999999),
             'currencies' => fake()->numberBetween(100000, 100000000).' Bells',
-            'items' => fake()->text(50)
+            'items' => fake()->text(50),
         ];
     }
 }

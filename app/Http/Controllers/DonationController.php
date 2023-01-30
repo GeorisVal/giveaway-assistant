@@ -16,12 +16,44 @@ class DonationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Donations/Index', ['donations' => DB::table('donations')->get()]);
+        return Inertia::render('Donations/Index', ['donations' =>
+            DB::table('donations')
+                ->join('status', 'donations.status', '=', 'status.status')
+                ->where('visible', '=', '1')
+                ->get()
+        ]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Inertia\response
+     */
+    public function indexNoDate()
+    {
+        return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')
+            ->where('status', '=', 'scheduled_web')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'scheduled_programs')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'scheduled_discord')->where('schedule_date', '=', null)
+            ->get()]);
     }
 
     public function indexAPI()
     {
         return DB::table('donations')->get();
+
+    }
+    public function statusAPI()
+    {
+        return DB::table('status')->get();
+    }
+    public function scheduleNoDateAPI()
+    {
+        return
+            (DB::table('donations')
+            ->where('status', '=', 'scheduled_web')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'scheduled_programs')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'scheduled_discord')->where('schedule_date', '=', null)
+            ->get());
     }
     public function showAPI($id)
     {
