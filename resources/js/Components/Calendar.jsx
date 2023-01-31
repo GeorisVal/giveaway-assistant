@@ -1,11 +1,13 @@
-    import React, { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
 
 const Calendar = (props) => {
     const next = props.isNext;
-    const [currentDate, setCurrentDate] = useState(!next ? new Date() : new Date( Date.now() + 28 * 24 * 60 * 60 * 1000));
+    const [currentDate, setCurrentDate] = useState(
+        !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
+    );
     console.log(currentDate);
     const [dayClicked, setDayClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
@@ -36,7 +38,7 @@ const Calendar = (props) => {
     };
 
     const days = [];
-        for (let i = 1; i <= daysInMonth(); i++) {
+    for (let i = 1; i <= daysInMonth(); i++) {
         days.push(i);
     }
 
@@ -64,16 +66,12 @@ const Calendar = (props) => {
         "November",
         "December",
     ];
-<<<<<<< HEAD
-    const monthName = next
-        ? monthNames[currentDate.getMonth() + 1]
-        : monthNames[currentDate.getMonth()];
-=======
-    const monthName = monthNames[currentDate.getMonth()] ;
->>>>>>> 2f1bd516bc384586171a7fdcb8ba321cdfceebd3
+    const monthName = monthNames[currentDate.getMonth()];
     const dayName = dayNames[currentDate.getDay()];
 
-    let logicalMonth = monthNames[currentDate.getMonth()-1] ? monthNames[currentDate.getMonth()-1] : monthNames[currentDate.getMonth()+11];
+    let logicalMonth = monthNames[currentDate.getMonth() - 1]
+        ? monthNames[currentDate.getMonth() - 1]
+        : monthNames[currentDate.getMonth() + 11];
     console.log(logicalMonth + " " + monthName);
 
     function handleSubmit(e) {
@@ -88,7 +86,7 @@ const Calendar = (props) => {
             appointment_time: e.target.appointment_time.value,
             contact_method: e.target.contact_method.value,
             email: e.target.email.value,
-            appointment_type: "donor"
+            appointment_type: "donor",
         };
         console.log(data);
         axios.post("/api/appointments", data).then((res) => {
@@ -198,6 +196,7 @@ const Calendar = (props) => {
                                                     " " +
                                                     appointment.nookazon_username}
                                             </h1>
+                                            {/* className={props.contact == "discord" ? "bg-blurble-pastel : bg-vert pastel"} */}
                                         </div>
                                     );
                                 }
@@ -339,6 +338,7 @@ const Calendar = (props) => {
                                                         type="radio"
                                                         id="website"
                                                         value="Website"
+                                                        name="contact_method"
                                                         className="hover:bg-lightgreen-500"
                                                     />
                                                     <label
