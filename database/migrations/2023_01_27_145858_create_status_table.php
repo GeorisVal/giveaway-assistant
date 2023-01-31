@@ -16,19 +16,19 @@ return new class extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->string('status')->primary();
-            $table->boolean('visible');
+            $table->string('visible');
         });
         DB::table('status')->insert([
-            ['status' => 'invalid', 'visible' => 1],
-            ['status' => 'dnr', 'visible' => 1],
-            ['status' => 'contacted', 'visible' => 1],
-            ['status' => 'pending', 'visible' => 1],
-            ['status' => 'collected', 'visible' => 1],
-            ['status' => 'scheduled_web', 'visible' => 1],
-            ['status' => 'scheduled_discord', 'visible' => 1],
-            ['status' => 'scheduled_programs', 'visible' => 1],
-            ['status' => 'done', 'visible' => 1],
-            ['status' => 'cancelled', 'visible' => 1]]);
+            ['status' => 'invalid', 'visible' => 'true'],
+            ['status' => 'dnr', 'visible' => 'true'],
+            ['status' => 'contacted', 'visible' => 'true'],
+            ['status' => 'pending', 'visible' => 'true'],
+            ['status' => 'collected', 'visible' => 'true'],
+            ['status' => 'scheduled_web', 'visible' => 'true'],
+            ['status' => 'scheduled_discord', 'visible' => 'true'],
+            ['status' => 'scheduled_programs', 'visible' => 'true'],
+            ['status' => 'done', 'visible' => 'true'],
+            ['status' => 'cancelled', 'visible' => 'true']]);
     }
 
     /**
