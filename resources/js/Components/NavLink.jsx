@@ -70,7 +70,7 @@ export default function NavLink(props) {
                 <nav className="bg-white border-gray-200 py-2.5 rounded">
                     <div className="flex flex-wrap items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
                         <div className="flex sm:max-xl:flex-col">
-                            <Link href="/home" className="flex items-center sm:max-xl:my-5">
+                            <Link href="/" className="flex items-center sm:max-xl:my-5">
                                 <img src="ga.png" className="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
                                 <span
                                     className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
