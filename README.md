@@ -1,54 +1,52 @@
-# About this project
 
-This will assist a Giveaway Host to plan donations status, pickups, and winner's retrieval and will give detailed and general overview of donations. <br>
+# Giftaway
 
-A Google Sheet will be linked to the database, and will auto-update on changes (*ideally push edits from DB to Sheet, if that's a thing ?*).<br>
+A little bit of context: This is made to be used with Nookazon, a game-trading platform.
 
-A Google Calendar will be linked on the website, allowing users to select a date and time to meet for a donation or a retrieval of won items.
+This website is a tool to help the administrators to run giveaways.
 
-# Features
+With this tool, your can see who gave an item, who won an item, who has been contacted, etc,…
 
-## Google Sheet
-- Automatically update database on Google Sheet changes, using Google App Script & JDBC (Java Database Connectivity);
-- *Ideally, automatically update Google Sheet on database changes*.
+It helps them for intern organization.
 
-## Google Calendar
-- Host will select general availabilities;
-- Donor will be able to pick any time in these availabilities;
-- Event will be created onto host's Google Calendar;
-- Other donors will not be able to select the same time;
-- Winner will be able to pick any time from the available spots in the availabilities in a second type of event, which will also lock the availability for both events;
-- Calendar view including all the events onto a hidden Administration page.
+The project also contains the ability to make forms to collect informations the easiest way about players.
 
-## Administration
-- Overview of all donations (*list and/or cards*);
-- Ability to change status from the overview, enabling a color code on the line; 
-- Ability to filter donations by status and by platform; 
-- Set a date for when the giveaway is scheduled to go live; 
-- Once a date is selected, populate the "Scheduled Giveaways" (calendar view) view with all the details; 
-- Warning if status is set as "Scheduled" but no schedule date is set;
-- Monthly calendar view with small dots including a color code based on event type (Donor pickup or Winner retrieval) and filtering option;
-- Second color code for Discord or website giveaways, full cell;
-- Edit button on calendar cell next to giveaway title to edit the giveaway informations;
-- If hover on calendar event, will provide card with details of specific donation (*maybe enable edit directly from card ? If possible, move edit button into card*);
-- In details card, option for shoutout based on the content of the form (Discord, Website or Anonymous).
+*(You can see the finish project here.)*
 
-# Template
+## **Who did this project ?**
+![Team members](https://github.com/l4ur4nn3/giveaway-assistant/blob/master/resources/Untitled.png?raw=true)
+Team members : 
+[Vitto](https://github.com/Vittoria-P), [Val](https://github.com/GeorisVal) and [Lauranne](https://github.com/l4ur4nn3).
 
-There will be 4 pages: 
-1) Donor's Registration Form
-2) Winner's Registration Form
-3) Administration (2 pages)
-   1) Donations List with tabs on the bottom
-      1) complete list,
-      2) no date,
-         - Less columns, TBD
-      3) extra items
-         - Less columns, TBD
-   2) Calendar Overview w/ scheduled giveaways & dots for pick-ups;
+Unofficial team member: 
+[Luna](https://github.com/LunashaGit), Céline.
 
-# Technologies
-- Laravel
-- Google App Scripts
-- Tailwind
-- More, maybe ? Will be updated if needed
+## **Who did what ?**
+
+-   Vitto : The calendar page, the colors and the responsive — Frontend
+-   Valentin : The idea, the whole back-end, the donations list page — Backend
+-   Lauranne: The colors, the responsive, the header, the footer, the logo, the forms, the readme, the powerpoint — Frontend
+-   Luna: The calendar
+-   Céline: The colors, the global vision, the idea
+
+## **Why ?**
+
+Céline needed a tool to help her in her job, so Valentin had the idea of creating this project.
+
+We are currently thinking about extending this as a global giveaway tool, full open-source.
+
+## **Which languages were used?**
+
+Inertia, Tailwind, React, JS, Laravel, Google App Scripts.
+
+## **What was the easiest part ?**
+
+-   Vitto : The team was nice to work with, and even if I didn’t find
+-   Valentin : The team was nice to work with, and I loved working with Laravel (lots of functionalities, components to discover and understand, so overall it was very interesting)
+-   Lauranne : Design. It was fun to do, execution was simple. The team knew what they wanted so it was nice working with them.
+
+## **What was the hardest part ?**
+
+-   Vitto : Find a good balance between aesthetic and functional at the first try. I’ve lost lots on time on this part.
+-   Valentin : Keeping the team informed of the updates I was doing, and delegate the work.
+-   Lauranne : Split the work with another front-end. It’s not a problem for me to work with someone else but it’s hard to delegate.
