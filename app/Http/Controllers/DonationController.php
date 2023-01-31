@@ -19,9 +19,9 @@ class DonationController extends Controller
         return Inertia::render('Donations/Index', ['donations' =>
             DB::table('donations')
                 ->join('status', 'donations.status', '=', 'status.status')
-                ->where('visible', '=', '1')
+                ->where('visible', '=', 'true')
                 ->get()
-        ]);
+        ] + ['status' => DB::table('status')->get()]);
     }
     /**
      * Display a listing of the resource.
@@ -66,9 +66,10 @@ class DonationController extends Controller
             ->where('id', $id)
             ->update($data);
     }
-    public function updateStatusVisibilityAPI(Request $request, $status)
+    public function updateStatusVisibilityAPI(Request $request)
     {
-        DB::table('status')->select('visible')->update($request);
+        $data = $request->validate(['visible' => 'required']);
+        DB::table('status')->update($data);
     }
     /**
      * Show the form for creating a new resource.
