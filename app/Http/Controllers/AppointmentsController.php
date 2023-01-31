@@ -28,14 +28,14 @@ class AppointmentsController extends Controller
 
     public function createAPI(Request $request)
     {
-        
+
         Appointments::create([
             'nookazon_username' => $request->nookazon_username,
             'discord_username' => $request->discord_username,
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'contact_method' => $request->contact_method,
-            !empty($request->email) ? 'email' : null => $request->email
+            'appointment_type' => $request->appointment_type,
         ]);
         return response()->json([
             DB::table('appointments')->get()
