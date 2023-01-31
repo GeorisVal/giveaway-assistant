@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from "react";
+    import React, { Fragment, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
 
 const Calendar = (props) => {
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const next = props.isNext;
+    const [currentDate, setCurrentDate] = useState(!next ? new Date() : new Date( Date.now() + 28 * 24 * 60 * 60 * 1000));
+    console.log(currentDate);
     const [dayClicked, setDayClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
     const [dayValue, setDayValue] = useState({
@@ -12,7 +14,6 @@ const Calendar = (props) => {
         month: null,
         year: null,
     });
-    const next = props.isNext;
     const [appointments, setAppointments] = useState(props.appointments);
     console.log(appointments);
     const nextMonth = () => {
@@ -35,7 +36,7 @@ const Calendar = (props) => {
     };
 
     const days = [];
-    for (let i = 1; i <= daysInMonth(); i++) {
+        for (let i = 1; i <= daysInMonth(); i++) {
         days.push(i);
     }
 
@@ -63,8 +64,11 @@ const Calendar = (props) => {
         "November",
         "December",
     ];
-    const monthName = next ? monthNames[currentDate.getMonth()+1] : monthNames[currentDate.getMonth()] ;
+    const monthName = monthNames[currentDate.getMonth()] ;
     const dayName = dayNames[currentDate.getDay()];
+
+    let logicalMonth = monthNames[currentDate.getMonth()-1] ? monthNames[currentDate.getMonth()-1] : monthNames[currentDate.getMonth()+11];
+    console.log(logicalMonth + " " + monthName);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -75,6 +79,7 @@ const Calendar = (props) => {
             appointment_time: e.target.appointment_time.value,
             contact_method: e.target.contact_method.value,
             email: e.target.email.value,
+            appointment_type: "donor"
         };
         console.log(data);
         axios.post("/api/appointments", data).then((res) => {
@@ -104,10 +109,9 @@ const Calendar = (props) => {
                     </button>
                 </div>
             </div>
-
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7">
+            <table className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7">
                 {days.map((day, index) => (
-                    <div
+                    <td
                         className={
                             (day === new Date().getDate() &&
                             currentDate.getMonth() === new Date().getMonth() &&
@@ -184,9 +188,9 @@ const Calendar = (props) => {
                                     );
                                 }
                             })}
-                    </div>
+                    </td>
                 ))}
-            </div>
+            </table>
             <Transition appear show={dayClicked} as={Fragment}>
                 <Dialog
                     as="div"
