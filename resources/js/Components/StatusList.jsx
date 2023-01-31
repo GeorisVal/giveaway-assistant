@@ -25,6 +25,10 @@ console.log(props.status);
             axios.put("/api/donations-status/"+status, {visible: visible})
                 .then(console.log(status + "'s visibility has been successfully updated to " + visible +"."))
         }
+        toggleFilters();
+        setTimeout(function(){
+            window.location.reload();
+        }, 1000);
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
