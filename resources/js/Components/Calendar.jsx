@@ -46,8 +46,8 @@ const Calendar = (props) => {
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday"
-    ]
+        "Sunday",
+    ];
 
     const monthNames = [
         "January",
@@ -63,7 +63,9 @@ const Calendar = (props) => {
         "November",
         "December",
     ];
-    const monthName = next ? monthNames[currentDate.getMonth()+1] : monthNames[currentDate.getMonth()] ;
+    const monthName = next
+        ? monthNames[currentDate.getMonth() + 1]
+        : monthNames[currentDate.getMonth()];
     const dayName = dayNames[currentDate.getDay()];
 
     function handleSubmit(e) {
@@ -71,7 +73,10 @@ const Calendar = (props) => {
         const data = {
             nookazon_username: e.target.nookazon_username.value,
             discord_username: e.target.discord_username.value,
-            appointment_date: moment([dayValue["day"], dayValue["month"], dayValue["year"]], "DD-MM-YYYY").format("YYYY-MM-DD"),
+            appointment_date: moment(
+                [dayValue["day"], dayValue["month"], dayValue["year"]],
+                "DD-MM-YYYY"
+            ).format("YYYY-MM-DD"),
             appointment_time: e.target.appointment_time.value,
             contact_method: e.target.contact_method.value,
             email: e.target.email.value,
@@ -178,7 +183,12 @@ const Calendar = (props) => {
                                             key={index}
                                         >
                                             <h1 className="text-sm text-gray-500">
-                                                {moment(appointment.appointment_time, 'HH:mm:ss').format("HH:mm") + " " + appointment.nookazon_username}
+                                                {moment(
+                                                    appointment.appointment_time,
+                                                    "HH:mm:ss"
+                                                ).format("HH:mm") +
+                                                    " " +
+                                                    appointment.nookazon_username}
                                             </h1>
                                         </div>
                                     );
@@ -276,8 +286,7 @@ const Calendar = (props) => {
                                             />
                                         </div>
                                         <p className="block mb-1 text-base font-semibold text-sapin-500">
-                                            Time for the
-                                            exchange
+                                            Time for the exchange
                                         </p>
                                         <div className="flex flex-row justify-between">
                                             <div className="mb-6 w-full mr-2">
