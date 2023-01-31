@@ -1,75 +1,80 @@
 import Checkbox from "@/Components/Checkbox";
 import { useForm } from "@inertiajs/react";
-import React, {useState} from "react";
-export default function Filters(props) {
+import React, {useState, useEffect} from "react";
 
+export default function Filters(props) {
+console.log(props.status);
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
-    const { data, setData, put, processing, errors } = useForm({
-        cbdnr: true,
-        cbinvalid: true,
-        cbcontated: true,
-        cbpending: true,
-        cbcollected: true,
-        cbscheduledweb: true,
-        cbscheduleddisc: true,
-        cbscheduledprog: true,
-        cbdone: true,
-        cbcancelled: true,
-    });
+    const CheckBoxes = () => {
+        const [checkedBox, setCheckedBox] = useState({})
+    }
+    // const { data, setData } = useState({
+    //     dnr: props.status[3].visible,
+    //     invalid: props.status[5].visible,
+    //     contacted: props.status[2].visible,
+    //     pending: props.status[6].visible,
+    //     collected: props.status[1].visible,
+    //     scheduledweb: props.status[9].visible,
+    //     scheduleddisc: props.status[7].visible,
+    //     scheduledprog: props.status[8].visible,
+    //     done: props.status[4].visible,
+    //     cancelled: props.status[0].visible,
+    // });
 
-    const handleSubmit = (e) => {
+    function submit(e) {
         e.preventDefault();
-        toggleFilters();
+        put('/donations-status/send')
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
-        console.log(data)
     };
 
 return (
     <>
         <p onClick={toggleFilters} className="cursor-default">status</p>
         {show &&
-                <form className="w-auto h-auto bg-white absolute top-[3em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed" onSubmit={handleSubmit}>
+            <form className="w-auto h-auto bg-white absolute top-[3em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-10" onSubmit={submit}>
                 <label className="mr-6">
-                    <Checkbox id="cbdnr" name="cbdnr" value={data.remember} checked={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="dnr" name="dnr" value={data.remember} checked={data["dnr"]} handleChange={onHandleChange} />
                     <span className="ml-2">DNR</span>
                 </label>
                 <label>
-                    <Checkbox id="cbinvalid" name="cbinvalid" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="invalid" name="invalid" value={data.remember}
+                              checked={data["invalid"]} handleChange={onHandleChange} />
                     <span className="ml-2">Invalid</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="cbcontated" name="cbcontated" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="contacted" name="contacted" value={data.remember} checked={data["contacted"]} handleChange={onHandleChange} />
                     <span className="ml-2">Contacted</span>
                 </label>
                 <label>
-                    <Checkbox id="cbpending" name="cbpending" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="pending" name="pending" value={data.remember}
+                              checked={data["pending"]} handleChange={onHandleChange} />
                     <span className="ml-2">Pending</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="cbcollected" name="cbcollected" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="collected" name="collected" value={data.remember} checked={data["collected"]} handleChange={onHandleChange} />
                     <span className="ml-2">Collected</span>
                 </label>
                 <label>
-                    <Checkbox id="cbscheduledweb" name="cbscheduledweb" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="scheduledweb" name="scheduledweb" value={data.remember} checked={data["scheduledweb"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Web</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="cbscheduleddisc" name="cbscheduleddisc" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="scheduleddisc" name="scheduleddisc" value={data.remember} checked={data["scheduleddisc"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Discord</span>
                 </label>
                 <label>
-                    <Checkbox id="cbscheduledprog" name="cbscheduledprog" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="scheduledprog" name="scheduledprog" value={data.remember} checked={data["scheduledprog"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Programs</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="cbdone" name="cbdone" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="done" name="done" value={data.remember} checked={data["done"]} handleChange={onHandleChange} />
                     <span className="ml-2">Done</span>
                 </label>
                 <label>
-                    <Checkbox id="cbcancelled" name="cbcancelled" value={data.remember} handleChange={onHandleChange} />
+                    <Checkbox id="cancelled" name="cancelled" value={data.remember} checked={data["cancelled"]} handleChange={onHandleChange} />
                     <span className="ml-2">Cancelled</span>
                 </label>
                     <button type="submit" className="bg-green-200 col-span-2">Apply Filters</button>

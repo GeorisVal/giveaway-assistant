@@ -34,15 +34,6 @@ Route::get('/home', function () {
     ]);
 });
 
-Route::get('/calendar', function () {
-    return Inertia::render('Example', [
-        'canLogin' => Route::has('login'),
-//        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('calendar');
-
 Route::get('/DonorRegistration', function () {
     return Inertia::render('DonorRegistration', [
         'canLogin' => Route::has('login'),
@@ -74,6 +65,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth']);
 Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth']);
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
+Route::put('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibilityAPI']);
+
 
 Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);
 
@@ -82,5 +75,7 @@ Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarP
 Route::get('/thanks', function () {
     return Inertia::render('Thanks');
 })->name('thanks');
+
+
 
 require __DIR__.'/auth.php';
