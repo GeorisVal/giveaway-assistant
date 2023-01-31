@@ -185,12 +185,15 @@ const Calendar = (props) => {
                                             key={index}
                                         >
                                             <h1 className="text-sm text-gray-500">
-                                                {moment(
-                                                    appointment.appointment_time,
-                                                    "HH:mm:ss"
-                                                ).format("HH:mm") +
-                                                    " " +
-                                                    appointment.nookazon_username}
+                                                {appointment.nookazon_username ? moment(
+                                                        appointment.appointment_time,
+                                                        "HH:mm:ss"
+                                                    ).format("HH:mm") +
+                                                    " " + appointment.nookazon_username : moment(
+                                                        appointment.appointment_time,
+                                                        "HH:mm:ss"
+                                                    ).format("HH:mm") +
+                                                    " " + appointment.discord_username}
                                             </h1>
                                         </div>
                                     );
