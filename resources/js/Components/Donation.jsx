@@ -54,6 +54,7 @@ const Donation = (props) => {
 
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
+        console.log(data);
         axios
             .put("/api/donations/" + props.id, {
                 status: e.target.value,
