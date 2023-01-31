@@ -141,9 +141,20 @@ const Donation = (props) => {
             <td className="px-6 py-4 truncate ...">
                 <input type="date" min={today} className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
+
             </td>
         </tr>
+        
     );
+    
 };
+
+// function getInfo() {
+//     const donations = axios.get('http://localhost/api/donations');
+//     const filtered = donations.filter(([key, val]) => key == 'status', val == 'scheduled_discord' || key == 'status', val == 'scheduled_website' || key == 'status', val == 'scheduled_programs' && key == 'schedule_date', val == '');
+//     console.log(filtered);
+// };
+
+
 
 export default Donation;
