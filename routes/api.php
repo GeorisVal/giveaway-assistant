@@ -24,7 +24,7 @@ Route::get('/donations', [DonationController::class, 'indexAPI']);
 Route::get('/donations/{id}', [DonationController::class, 'showAPI']);
 Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
 Route::get('/donations-status', [DonationController::class, 'statusAPI']);
-Route::put('/donations-status/send', [DonationController::class, 'updateStatusVisibilityAPI']);
+Route::put('/donations-status/{status}', [DonationController::class, 'updateStatusVisibilityAPI']);
 Route::get('/donations-nodate', [DonationController::class, 'scheduleNoDate']);
 
 Route::get('/appointments', [AppointmentsController::class, 'indexAPI']);

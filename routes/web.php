@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth']);
 Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth']);
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
-Route::put('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibilityAPI']);
+Route::patch('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibility']);
 
 
 Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);

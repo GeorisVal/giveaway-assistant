@@ -6,25 +6,25 @@ export default function Filters(props) {
 console.log(props.status);
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
-    const CheckBoxes = () => {
-        const [checkedBox, setCheckedBox] = useState({})
-    }
-    // const { data, setData } = useState({
-    //     dnr: props.status[3].visible,
-    //     invalid: props.status[5].visible,
-    //     contacted: props.status[2].visible,
-    //     pending: props.status[6].visible,
-    //     collected: props.status[1].visible,
-    //     scheduledweb: props.status[9].visible,
-    //     scheduleddisc: props.status[7].visible,
-    //     scheduledprog: props.status[8].visible,
-    //     done: props.status[4].visible,
-    //     cancelled: props.status[0].visible,
-    // });
-
+    const { data, setData } = useForm({
+        dnr: props.status[3].visible,
+        invalid: props.status[5].visible,
+        contacted: props.status[2].visible,
+        pending: props.status[6].visible,
+        collected: props.status[1].visible,
+        scheduledweb: props.status[9].visible,
+        scheduleddisc: props.status[7].visible,
+        scheduledprog: props.status[8].visible,
+        done: props.status[4].visible,
+        cancelled: props.status[0].visible,
+    });
     function submit(e) {
         e.preventDefault();
-        put('/donations-status/send')
+        for (const status of Object.keys(data)) {
+            const visible = data[status];
+            axios.put("/api/donations-status/"+status, {visible: visible})
+                .then(console.log(status + "'s visibility has been successfully updated to " + visible +"."))
+        }
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
