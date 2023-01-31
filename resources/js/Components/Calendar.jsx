@@ -64,13 +64,7 @@ const Calendar = (props) => {
         "November",
         "December",
     ];
-<<<<<<< HEAD
-    const monthName = next
-        ? monthNames[currentDate.getMonth() + 1]
-        : monthNames[currentDate.getMonth()];
-=======
-    const monthName = monthNames[currentDate.getMonth()] ;
->>>>>>> 2f1bd516bc384586171a7fdcb8ba321cdfceebd3
+    const monthName = monthNames[currentDate.getMonth()];
     const dayName = dayNames[currentDate.getDay()];
 
     let logicalMonth = monthNames[currentDate.getMonth()-1] ? monthNames[currentDate.getMonth()-1] : monthNames[currentDate.getMonth()+11];
