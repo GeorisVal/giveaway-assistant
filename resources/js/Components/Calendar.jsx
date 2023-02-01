@@ -141,21 +141,23 @@ const Calendar = (props) => {
                         }}
                     >
                         <div className="flex gap-2 items-center justify-center">
-                            <div
-                                className={
-                                    appointments.appointment_type == "donor"
-                                        ? "bg-donatorblue-500 rounded-full w-3 h-3"
-                                        : "bg-stone-200 rounded-full w-3 h-3"
-                                }
-                            ></div>
-                            <div
-                                className={
-                                    appointments.appointment_type == "winner"
-                                        ? "bg-recevorgreen-500 rounded-full w-3 h-3"
-                                        : "bg-stone-200 rounded-full w-3 h-3"
-                                }
-                            ></div>
-
+                            <div className="flex flex-row">
+                                <div
+                                    className={
+                                        appointments.appointment_type == "donor"
+                                            ? "bg-donatorblue-500 rounded-full w-3 h-3"
+                                            : "bg-stone-200 rounded-full w-3 h-3"
+                                    }
+                                ></div>
+                                <div
+                                    className={
+                                        appointments.appointment_type ==
+                                        "winner"
+                                            ? "bg-recevorgreen-500 rounded-full w-3 h-3"
+                                            : "bg-stone-200 rounded-full w-3 h-3"
+                                    }
+                                ></div>
+                            </div>
                             <h4 className="text-lg font-semibold text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
