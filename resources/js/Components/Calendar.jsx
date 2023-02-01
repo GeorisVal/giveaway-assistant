@@ -158,7 +158,24 @@ const Calendar = (props) => {
                     >
                         {/*{mouseOver == true && indes == index && <div className="absolute w-full h-full" key={index}><p>Test</p></div>}*/}
                         <div className="flex gap-2 items-center justify-center">
-                            <h4 className="text-sm text-sapin-500">
+                            <div className="flex flex-row">
+                                <div
+                                    className={
+                                        appointments.appointment_type == "donor"
+                                            ? "bg-donatorblue-500 rounded-full w-3 h-3"
+                                            : "bg-stone-200 rounded-full w-3 h-3"
+                                    }
+                                ></div>
+                                <div
+                                    className={
+                                        appointments.appointment_type ==
+                                        "winner"
+                                            ? "bg-recevorgreen-500 rounded-full w-3 h-3"
+                                            : "bg-stone-200 rounded-full w-3 h-3"
+                                    }
+                                ></div>
+                            </div>
+                            <h4 className="text-lg font-semibold text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
                                     currentDate.getMonth(),
@@ -169,10 +186,14 @@ const Calendar = (props) => {
                                     })
                                     .slice(0, 3)}
                             </h4>
-                            <h1 className="text-lg font-semibold">{day}</h1>
+                            <h1 className="text-lg font-semibold text-gray-500">
+                                {day}
+                            </h1>
+                            {/*
                             <h4 className="text-sm text-sapin-500">
                                 {currentDate.getFullYear()}
                             </h4>
+                            */}
                         </div>
                         <hr
                             className={
@@ -201,19 +222,29 @@ const Calendar = (props) => {
                                     }`
                                 ) {
                                     return (
-                                        <div className="flex flex-col gap-2 items-center justify-center" key={index}>
-                                            <h1 className="text-sm text-gray-500 text-center">
-                                                {appointment.nookazon_username ? moment(
-                                                        appointment.appointment_time,
-                                                        "HH:mm:ss"
-                                                    ).format("HH:mm") +
-                                                    " " + appointment.nookazon_username : moment(
-                                                        appointment.appointment_time,
-                                                        "HH:mm:ss"
-                                                    ).format("HH:mm") +
-                                                    " " + appointment.discord_username}
+                                        <div className="flex flex-col gap-2 items-center justify-center text-center p-1" key={index}>
+                                            <h1
+                                                className={
+                                                    appointment.contact_method ==
+                                                    "Discord"
+                                                        ? "bg-blurple-500 text-sm text-gray-500 p-1 text-center"
+                                                        : "bg-pastelgreen-500 text-sm text-gray-500 p-1"
+                                                }
+                                            >
+                                                {appointment.nookazon_username
+                                                    ? moment(
+                                                          appointment.appointment_time,
+                                                          "HH:mm:ss"
+                                                      ).format("HH:mm") +
+                                                      " " +
+                                                      appointment.nookazon_username
+                                                    : moment(
+                                                          appointment.appointment_time,
+                                                          "HH:mm:ss"
+                                                      ).format("HH:mm") +
+                                                      " " +
+                                                      appointment.discord_username}
                                             </h1>
-                                            {/* className={props.contact == "discord" ? "bg-blurble-pastel : bg-vert pastel"} */}
                                         </div>
                                     );
                                 }
