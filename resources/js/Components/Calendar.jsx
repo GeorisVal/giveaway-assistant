@@ -143,34 +143,19 @@ const Calendar = (props) => {
                         <div className="flex gap-2 items-center justify-center">
                             <div
                                 className={
-                                    appointments.appointment_type == "Discord"
-                                        ? "bg-blurple-500 rounded-full w-3 h-3"
-                                        : "bg-pastelgreen-500 rounded-full w-3 h-3"
+                                    appointments.appointment_type == "donor"
+                                        ? "bg-donatorblue-500 rounded-full w-3 h-3"
+                                        : "bg-stone-200 rounded-full w-3 h-3"
                                 }
                             ></div>
-                            {/*
-                            function bullet(params) {
-                                if (appointments.appointment_type == "Discord") {
-                                    "bg-blurple-500 rounded-full w-3 h-3"
-                                } ifelse (appointments.appointment_type == "Website") {
-                                    "bg-pastelgreen-500 rounded-full w-3 h-3"
-                                } else {
-                                    "text-white"
+                            <div
+                                className={
+                                    appointments.appointment_type == "winner"
+                                        ? "bg-recevorgreen-500 rounded-full w-3 h-3"
+                                        : "bg-stone-200 rounded-full w-3 h-3"
                                 }
-                            }
+                            ></div>
 
-                            const bullet = () => {
-                                // console.log("read")
-                                switch (data.bullet) {
-                                    case "Discord":
-                                        return "bg-blurple-500 rounded-full w-3 h-3"
-                                    case "Website":
-                                        return "bg-blurple-500 rounded-full w-3 h-3"
-                                    case "":
-                                        return "bg-stone-200 rounded-full w-3 h-3"
-                                }
-                            }
-                        */}
                             <h4 className="text-lg font-semibold text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
