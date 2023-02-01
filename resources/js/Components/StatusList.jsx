@@ -6,6 +6,7 @@ export default function Filters(props) {
 console.log(props.status);
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
+    console.log(props);
     const { data, setData } = useForm({
         dnr: props.status[3].visible,
         invalid: props.status[5].visible,
@@ -26,9 +27,9 @@ console.log(props.status);
                 .then(console.log(status + "'s visibility has been successfully updated to " + visible +"."))
         }
         toggleFilters();
-        setTimeout(function(){
-            window.location.reload();
-        }, 1000);
+        // setTimeout(function(){
+        //     window.location.reload();
+        // }, 2000);
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);

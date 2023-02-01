@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
@@ -8,16 +8,26 @@ const Calendar = (props) => {
     const [currentDate, setCurrentDate] = useState(
         !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
     );
-    console.log(currentDate);
     const [dayClicked, setDayClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
+    const [indes, setIndes] = useState();
+    // useEffect(() => {
+    //     const timer = mouseOver && setTimeout(onTimeout, 500);
+    //     return () => {
+    //         clearTimeout(timer);
+    //     }
+    // }, mouseOver)
+    function onHover (index) {
+        setMouseOver(!mouseOver);
+        setIndes(index);
+        console.log(mouseOver + " " + index);
+    }
     const [dayValue, setDayValue] = useState({
         day: null,
         month: null,
         year: null,
     });
     const [appointments, setAppointments] = useState(props.appointments);
-    console.log(appointments);
     const nextMonth = () => {
         setCurrentDate(
             new Date(currentDate.setMonth(currentDate.getMonth() + 1))
@@ -72,7 +82,6 @@ const Calendar = (props) => {
     let logicalMonth = monthNames[currentDate.getMonth() - 1]
         ? monthNames[currentDate.getMonth() - 1]
         : monthNames[currentDate.getMonth() + 11];
-    console.log(logicalMonth + " " + monthName);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -129,7 +138,14 @@ const Calendar = (props) => {
                             " w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-stone-200"
                         }
                         key={index}
+
                         defaultValue={day}
+                        onMouseEnter={() => {
+                            onHover(index)
+                        }}
+                        onMouseLeave={() => {
+                            onHover(index)
+                        }}
                         onClick={() => {
                             setDayValue({
                                 day: day,
@@ -140,6 +156,7 @@ const Calendar = (props) => {
                             setDayClicked(true);
                         }}
                     >
+                        {/*{mouseOver == true && indes == index && <div className="absolute w-full h-full" key={index}><p>Test</p></div>}*/}
                         <div className="flex gap-2 items-center justify-center">
                             <h4 className="text-sm text-sapin-500">
                                 {new Date(
@@ -168,7 +185,7 @@ const Calendar = (props) => {
                                     : "border-sapin-500 border-1 w-4/5 mx-auto"
                             }
                         />
-                        {props.auth.user != null &&
+                        {props.auth.user != null && mouseOver == true && indes == index &&
                             appointments.map((appointment, index) => {
                                 if (
                                     appointment.appointment_date ===
@@ -184,11 +201,8 @@ const Calendar = (props) => {
                                     }`
                                 ) {
                                     return (
-                                        <div
-                                            className="flex flex-col gap-2 items-center justify-center"
-                                            key={index}
-                                        >
-                                            <h1 className="text-sm text-gray-500">
+                                        <div className="flex flex-col gap-2 items-center justify-center" key={index}>
+                                            <h1 className="text-sm text-gray-500 text-center">
                                                 {appointment.nookazon_username ? moment(
                                                         appointment.appointment_time,
                                                         "HH:mm:ss"
@@ -213,7 +227,7 @@ const Calendar = (props) => {
                     className="fixed inset-0 z-10 overflow-y-auto"
                     onClose={setDayClicked}
                 >
-                    <div className="min-h-screen px-4 text-center bg-sapin-500 bg-opacity-60">
+                    <div className="min-h-screen px-4 text-center bg-gray-500 bg-opacity-60">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
