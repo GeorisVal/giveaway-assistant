@@ -156,25 +156,44 @@ const Calendar = (props) => {
                             setDayClicked(true);
                         }}
                     >
+                        {props.auth.user != null &&
+                            appointments.map((appointment, index) => {
+                                if (
+                                    appointment.appointment_date ===
+                                    `${currentDate.getFullYear()}-${
+                                        currentDate.getMonth().toString()
+                                            .length == 1
+                                            ? "0" + (currentDate.getMonth() + 1)
+                                            : currentDate.getMonth()
+                                    }-${
+                                        day.toString().length == 1
+                                            ? "0" + day
+                                            : day
+                                    }`
+                                ) {
+                                    return (
+                                        <div className="absolute mt-2 ml-3 flex flex-row">
+                                            <div
+                                                className={
+                                                    appointment.appointment_type == "donor"
+                                                        ? "bg-donatorblue-500 rounded-full w-3 h-3"
+                                                        : "bg-stone-200 rounded-full w-3 h-3"
+                                                }
+                                            ></div>
+                                            <div
+                                                className={
+                                                    appointment.appointment_type ==
+                                                    "winner"
+                                                        ? "bg-recevorgreen-500 rounded-full w-3 h-3"
+                                                        : "bg-stone-200 rounded-full w-3 h-3"
+                                                }
+                                            ></div>
+                                        </div>
+                                    );
+                                }
+                            })}
                         {/*{mouseOver == true && indes == index && <div className="absolute w-full h-full" key={index}><p>Test</p></div>}*/}
-                        <div className="flex gap-2 items-center justify-center">
-                            <div className="flex flex-row">
-                                <div
-                                    className={
-                                        appointments.appointment_type == "donor"
-                                            ? "bg-donatorblue-500 rounded-full w-3 h-3"
-                                            : "bg-stone-200 rounded-full w-3 h-3"
-                                    }
-                                ></div>
-                                <div
-                                    className={
-                                        appointments.appointment_type ==
-                                        "winner"
-                                            ? "bg-recevorgreen-500 rounded-full w-3 h-3"
-                                            : "bg-stone-200 rounded-full w-3 h-3"
-                                    }
-                                ></div>
-                            </div>
+                        <div className="flex gap-2 items-center justify-end mr-5">
                             <h4 className="text-lg font-semibold text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
