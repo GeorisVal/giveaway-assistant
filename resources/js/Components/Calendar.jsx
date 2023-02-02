@@ -184,7 +184,7 @@ const Calendar = (props) => {
                                                 className={
                                                     appointment.appointment_type ==
                                                     "winner"
-                                                        ? "bg-recevorgreen-500 rounded-full w-3 h-3"
+                                                        ? "bg-recevorgreen-500 rounded-full w-3 h-3 ml-3"
                                                         : "bg-stone-200 rounded-full w-3 h-3"
                                                 }
                                             ></div>
