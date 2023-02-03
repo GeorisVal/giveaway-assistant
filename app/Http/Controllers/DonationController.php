@@ -6,6 +6,7 @@ use App\Models\donation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class DonationController extends Controller
 {
@@ -21,7 +22,7 @@ class DonationController extends Controller
                 ->join('status', 'donations.status', '=', 'status.status')
                 ->where('visible', '=', 1)
                 ->get()
-        ] + ['status' => DB::table('status')->get()]);
+        ] + ['status' => DB::table('status')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
     }
     /**
      * Display a listing of the resource.

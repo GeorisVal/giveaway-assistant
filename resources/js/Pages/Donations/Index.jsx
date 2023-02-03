@@ -6,7 +6,7 @@ import Buttons from '@/Components/Buttons';
 // import Footer from '@/Components/Footer';
 import { Head, useForm } from '@inertiajs/react';
 
-export default function Index( {donations, status, auth} ) {
+export default function Index( {donations, status, auth, link} ) {
     return (
         <>
             <Head title="Items List" />
