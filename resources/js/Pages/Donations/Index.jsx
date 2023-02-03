@@ -69,5 +69,4 @@ export default function Index( {donations, status, auth, link} ) {
         </div>
         </>
     );
-    // console.log(props);
 }
