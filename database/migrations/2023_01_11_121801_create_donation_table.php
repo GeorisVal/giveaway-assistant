@@ -30,9 +30,6 @@ return new class extends Migration
             $table->text('items')->nullable();
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
-            $table->string('description')->nullable();
-            $table->string('shoutout_cc')->nullable();
-            $table->lineString('img_link')->nullable();
         });
     }
 

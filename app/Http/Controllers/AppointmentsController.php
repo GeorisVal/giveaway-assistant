@@ -28,12 +28,10 @@ class AppointmentsController extends Controller
 
     public function createAPI(Request $request)
     {
-        $data = $request->validate([
-            'nookazon_username' => ['nullable', 'max:20'],
-            'discord_username' => ['nullable', 'max:20']]);
+
         Appointments::create([
-            'nookazon_username' => $data["nookazon_username"],
-            'discord_username' => $data["discord_username"],
+            'nookazon_username' => $request->nookazon_username,
+            'discord_username' => $request->discord_username,
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'contact_method' => $request->contact_method,
@@ -84,7 +82,7 @@ class AppointmentsController extends Controller
             'appointment_date' => $data["appointment_date"],
             'appointment_time' => $data["appointment_time"],
             'contact_method' => $data["contact_method"],
-            'appointment_type' => $request["appointment_type"],
+            'appointment_type' => 'donor',
             'created_at' => now(),
         ]);
 //        $event = new Event;
@@ -143,14 +141,6 @@ class AppointmentsController extends Controller
     public function calendarPage(){
         return Inertia::render('Calendar/Index', [
             'appointments' => DB::table('appointments')->get()
-        ] + ['donations' => DB::table('donations')
-                ->select('status', 'schedule_date', 'description', 'shoutout_cc', 'img_link')
-                ->where('status', 'scheduled_web')
-                ->whereNotNull('schedule_date')
-                ->orWhere('status', 'scheduled_discord')
-                ->whereNotNull('schedule_date')
-                ->orWhere('status', 'scheduled_programs')
-                ->whereNotNull('schedule_date')
-                ->get()]);
+        ]);
     }
 }
