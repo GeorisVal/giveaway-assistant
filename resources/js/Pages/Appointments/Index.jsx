@@ -2,7 +2,7 @@ import React from 'react';
 import Appointment from '@/Components/Appointment';
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
-import Footer from '@/Components/Footer';
+// import Footer from '@/Components/Footer';
 import { useForm, Head } from '@inertiajs/react';
 
 export default function Index({ appointments }) {
@@ -36,7 +36,7 @@ export default function Index({ appointments }) {
                     </table>
                 </div>
                 <Buttons />
-                <Footer></Footer>
+                {/* <Footer></Footer> */}
             </div>
         </>
     );
