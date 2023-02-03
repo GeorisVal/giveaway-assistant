@@ -57,6 +57,10 @@ Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::c
 
 Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar');
 
+Route::get('/test', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('test')->middleware('signed');
+
+Route::get('/generate', [\App\Http\Controllers\TokenController::class, 'generateLink'])->middleware('auth');
+
 Route::get('/thanks', function () {
     return Inertia::render('Thanks');
 })->name('thanks');
