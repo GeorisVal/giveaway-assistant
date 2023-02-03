@@ -9,6 +9,7 @@ const Calendar = (props) => {
         !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
     );
     const [dayClicked, setDayClicked] = useState(false);
+    const [shiftDayClicked, shiftDayCLicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
     const [indes, setIndes] = useState();
     // useEffect(() => {
@@ -17,6 +18,20 @@ const Calendar = (props) => {
     //         clearTimeout(timer);
     //     }
     // }, mouseOver)
+    function clickHandler(e, day) {
+        if (e.shiftKey && props.auth.user != null) {
+            console.log("shift+clicked")
+        }
+        else {
+            setDayValue({
+                day: day,
+                month: currentDate.getMonth() + 1,
+                year: currentDate.getFullYear(),
+            });
+            console.log(dayValue);
+            setDayClicked(true);
+        }
+    }
     function onHover (index) {
         setMouseOver(!mouseOver);
         setIndes(index);
@@ -145,7 +160,7 @@ const Calendar = (props) => {
                     </button>
                 </div>
             </div>
-            <table className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7">
+            <table className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-7">
                 {days.map((day, index) => (
                     <td
                         className={
@@ -166,15 +181,7 @@ const Calendar = (props) => {
                         onMouseLeave={() => {
                             onHover(index)
                         }}
-                        onClick={() => {
-                            setDayValue({
-                                day: day,
-                                month: currentDate.getMonth() + 1,
-                                year: currentDate.getFullYear(),
-                            });
-                            console.log(dayValue);
-                            setDayClicked(true);
-                        }}
+                        onClick={(event) => {clickHandler(event, day)}}
                     >
                         {props.auth.user != null &&
                             donations.map((donation) => {
@@ -183,7 +190,7 @@ const Calendar = (props) => {
                                         ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
                                     {
                                     return (
-                                        <div className={(donation.status === "scheduled_web" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] bg-[#d8f2df] absolute"}>
+                                        <div className={(donation.status === "scheduled_web" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] absolute"}>
                                         </div>
                                     );
                                     }
