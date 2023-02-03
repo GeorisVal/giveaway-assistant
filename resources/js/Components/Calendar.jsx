@@ -20,7 +20,7 @@ const Calendar = (props) => {
     function onHover (index) {
         setMouseOver(!mouseOver);
         setIndes(index);
-        console.log(mouseOver + " " + index);
+        console.log(mouseOver ? "You're in" + " " + index : "You're out" + " " + index);
     }
     const [dayValue, setDayValue] = useState({
         day: null,
@@ -28,6 +28,7 @@ const Calendar = (props) => {
         year: null,
     });
     const [appointments, setAppointments] = useState(props.appointments);
+    const donations = props.donations;
     const nextMonth = () => {
         setCurrentDate(
             new Date(currentDate.setMonth(currentDate.getMonth() + 1))
@@ -52,6 +53,23 @@ const Calendar = (props) => {
         days.push(i);
     }
 
+    const temp = () => {
+        let newDays = {}
+        let newDaysArray = []
+        days.map((day) => (donations.map((donation) => {
+            let currentDay = `${currentDate.getFullYear()}-${currentDate.getMonth().toString().length == 1 ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`;
+            if (donation.schedule_date === currentDay) {
+                //newDaysArray.push(currentDay + " " + donation.status)
+                newDays.date = currentDay;
+                newDays.status = donation.status;
+                newDaysArray.push(newDays);
+            }
+            })))
+        return newDaysArray;
+    }
+
+    const tempDate = (hey) => { temp().filter(x => x.includes(hey)) }
+    // console.log(tempDate.toString().split(" "))
     const dayNames = [
         "Monday",
         "Tuesday",
@@ -82,7 +100,9 @@ const Calendar = (props) => {
     let logicalMonth = monthNames[currentDate.getMonth() - 1]
         ? monthNames[currentDate.getMonth() - 1]
         : monthNames[currentDate.getMonth() + 11];
+    function generateScheduledMap(props) {
 
+    }
     function handleSubmit(e) {
         e.preventDefault();
         const data = {
@@ -103,9 +123,9 @@ const Calendar = (props) => {
         });
         setDayClicked(false);
     }
-
+    console.log(temp())
     return (
-        <div className="mx-auto max-w-7xl mb-5">
+        <div className="mx-auto max-w-7xl mb-5 bg-gray-100">
             <div className="flex justify-evenly w-full my-4">
                 <div className="flex flex-row gap-4">
                     <button
@@ -133,9 +153,9 @@ const Calendar = (props) => {
                             currentDate.getMonth() === new Date().getMonth() &&
                             currentDate.getFullYear() ===
                                 new Date().getFullYear()
-                                ? "border-lightgreen-500"
+                                ? "border-red-500"
                                 : "border-sapin-500") +
-                            " w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-stone-200"
+                            " relative w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-white"
                         }
                         key={index}
 
@@ -157,6 +177,18 @@ const Calendar = (props) => {
                         }}
                     >
                         {props.auth.user != null &&
+                            donations.map((donation) => {
+                                if (donation.schedule_date ===
+                                    `${currentDate.getFullYear()}-${currentDate.getMonth().toString().length == 1
+                                        ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
+                                    {
+                                    return (
+                                        <div className={(donation.status === "scheduled_web" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] bg-[#d8f2df] absolute"}>
+                                        </div>
+                                    );
+                                    }
+                            })}
+                        {props.auth.user != null &&
                             appointments.map((appointment, index) => {
                                 if (
                                     appointment.appointment_date ===
@@ -177,7 +209,7 @@ const Calendar = (props) => {
                                                 className={
                                                     appointment.appointment_type == "donor"
                                                         ? "bg-donatorblue-500 rounded-full w-3 h-3"
-                                                        : "bg-stone-200 rounded-full w-3 h-3"
+                                                        : "hidden"
                                                 }
                                             ></div>
                                             <div
@@ -185,7 +217,7 @@ const Calendar = (props) => {
                                                     appointment.appointment_type ==
                                                     "winner"
                                                         ? "bg-recevorgreen-500 rounded-full w-3 h-3 ml-3"
-                                                        : "bg-stone-200 rounded-full w-3 h-3"
+                                                        : "hidden"
                                                 }
                                             ></div>
                                         </div>
@@ -193,7 +225,7 @@ const Calendar = (props) => {
                                 }
                             })}
                         {/*{mouseOver == true && indes == index && <div className="absolute w-full h-full" key={index}><p>Test</p></div>}*/}
-                        <div className="flex gap-2 items-center justify-end mr-5">
+                        <div className="flex absolute top-0.5 right-0 gap-2 items-center justify-end mr-5">
                             <h4 className="text-lg font-semibold text-sapin-500">
                                 {new Date(
                                     currentDate.getFullYear(),
@@ -216,13 +248,13 @@ const Calendar = (props) => {
                         </div>
                         <hr
                             className={
-                                day === new Date().getDate() &&
+                                (day === new Date().getDate() &&
                                 currentDate.getMonth() ===
                                     new Date().getMonth() &&
                                 currentDate.getFullYear() ===
                                     new Date().getFullYear()
-                                    ? "border-lightgreen-500 border-1 w-4/5 mx-auto"
-                                    : "border-sapin-500 border-1 w-4/5 mx-auto"
+                                    ? "border-lightgreen-500"
+                                    : "border-sapin-500") + " border-1 absolute top-7 left-0 right-0 w-4/5 mx-auto"
                             }
                         />
                         {props.auth.user != null && mouseOver == true && indes == index &&
@@ -241,7 +273,7 @@ const Calendar = (props) => {
                                     }`
                                 ) {
                                     return (
-                                        <div className="flex flex-col gap-2 items-center justify-center text-center p-1" key={index}>
+                                        <div className="flex flex-col gap-2 items-center justify-center text-center p-1 absolute left-0 right-0 top-8" key={index}>
                                             <h1
                                                 className={
                                                     appointment.contact_method ==
