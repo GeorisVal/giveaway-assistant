@@ -25,7 +25,7 @@ Unofficial team member:
 
 -   Vitto : The calendar page, the colors and the responsive — Frontend
 -   Valentin : The idea, the whole back-end, the donations list page — Backend
--   Lauranne: The colors, the responsive, the header, the footer, the logo, the forms, the readme, the powerpoint — Frontend
+-   Lauranne: The colors, the responsive, the header, the logo, the forms, the readme, the powerpoint — Frontend
 -   Luna: The calendar
 -   Céline: The colors, the global vision, the idea
 

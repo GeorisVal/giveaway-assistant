@@ -1,6 +1,6 @@
 import Calendar from "@/Components/Calendar";
 import NavLink from '@/Components/NavLink';
-import Footer from "@/Components/Footer";
+// import Footer from "@/Components/Footer";
 import { Head, useForm } from '@inertiajs/react';
 
 export default function CalendarPage(props) {
@@ -14,7 +14,7 @@ export default function CalendarPage(props) {
             <hr />
             <Calendar auth={props.auth} appointments={props.appointments} isNext={1}/>
             <div className="my-4 mb-10"></div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
             </div>
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import Donation from '@/Components/Donation';
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
-import Footer from '@/Components/Footer';
+// import Footer from '@/Components/Footer';
 import { Head, useForm } from '@inertiajs/react';
 
 export default function Index({ donations }) {
@@ -64,7 +64,7 @@ export default function Index({ donations }) {
                     </table>
                 </div>
                 <Buttons></Buttons>
-                <Footer></Footer>
+                {/* <Footer></Footer> */}
             </div>
         </>
     );

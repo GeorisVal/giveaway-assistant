@@ -1,6 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
-import Footer from '@/Components/Footer';
+// import Footer from '@/Components/Footer';
 
 export default function DonorRegister(props) {
     return (
@@ -47,7 +47,7 @@ export default function DonorRegister(props) {
                 <button type="submit" className="text-white bg-sapin-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800">Submit</button>
             </form>
         </main>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </div>
         </>
     );
