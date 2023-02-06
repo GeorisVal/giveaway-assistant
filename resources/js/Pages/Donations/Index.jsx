@@ -15,7 +15,6 @@ export default function Index( {donations, status, auth, link} ) {
                 <NavLink auth={auth} link={link}></NavLink>
             </header>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <p onClick={async () => {await navigator.clipboard.writeText(link); alert("Copied link to clipboard !")}}>Copy to Clipboard !</p>
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black-550 uppercase bg-gray-50">
                     <tr>
