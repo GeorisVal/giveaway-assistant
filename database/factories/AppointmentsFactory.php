@@ -19,7 +19,7 @@ class AppointmentsFactory extends Factory
         return [
         'nookazon_username' => fake()->userName(),
         'discord_username' => fake()->userName().'#'.fake()->numberBetween(1000, 9999),
-        'appointment_date' => fake()->dateTimeThisMonth(),
+        'appointment_date' => fake()->date(),
         'appointment_time' => fake()->time('H:i:s'),
         'contact_method' => fake()->randomElement(['Discord', 'Website']),
         'appointment_type' => fake()->randomElement(['donor', 'winner'])
