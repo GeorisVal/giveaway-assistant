@@ -252,17 +252,17 @@ const Calendar = (props) => {
                                             >
                                                 {appointment.nookazon_username
                                                     ? moment(
-                                                          appointment.appointment_time,
-                                                          "HH:mm:ss"
-                                                      ).format("HH:mm") +
-                                                      " " +
-                                                      appointment.nookazon_username
+                                                        appointment.appointment_time,
+                                                            "HH:mm:ss"
+                                                    ).format("HH:mm") +
+                                                    " " +
+                                                    appointment.nookazon_username
                                                     : moment(
-                                                          appointment.appointment_time,
-                                                          "HH:mm:ss"
-                                                      ).format("HH:mm") +
-                                                      " " +
-                                                      appointment.discord_username}
+                                                        appointment.appointment_time,
+                                                        "HH:mm:ss"
+                                                    ).format("HH:mm") +
+                                                    " " +
+                                                    appointment.discord_username}
                                             </h1>
                                         </div>
                                     );

@@ -12,8 +12,9 @@ export default function NavLink(props) {
                         <div className="flex sm:max-xl:flex-col">
                             <Link href="/" className="flex items-center sm:max-xl:my-5">
                                 <img src="ga.png" class="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
-                                <span
-                                    className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
+                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">
+                                    Giftaway
+                                </span>
                             </Link>
                         </div>
                         <div className="w-full md:block md:w-auto" id="navbar-default">
@@ -36,7 +37,6 @@ export default function NavLink(props) {
                         </div>
                     </div>
                 </nav>
-                {/* <p className='my-5 text-xl ml-5'>Hello, <span className='capitalize text-black-550'>{props.auth.user.name}</span></p> */}
             </>
         )
     }
@@ -50,8 +50,9 @@ export default function NavLink(props) {
                         <div className="flex sm:max-xl:flex-col">
                             <Link href="/" className="flex items-center sm:max-xl:my-5">
                                 <img src="ga.png" class="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
-                                <span
-                                    className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
+                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">
+                                    Giftaway
+                                </span>
                             </Link>
                         </div>
                         <div className="w-full md:block md:w-auto" id="navbar-default">
