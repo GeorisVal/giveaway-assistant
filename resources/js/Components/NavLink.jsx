@@ -8,11 +8,11 @@ export default function NavLink(props) {
         return (
             <>
                 <nav className="bg-white border-gray-200 py-2.5 rounded">
-                    <div className="flex flex-wrap justify-between items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
-                        <div className="flex sm:max-xl:flex-col">
-                            <Link href="/" className="flex items-center sm:max-xl:my-5">
-                                <img src="ga.png" class="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
-                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                        <div className="">
+                            <Link href="/" className="flex items-center">
+                                <img src="ga.png" class="h-20 mr-3" alt="logo"/>
+                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden">
                                     Giftaway
                                 </span>
                             </Link>
@@ -46,11 +46,11 @@ export default function NavLink(props) {
             return (
                 <>
                 <nav className="bg-white border-gray-200 py-2.5 rounded">
-                    <div className="flex flex-wrap justify-between items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
-                        <div className="flex sm:max-xl:flex-col">
-                            <Link href="/" className="flex items-center sm:max-xl:my-5">
-                                <img src="ga.png" class="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
-                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                        <div className="flex">
+                            <Link href="/" className="flex items-center">
+                                <img src="ga.png" class="h-20 mr-3" alt="logo"/>
+                                <span className="self-center text-xl font-semibold whitespace-nowrap hidden">
                                     Giftaway
                                 </span>
                             </Link>
