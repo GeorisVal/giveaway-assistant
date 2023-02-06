@@ -9,7 +9,7 @@ const Calendar = (props) => {
         !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
     );
     const [dayClicked, setDayClicked] = useState(false);
-    const [shiftDayClicked, shiftDayCLicked] = useState(false);
+    const [shiftDayClicked, setShiftDayClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
     const [indes, setIndes] = useState();
     // useEffect(() => {
@@ -21,6 +21,7 @@ const Calendar = (props) => {
     function clickHandler(e, day) {
         if (e.shiftKey && props.auth.user != null) {
             console.log("shift+clicked")
+            setShiftDayClicked(true);
         }
         else {
             setDayValue({
