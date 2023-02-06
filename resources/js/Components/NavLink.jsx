@@ -4,17 +4,17 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function NavLink(props) {
-    function ifLink() {
-        if (props.link) {
-            return (
-                <li>
-                    <PrimaryButton onClick={async () => {await navigator.clipboard.writeText(props.link); alert("Copied link to clipboard !")}}>
-                        Test
-                    </PrimaryButton>
-                </li>
-            )
-        }
-    }
+    // function ifLink() {
+    //     if (props.link) {
+    //         return (
+    //             <li>
+    //                 <PrimaryButton onClick={async () => {await navigator.clipboard.writeText(props.link); alert("Copied link to clipboard !")}}>
+    //                     Test
+    //                 </PrimaryButton>
+    //             </li>
+    //         )
+    //     }
+    // }
     function clickHandler(e) {
         if (e.shiftKey) {
             window.location.href = "/login";
