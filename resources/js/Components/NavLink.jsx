@@ -24,7 +24,6 @@ export default function NavLink(props) {
         }
     }
     if(props.auth.user != null) {
-        console.log(props);
         return (
             <>
                 <nav className="bg-gray-100 border-gray-200 py-2.5 rounded">
@@ -38,6 +37,7 @@ export default function NavLink(props) {
                         </div>
                         <div className="block w-auto max-md:hidden" id="navbar-default">
                             <ul className="flex flex-row p-4 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-100">
+                                {ifLink()}
                                 <li>
                                     <Dropdown.Link href={route('donations.index')} aria-current="page">
                                         <PrimaryButton>
