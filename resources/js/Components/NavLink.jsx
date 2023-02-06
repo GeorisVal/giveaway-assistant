@@ -4,6 +4,17 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function NavLink(props) {
+    function ifLink() {
+        if (props.link) {
+            return (
+                <li>
+                    <PrimaryButton onClick={async () => {await navigator.clipboard.writeText(props.link); alert("Copied link to clipboard !")}}>
+                        Test
+                    </PrimaryButton>
+                </li>
+            )
+        }
+    }
     if(props.auth.user != null) {
         console.log(props);
         return (
@@ -42,6 +53,7 @@ export default function NavLink(props) {
                         </form> */}
                         <div className="w-full md:block md:w-auto" id="navbar-default">
                             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-100">
+                                {ifLink()}
                                 <li>
                                     <PrimaryButton>
                                         <Dropdown.Link href={route('donations.index')}
