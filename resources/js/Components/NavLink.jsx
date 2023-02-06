@@ -63,18 +63,18 @@ export default function NavLink(props) {
                             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-100">
                                 {ifLink()}
                                 <li>
-                                    <PrimaryButton>
-                                        <Dropdown.Link href={route('donations.index')}
-                                            // className="block py-2 pl-3 pr-4 text-white bg-lightgreen-500 rounded md:bg-transparent md:text-lightgreen-500 md:p-0"
-                                                    aria-current="page">Donations</Dropdown.Link>
-                                    </PrimaryButton>
+                                    <Dropdown.Link href={route('donations.index')} aria-current="page">
+                                        <PrimaryButton>
+                                            Donations
+                                        </PrimaryButton>
+                                    </Dropdown.Link>
                                 </li>
                                 <li>
-                                    <SecondaryButton>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button"
-                                            // className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lightgreen-500 md:p-0"
-                                        >Log out<i className="fa-solid fa-right-from-bracket pl-2"></i></Dropdown.Link>
-                                    </SecondaryButton>
+                                    <Dropdown.Link href={route('logout')} method="post" as="button">
+                                        <SecondaryButton>
+                                            Log out<i className="fa-solid fa-right-from-bracket pl-2"></i>
+                                        </SecondaryButton>
+                                    </Dropdown.Link>
                                 </li>
                             </ul>
                         </div>
