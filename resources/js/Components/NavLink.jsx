@@ -15,6 +15,14 @@ export default function NavLink(props) {
             )
         }
     }
+    function clickHandler(e) {
+        if (e.shiftKey) {
+            window.location.href = "/login";
+        }
+        else {
+            window.location.href = "/"
+        }
+    }
     if(props.auth.user != null) {
         console.log(props);
         return (
@@ -81,12 +89,10 @@ export default function NavLink(props) {
             return (
                 <nav className="bg-gray-100 border-gray-200 py-2.5 rounded">
                     <div className="flex flex-wrap items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
-                        <div className="flex sm:max-xl:flex-col">
-                            <Link href="/" className="flex items-center sm:max-xl:my-5">
-                                <img src="ga.png" className="h-20 mr-3 sm:max-xl:hidden" alt="logo"/>
-                                <span
-                                    className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
-                            </Link>
+                        <div className="flex sm:max-xl:flex-col cursor-pointer">
+                            <img src="ga.png" className="h-20 mr-3 sm:max-xl:hidden" alt="logo" onClick={(event) => {clickHandler(event)}}/>
+                            <span
+                                className="self-center text-xl font-semibold whitespace-nowrap hidden sm:max-xl:block">Giftaway</span>
                         </div>
                     </div>
                 </nav>
