@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 
-export default function Buttons({ href, active, children }) {
+export default function Buttons() {
     return (
         <>
             <div className="my-4 mb-10">
