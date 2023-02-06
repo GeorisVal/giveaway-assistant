@@ -3,6 +3,7 @@ import Donation from '@/Components/Donation';
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
 import { Head, useForm } from '@inertiajs/react';
+import Responsive from '@/Components/Responsive';
 
 export default function Index({ donations }) {
     return (
@@ -12,7 +13,8 @@ export default function Index({ donations }) {
                 <header>
                     <NavLink auth={{user: "logged"}}></NavLink>
                 </header>
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div className="max-md:hidden">
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
                         <thead className="text-xs text-black-550 uppercase bg-gray-50">
                         <tr>
@@ -61,8 +63,10 @@ export default function Index({ donations }) {
                             <Donation key={donation.id} id={donation.id} timestamp={donation.timestamp} status={donation.status} notes={donation.notes} schedule_date={donation.schedule_date} platform={donation.platform} shoutout={donation.shoutout} contact_method={donation.contact_method} discord_username={donation.discord_username} discord_id={donation.discord_id} nookazon_username={donation.nookazon_username} nookazon_link={donation.nookazon_link} currencies={donation.currencies} items={donation.items} />)}
                         </tbody>
                     </table>
+                    </div>
+                    <Buttons></Buttons>
                 </div>
-                <Buttons></Buttons>
+                <Responsive />
             </div>
         </>
     );
