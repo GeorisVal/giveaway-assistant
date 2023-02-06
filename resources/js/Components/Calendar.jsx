@@ -142,6 +142,7 @@ const Calendar = (props) => {
             setAppointments(res.data[0]);
         });
         setDayClicked(false);
+        location.href = '/thanks';
     }
     console.log(temp())
     return (
