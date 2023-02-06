@@ -23,6 +23,9 @@ const Calendar = (props) => {
             console.log("shift+clicked")
             setShiftDayClicked(true);
         }
+        else if (props.auth.user != null) {
+            console.log("Clicked while logged in");
+        }
         else {
             setDayValue({
                 day: day,
