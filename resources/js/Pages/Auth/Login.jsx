@@ -36,8 +36,8 @@ export default function Login({ status  }) {
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <form onSubmit={submit}>
-                <div>
+            <form className='' onSubmit={submit}>
+                <div className=''>
                     <InputLabel forInput="email" value="Email" />
 
                     <TextInput

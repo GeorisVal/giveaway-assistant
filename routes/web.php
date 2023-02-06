@@ -52,7 +52,6 @@ Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
 Route::patch('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibility']);
 
-
 Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);
 
 Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar');
@@ -64,8 +63,5 @@ Route::get('/generate', [\App\Http\Controllers\TokenController::class, 'generate
 Route::get('/thanks', function () {
     return Inertia::render('Thanks');
 })->name('thanks');
-
-
-
 
 require __DIR__.'/auth.php';

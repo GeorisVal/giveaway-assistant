@@ -3,8 +3,8 @@ import Donation from '@/Components/Donation';
 import Filters from '@/Components/StatusList'
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
-// import Footer from '@/Components/Footer';
 import { Head, useForm } from '@inertiajs/react';
+import Responsive from '@/Components/Responsive';
 
 export default function Index( {donations, status, auth, link} ) {
     return (
@@ -14,7 +14,8 @@ export default function Index( {donations, status, auth, link} ) {
             <header>
                 <NavLink auth={auth} link={link}></NavLink>
             </header>
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="max-md:hidden">
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <p onClick={async () => {await navigator.clipboard.writeText(link); alert("Copied link to clipboard !")}}>Copy to Clipboard !</p>
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black-550 uppercase bg-gray-50">
@@ -64,9 +65,10 @@ export default function Index( {donations, status, auth, link} ) {
                     <Donation key={donation.id} id={donation.id} timestamp={donation.timestamp} status={donation.status} notes={donation.notes} schedule_date={donation.schedule_date} platform={donation.platform} shoutout={donation.shoutout} contact_method={donation.contact_method} discord_username={donation.discord_username} discord_id={donation.discord_id} nookazon_username={donation.nookazon_username} nookazon_link={donation.nookazon_link} currencies={donation.currencies} items={donation.items}/>)}
                 </tbody>
             </table>
-        </div>
-        <Buttons></Buttons>
-        {/* <Footer></Footer> */}
+                </div>
+                <Buttons></Buttons>
+            </div>
+            <Responsive />
         </div>
         </>
     );

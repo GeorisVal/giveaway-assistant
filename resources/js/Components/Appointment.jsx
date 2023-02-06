@@ -7,7 +7,7 @@ const Appointment = (props) => {
         <tr
             className={
                 props.type == "donor"
-                    ? "bg-cyan-100 border-b leading-tight"
+                    ? "bg-lightgreen-550 border-b leading-tight"
                     : "bg-green-100 border-b leading-tight"
             }
         >
