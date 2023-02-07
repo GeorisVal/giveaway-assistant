@@ -142,6 +142,7 @@ const Calendar = (props) => {
             setAppointments(res.data[0]);
         });
         setDayClicked(false);
+        location.href = '/thanks';
     }
     console.log(temp())
     return (
@@ -461,14 +462,12 @@ const Calendar = (props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <Link href="/thanks">
                                         <button
                                             type="submit"
                                             className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800"
                                         >
                                             Submit
                                         </button>
-                                        </Link>
                                     </form>
                                 </div>
                             </div>
