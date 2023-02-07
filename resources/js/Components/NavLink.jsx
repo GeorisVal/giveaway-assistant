@@ -37,7 +37,7 @@ export default function NavLink(props) {
                         </div>
                         <div className="block w-auto max-md:hidden" id="navbar-default">
                             <ul className="flex flex-row p-4 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-100">
-                                {/* {ifLink()} */}
+                                 {ifLink()}
                                 <li>
                                     <Dropdown.Link href={route('donations.index')} aria-current="page">
                                         <PrimaryButton>
@@ -65,11 +65,9 @@ export default function NavLink(props) {
                 <nav className="bg-gray-100 border-gray-200 py-2.5 rounded">
                     <div className="flex flex-wrap items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
                         <div className="flex sm:max-xl:flex-col">
-                            <Link href="/" className="flex items-center sm:max-xl:my-5">
-                            <img src="ga.png" className="h-20 mr-3" alt="logo" onClick={(event) => {clickHandler(event)}}/>
+                            <img src="ga.png" className="h-20 mr-3 cursor-pointer" alt="logo" onClick={(event) => {clickHandler(event)}}/>
                                 <span
                                     className="self-center text-xl font-semibold whitespace-nowrap hidden">Giftaway</span>
-                            </Link>
                         </div>
                     </div>
                 </nav>
