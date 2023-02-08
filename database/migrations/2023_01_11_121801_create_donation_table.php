@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id('id');
-            $table->dateTime('timestamp');
+            $table->string('timestamp');
             $table->string('status');
             $table->string('notes')->nullable();
             $table->date('schedule_date')->nullable();
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('nookazon_link')->nullable();
             $table->string('currencies')->nullable();
             $table->text('items')->nullable();
-            $table->dateTime('updated_at');
-            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('created_at')->nullable();
             $table->string('description')->nullable();
             $table->string('shoutout_cc')->nullable();
             $table->lineString('img_link')->nullable();

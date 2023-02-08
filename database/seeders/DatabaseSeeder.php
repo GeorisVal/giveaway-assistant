@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
              'email' => 'a@a.a',
              'password' => bcrypt('password'),
          ]);
-        \App\Models\donation::factory(10)->create();
+        //\App\Models\donation::factory(10)->create();
     }
 }

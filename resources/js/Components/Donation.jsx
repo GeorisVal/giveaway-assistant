@@ -25,25 +25,25 @@ const Donation = (props) => {
     const status = () => {
         // console.log("read")
         switch (data.status) {
-            case "pending_pickup":
+            case "Pending pick up":
                 return "bg-cream-550 truncate ..."
-            case "dnr":
+            case "Did Not Respond":
                 return "bg-red-575 truncate ..."
-            case "scheduled_programs":
+            case "Queued for Programs":
                 return "bg-purple-550 truncate ..."
-            case "scheduled_web":
+            case "Queued for Website":
                 return "bg-lightgreen-550 truncate ..."
-            case "scheduled_discord":
+            case "Queued for Discord":
                 return "bg-discord-550 truncate ..."
-            case "contacted":
+            case "Donator Contacted":
                 return "bg-yellow-550 truncate ..."
-            case "collected":
+            case "Items Collected":
                 return "bg-orange-550 truncate ..."
-            case "invalid":
+            case "Invalid":
                 return "bg-red-575 truncate ..."
-            case "cancelled":
+            case "Cancelled":
                 return "bg-red-575 truncate ..."
-            case "done":
+            case "Complete":
                 return "bg-gris-550 truncate ..."
             default:
                 return "bg-white"
@@ -97,16 +97,16 @@ const Donation = (props) => {
             <td className="">
                 <form id={"form" + props.id}>
                     <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
-                        <option value="invalid">Invalid</option>
-                        <option value="dnr">DNR</option>
-                        <option value="contacted">Contacted</option>
-                        <option value="pending_pickup">Pending Pickup</option>
-                        <option value="collected">Collected</option>
-                        <option value="scheduled_web">Scheduled Web</option>
-                        <option value="scheduled_discord">Scheduled Discord</option>
-                        <option value="scheduled_programs">Scheduled Programs</option>
-                        <option value="done">Done</option>
-                        <option value="cancelled">Cancelled</option>
+                        <option value="Invalid">Invalid</option>
+                        <option value="Did Not Respond">DNR</option>
+                        <option value="Donator Contacted">Contacted</option>
+                        <option value="Pending pick up">Pending Pickup</option>
+                        <option value="Items Collected">Collected</option>
+                        <option value="Queued for Website">Scheduled Web</option>
+                        <option value="Queued for Discord">Scheduled Discord</option>
+                        <option value="Queued for Programs">Scheduled Programs</option>
+                        <option value="Completed">Done</option>
+                        <option value="Cancelled">Cancelled</option>
                     </select>
                 </form>
             </td>
@@ -145,9 +145,9 @@ const Donation = (props) => {
 
             </td>
         </tr>
-        
+
     );
-    
+
 };
 
 // function getInfo() {

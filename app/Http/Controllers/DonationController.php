@@ -32,9 +32,9 @@ class DonationController extends Controller
     public function indexNoDate()
     {
         return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')
-            ->where('status', '=', 'scheduled_web')->where('schedule_date', '=', null)
-            ->orWhere('status', '=', 'scheduled_programs')->where('schedule_date', '=', null)
-            ->orWhere('status', '=', 'scheduled_discord')->where('schedule_date', '=', null)
+            ->where('status', '=', 'Queued for Website')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '=', null)
             ->get()]);
     }
 
@@ -51,9 +51,9 @@ class DonationController extends Controller
     {
         return
             (DB::table('donations')
-            ->where('status', '=', 'scheduled_web')->where('schedule_date', '=', null)
-            ->orWhere('status', '=', 'scheduled_programs')->where('schedule_date', '=', null)
-            ->orWhere('status', '=', 'scheduled_discord')->where('schedule_date', '=', null)
+            ->where('status', '=', 'Queued for Website')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '=', null)
+            ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '=', null)
             ->get());
     }
     public function showAPI($id)
