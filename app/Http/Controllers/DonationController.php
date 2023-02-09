@@ -70,7 +70,7 @@ class DonationController extends Controller
     public function updateStatusVisibilityAPI(Request $request, $status)
     {
         $data = $request->validate(['visible' => 'required']);
-        DB::table('status')->where('status', $status)->update($data);
+        DB::table('status')->where('slug', $status)->update($data);
     }
     public function updateStatusVisibility(Request $request)
     {
