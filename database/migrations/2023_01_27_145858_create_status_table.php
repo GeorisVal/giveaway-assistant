@@ -15,20 +15,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('status', function (Blueprint $table) {
+            $table->string('slug');
             $table->string('status')->primary();
             $table->boolean('visible');
         });
         DB::table('status')->insert([
-            ['status' => 'Invalid', 'visible' => 1],
-            ['status' => 'Did Not Respond', 'visible' => 1],
-            ['status' => 'Donator Contacted', 'visible' => 1],
-            ['status' => 'Pending pick up', 'visible' => 1],
-            ['status' => 'Items Collected', 'visible' => 1],
-            ['status' => 'Queued for Website', 'visible' => 1],
-            ['status' => 'Queued for Discord', 'visible' => 1],
-            ['status' => 'Queued for Programs', 'visible' => 1],
-            ['status' => 'Complete', 'visible' => 1],
-            ['status' => 'Cancelled', 'visible' => 1]]);
+            ['slug' => 'invalid', 'status' => 'Invalid', 'visible' => 1],
+            ['slug' => 'dnr', 'status' => 'Did Not Respond', 'visible' => 1],
+            ['slug' => 'contacted', 'status' => 'Donator Contacted', 'visible' => 1],
+            ['slug' => 'pending', 'status' => 'Pending pick up', 'visible' => 1],
+            ['slug' => 'collected', 'status' => 'Items Collected', 'visible' => 1],
+            ['slug' => 'scheduledwebsite', 'status' => 'Queued for Website', 'visible' => 1],
+            ['slug' => 'scheduleddiscord', 'status' => 'Queued for Discord', 'visible' => 1],
+            ['slug' => 'scheduledprograms', 'status' => 'Queued for Programs', 'visible' => 1],
+            ['slug' => 'complete', 'status' => 'Complete', 'visible' => 1],
+            ['slug' => 'cancelled', 'status' => 'Cancelled', 'visible' => 1]]);
     }
 
     /**

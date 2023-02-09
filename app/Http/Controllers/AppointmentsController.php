@@ -144,13 +144,21 @@ class AppointmentsController extends Controller
         return Inertia::render('Calendar/Index', [
             'appointments' => DB::table('appointments')->get()
         ] + ['donations' => DB::table('donations')
-                ->select('status', 'schedule_date', 'description', 'shoutout_cc', 'img_link')
-                ->where('status', 'scheduled_web')
+                ->select('status', 'schedule_date', 'description', 'shoutout_cc', 'img_link', 'currencies', 'items', 'shoutout', 'nookazon_username', 'nookazon_link', 'discord_username', 'discord_id')
+                ->where('status', '=', 'Queued for Website')
                 ->whereNotNull('schedule_date')
-                ->orWhere('status', 'scheduled_discord')
+                ->orWhere('status', '=',  'Queued for Discord')
                 ->whereNotNull('schedule_date')
-                ->orWhere('status', 'scheduled_programs')
+                ->orWhere('status', '=',  'Queued for Programs')
                 ->whereNotNull('schedule_date')
                 ->get()]);
+    }
+
+    public function updateGiveawayDetailsAPI(Request $request, $id)
+    {
+        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable']);
+        DB::table('donations')
+            ->where('id', $id)
+            ->update($data);
     }
 }
