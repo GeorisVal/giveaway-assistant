@@ -128,7 +128,7 @@ const Donation = (props) => {
                 {props.discord_username}
             </td>
             <td className="px-6 py-4 truncate ...">
-                <a href={"https://discord.com/channels/@me/339868596589035527"}> {props.discord_id}</a>
+                {props.discord_id}
             </td>
             <td className="px-6 py-4 truncate ...">
                 <a href={props.nookazon_link}>{props.nookazon_username}</a>
