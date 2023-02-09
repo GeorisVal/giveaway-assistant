@@ -24,7 +24,7 @@ console.log(props.status);
         for (const status of Object.keys(data)) {
             const visible = data[status];
             axios.put("/api/donations-status/"+status, {visible: visible})
-                .then(console.log(status + "'s visibility has been successfully updated to " + visible +"."))
+                .then((response) => {console.log(status + response)})
         }
         toggleFilters();
         // setTimeout(function(){
