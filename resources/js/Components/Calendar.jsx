@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
@@ -9,23 +9,103 @@ const Calendar = (props) => {
     const [currentDate, setCurrentDate] = useState(
         !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
     );
+    const [dayValue, setDayValue] = useState({
+        day: null,
+        month: null,
+        year: null,
+    });
     const [dayClicked, setDayClicked] = useState(false);
     const [shiftDayClicked, setShiftDayClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
     const [indes, setIndes] = useState();
+    const [formState, setFormState] = useState({
+        title: "title",
+        imglink: "",
+        description: "",
+        shoutout: "",
+        items: "",
+        scheduled_date: "",
+        discord_username: "",
+        discord_id: "",
+        nookazon_username: "",
+        nookazon_link: "",
+        formatted_shoutout: "",
+        currencies: ""
+    })
     // useEffect(() => {
     //     const timer = mouseOver && setTimeout(onTimeout, 500);
     //     return () => {
     //         clearTimeout(timer);
     //     }
     // }, mouseOver)
-    function clickHandler(e, day) {
-        if (e.shiftKey && props.auth.user != null) {
-            console.log("shift+clicked")
-            setShiftDayClicked(true);
+    function formatShoutout(shoutout, nookname, nooklink, discname, discid) {
+        switch (shoutout) {
+            case "Yes - Shout out my Nookazon account":
+                return nookname + " (" + nooklink + ")"
+            case "Yes - shout out my Discord account":
+                return discname + "(<@" + discid + ">)"
+            default:
+                return "Anonymous Donor"
         }
-        else if (props.auth.user != null) {
-            console.log("Clicked while logged in");
+
+    }
+    function clickHandler(e, day) {
+        if (props.auth.user != null) {
+            const clickedDay = {
+                day: day,
+                month: currentDate.getMonth() + 1,
+                year: currentDate.getFullYear(),
+            };
+            const clickedDayFormatted = moment([clickedDay.day, clickedDay.month, clickedDay.year], "DD-MM-YYYY").format("YYYY-MM-DD");
+            // const index = donations.map(donation => donation.schedule_date).indexOf(moment([clickedDay["day"], clickedDay["month"], clickedDay["year"]], "DD-MM-YYYY").format("YYYY-MM-DD"));
+            const results = donations.filter(function (donation) {return donation.schedule_date == clickedDayFormatted;});
+            if (results.length == 0) {
+                return
+            }
+            setShiftDayClicked(true);
+            let items = [];
+            let shoutout = [];
+            let currencies = [];
+            let discord_username = [];
+            let discord_id = [];
+            let nookazon_username = [];
+            let nookazon_link = [];
+            let shoutout_formatted = [];
+            Object.keys(results).forEach(key => {
+                items.push(results[key].items);
+                shoutout.push(results[key].shoutout);
+                currencies.push(results[key].currencies);
+                discord_username.push(results[key].discord_username);
+                discord_id.push(results[key].discord_id);
+                nookazon_username.push(results[key].nookazon_username);
+                nookazon_link.push(results[key].nookazon_link);
+                shoutout_formatted.push(formatShoutout(results[key].shoutout, results[key].nookazon_username, results[key].nookazon_link, results[key].discord_username, results[key].discord_id));
+            })
+            // donations.map((donation) => {
+            setFormState({
+                scheduled_date: results[0].schedule_date,
+                title: results[0].title,
+                imglink: results[0].imglink,
+                shoutout: shoutout,
+                items: items.join(', '),
+                discord_username: discord_username,
+                discord_id: discord_id,
+                nookazon_username: nookazon_username,
+                nookazon_link: nookazon_link,
+                currencies: currencies.join(', '),
+                formatted_shoutout: shoutout_formatted.join(', ')
+            });
+            // setShiftDayClicked(true);
+            //console.log(donations[index].schedule_date);
+        }
+        else if(e.ctrlKey) {
+            setDayValue({
+                day: day,
+                month: currentDate.getMonth() + 1,
+                year: currentDate.getFullYear(),
+            });
+            console.log(dayValue);
+            setDayClicked(true);
         }
         else {
             setDayValue({
@@ -40,15 +120,11 @@ const Calendar = (props) => {
     function onHover (index) {
         setMouseOver(!mouseOver);
         setIndes(index);
-        console.log(mouseOver ? "You're in" + " " + index : "You're out" + " " + index);
+        // console.log(mouseOver ? "You're in" + " " + index : "You're out" + " " + index);
     }
-    const [dayValue, setDayValue] = useState({
-        day: null,
-        month: null,
-        year: null,
-    });
     const [appointments, setAppointments] = useState(props.appointments);
     const donations = props.donations;
+    // console.log(donations);
     const nextMonth = () => {
         setCurrentDate(
             new Date(currentDate.setMonth(currentDate.getMonth() + 1))
@@ -120,8 +196,16 @@ const Calendar = (props) => {
     let logicalMonth = monthNames[currentDate.getMonth() - 1]
         ? monthNames[currentDate.getMonth() - 1]
         : monthNames[currentDate.getMonth() + 11];
-    function generateScheduledMap(props) {
-
+    function handleScheduleSubmit(e) {
+        e.preventDefault();
+        const data = {
+            description: e.target.description.value,
+            image_link: e.target.image_link.value,
+        }
+        axios
+            .post("/api/description", data)
+            .then((res) => {console.log(res)});
+        setShiftDayClicked(false);
     }
     function handleSubmit(e) {
         e.preventDefault();
@@ -144,7 +228,6 @@ const Calendar = (props) => {
         setDayClicked(false);
         location.href = '/thanks';
     }
-    console.log(temp())
     return (
         <div className="mx-auto max-w-7xl mb-5 bg-gray-100">
             <div className="flex justify-evenly w-full my-4">
@@ -196,7 +279,7 @@ const Calendar = (props) => {
                                         ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
                                     {
                                     return (
-                                        <div className={(donation.status === "scheduled_web" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] absolute"}>
+                                        <div className={(donation.status === "Queued for Discord" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] absolute"}>
                                         </div>
                                     );
                                     }
@@ -461,6 +544,125 @@ const Calendar = (props) => {
                                                     </label>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800"
+                                        >
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </Transition.Child>
+                    </div>
+                </Dialog>
+            </Transition>
+            <Transition appear show={shiftDayClicked} as={Fragment}>
+                <Dialog
+                    as="div"
+                    className="fixed inset-0 z-10 overflow-y-auto"
+                    onClose={setShiftDayClicked}
+                >
+                    <div className="min-h-screen px-4 text-center bg-gray-500 bg-opacity-60">
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <Dialog.Overlay className="fixed inset-0" />
+                        </Transition.Child>
+
+                        <span
+                            className="inline-block h-screen align-middle"
+                            aria-hidden="true"
+                        >
+                            &#8203;
+                        </span>
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 scale-95"
+                            enterTo="opacity-100 scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 scale-100"
+                            leaveTo="opacity-0 scale-95"
+                        >
+                            <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gray-300 shadow-xl rounded-2xl">
+                                <Dialog.Title
+                                    as="h3"
+                                    contentEditable="true"
+                                    className="text-xl font-bold leading-6 text-sapin-500 text-center p-2"
+                                >
+                                    {!formState.title ? "Giveaway Title" : formState.title}
+                                </Dialog.Title>
+                                <div className="mt-2">
+                                    <form onSubmit={handleScheduleSubmit}>
+                                        <div className="mb-6">
+                                            <label
+                                                htmlFor="giveaway_img_link"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
+                                            >
+                                                Image Link
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="giveaway_img_link"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                placeholder="Image link..."
+                                                name="giveaway_img_link"
+                                                defaultValue={formState.imglink}
+                                            />
+                                        </div>
+                                        <div className="mb-6">
+                                            <label
+                                                htmlFor="giveaway_description"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
+                                            >
+                                                Giveaway Description
+                                            </label>
+                                            <textarea
+                                                id="giveaway_description"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                placeholder="Giveaway description..."
+                                                name="giveaway_description"
+                                                defaultValue={formState.description}
+                                            />
+                                        </div>
+                                        <div className="mb-6">
+                                            <h4 className="block mb-2 text-base font-semibold text-sapin-500">Shoutout</h4>
+                                            <p>{formState.formatted_shoutout}</p>
+                                        </div>
+                                        <div className="mb-6">
+                                            <table>
+                                                <tr>
+                                                    <th className="w-[50%] mb-2 text-base font-semibold text-center text-sapin-500">Items</th>
+                                                    <th className="w-[50%] mb-2 text-base font-semibold text-center text-sapin-500">NMT/Bells</th>
+                                                </tr>
+                                                <tr>
+                                                    <td className="text-center">{formState.items}</td>
+                                                    <td className="text-center">{formState.currencies}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div className="mb-6">
+                                            <label
+                                                htmlFor="giveaway_scheduled_date"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
+                                            >
+                                                Scheduled Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                id="giveaway_scheduled_date"
+                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                name="giveaway_scheduled_date"
+                                                defaultValue={formState.scheduled_date}
+                                            />
                                         </div>
                                         <button
                                             type="submit"
