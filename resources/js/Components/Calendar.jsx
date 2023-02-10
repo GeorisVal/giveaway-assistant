@@ -74,6 +74,7 @@ const Calendar = (props) => {
                 year: currentDate.getFullYear(),
             };
             const clickedDayFormatted = moment([clickedDay.day, clickedDay.month, clickedDay.year], "DD-MM-YYYY").format("YYYY-MM-DD");
+            setDayValue(clickedDayFormatted);
             // const index = donations.map(donation => donation.schedule_date).indexOf(moment([clickedDay["day"], clickedDay["month"], clickedDay["year"]], "DD-MM-YYYY").format("YYYY-MM-DD"));
             const results = donations.filter(function (donation) {return donation.schedule_date == clickedDayFormatted;});
             if (results.length == 0) {
@@ -98,12 +99,14 @@ const Calendar = (props) => {
                 nookazon_link.push(results[key].nookazon_link);
                 shoutout_formatted.push(formatShoutout(results[key].shoutout, results[key].nookazon_username, results[key].nookazon_link, results[key].discord_username, results[key].discord_id));
             })
+            console.log(results[0]);
             // donations.map((donation) => {
             setFormState({
                 scheduled_date: results[0].schedule_date,
                 title: results[0].title,
-                imglink: results[0].imglink,
+                imglink: results[0].img_link,
                 shoutout: shoutout,
+                description: results[0].description,
                 items: items.join(', '),
                 discord_username: discord_username,
                 discord_id: discord_id,
@@ -214,15 +217,17 @@ const Calendar = (props) => {
         ? monthNames[currentDate.getMonth() - 1]
         : monthNames[currentDate.getMonth() + 11];
     function handleScheduleSubmit(e) {
-        e.preventDefault();
+        //e.preventDefault();
         const data = {
+            title: e.target.giveaway_title.value,
+            img_link: e.target.giveaway_img_link.value,
             description: e.target.giveaway_description.value,
+            schedule_date: e.target.giveaway_scheduled_date.value,
         }
-        console.log(data);
-        // axios
-        //     .post("/api/description", data)
-        //     .then((res) => {console.log(res)});
-        //setShiftDayClicked(false);
+        axios
+            .put("/api/calendar/details/" + dayValue, data)
+            .then((res) => {console.log(res)});
+        setShiftDayClicked(false);
     }
     function handleSubmit(e) {
         e.preventDefault();
@@ -617,8 +622,9 @@ const Calendar = (props) => {
                                             <input type="text"
                                                    id="giveaway-title"
                                                    className="text-xl border-white w-full font-bold leading-6 text-sapin-500 text-center p-2"
-                                                   value={!formState.title ? "Giveaway Title" : formState.title}
-                                                   name="giveaway_title" />
+                                                   defaultValue={!formState.title ? "Giveaway Title" : formState.title}
+                                                   name="giveaway_title"
+                                                   required/>
                                         </div>
                                         <div className="mb-6">
                                             <label
@@ -634,6 +640,7 @@ const Calendar = (props) => {
                                                 placeholder="Image link..."
                                                 name="giveaway_img_link"
                                                 defaultValue={formState.imglink}
+                                                required
                                             />
                                         </div>
                                         <div className="mb-6">
@@ -649,9 +656,10 @@ const Calendar = (props) => {
                                                 placeholder="Giveaway description..."
                                                 name="giveaway_description"
                                                 defaultValue={formState.description}
+                                                required
                                             />
                                         </div>
-                                        <div className="mb-6">
+                                        <div className="mb-6 text-center">
                                             <h4 className="block mb-2 text-base font-semibold text-sapin-500">Shoutout</h4>
                                             <p className="whitespace-pre overflow-hidden cursor-pointer" onClick={shoutoutClick}>{formState.formatted_shoutout}</p>
                                         </div>
@@ -680,6 +688,7 @@ const Calendar = (props) => {
                                                 className="text-center bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                 name="giveaway_scheduled_date"
                                                 defaultValue={formState.scheduled_date}
+                                                required
                                             />
                                         </div>
                                         <button
