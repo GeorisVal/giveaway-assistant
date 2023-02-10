@@ -217,7 +217,7 @@ const Calendar = (props) => {
         ? monthNames[currentDate.getMonth() - 1]
         : monthNames[currentDate.getMonth() + 11];
     function handleScheduleSubmit(e) {
-        //e.preventDefault();
+        e.preventDefault();
         const data = {
             title: e.target.giveaway_title.value,
             img_link: e.target.giveaway_img_link.value,
