@@ -4,17 +4,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function NavLink(props) {
-    function ifLink() {
-        if (props.link) {
-            return (
-                <li>
-                    <PrimaryButton onClick={async () => {await navigator.clipboard.writeText(props.link); alert("Copied link to clipboard !")}}>
-                        Test
-                    </PrimaryButton>
-                </li>
-            )
-        }
-    }
+
     function clickHandler(e) {
         if (e.shiftKey) {
             window.location.href = "/login";
@@ -37,7 +27,13 @@ export default function NavLink(props) {
                         </div>
                         <div className="block w-auto max-md:hidden" id="navbar-default">
                             <ul className="flex flex-row p-4 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-100">
-                                 {ifLink()}
+                                <li>
+                                    <Dropdown.Link href={route('calendar')} aria-current="page">
+                                        <PrimaryButton>
+                                            Calendar
+                                        </PrimaryButton>
+                                    </Dropdown.Link>
+                                </li>
                                 <li>
                                     <Dropdown.Link href={route('donations.index')} aria-current="page">
                                         <PrimaryButton>
