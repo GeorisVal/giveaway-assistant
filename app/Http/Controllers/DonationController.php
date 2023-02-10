@@ -78,6 +78,14 @@ class DonationController extends Controller
         ddd($data);
         DB::table('status')->update($data);
     }
+
+    public function updateGiveawayDetailsAPI(Request $request, $date)
+    {
+        $data = $request->validate(['title' => 'required', 'img_link' => 'required', 'description' => 'required', 'schedule_date' => 'required']);
+        DB::table('donations')
+            ->where('schedule_date', $date)
+            ->update($data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -134,7 +142,7 @@ class DonationController extends Controller
         // $donation->update($data);
 
         DB::table('donations')
-            ->where('id', $request->id)
+            ->where('id', $request.id)
             ->update(array('status' => $data["status"]));
     }
 
