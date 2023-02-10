@@ -2,10 +2,13 @@ import React, { Fragment, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Dialog, Transition } from "@headlessui/react";
-import { Link } from "@inertiajs/react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Calendar = (props) => {
     const next = props.isNext;
+    const [copy, setCopy] = useState("")
+    const notify = (content) => toast("Copied " + content + " to clipboard");
     const [currentDate, setCurrentDate] = useState(
         !next ? new Date() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000)
     );
@@ -43,12 +46,26 @@ const Calendar = (props) => {
             case "Yes - Shout out my Nookazon account":
                 return nookname + " (" + nooklink + ")"
             case "Yes - shout out my Discord account":
-                return discname + "(<@" + discid + ">)"
+                return discname + " (<@" + discid + ">)"
             default:
                 return "Anonymous Donor"
         }
 
     }
+
+    async function shoutoutClick() {
+        await navigator.clipboard.writeText(formState.formatted_shoutout);
+        await notify("shoutout");
+    }
+    async function itemsClick() {
+        await navigator.clipboard.writeText(formState.items);
+        await notify("items");
+    }
+    async function CurrenciesClick() {
+        await navigator.clipboard.writeText(formState.currencies);
+        await notify("NMT/Bells");
+    }
+
     function clickHandler(e, day) {
         if (props.auth.user != null) {
             const clickedDay = {
@@ -93,7 +110,7 @@ const Calendar = (props) => {
                 nookazon_username: nookazon_username,
                 nookazon_link: nookazon_link,
                 currencies: currencies.join(', '),
-                formatted_shoutout: shoutout_formatted.join(', ')
+                formatted_shoutout: shoutout_formatted.join("\n")
             });
             // setShiftDayClicked(true);
             //console.log(donations[index].schedule_date);
@@ -199,13 +216,13 @@ const Calendar = (props) => {
     function handleScheduleSubmit(e) {
         e.preventDefault();
         const data = {
-            description: e.target.description.value,
-            image_link: e.target.image_link.value,
+            description: e.target.giveaway_description.value,
         }
-        axios
-            .post("/api/description", data)
-            .then((res) => {console.log(res)});
-        setShiftDayClicked(false);
+        console.log(data);
+        // axios
+        //     .post("/api/description", data)
+        //     .then((res) => {console.log(res)});
+        //setShiftDayClicked(false);
     }
     function handleSubmit(e) {
         e.preventDefault();
@@ -592,20 +609,21 @@ const Calendar = (props) => {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gray-300 shadow-xl rounded-2xl">
-                                <Dialog.Title
-                                    as="h3"
-                                    contentEditable="true"
-                                    className="text-xl font-bold leading-6 text-sapin-500 text-center p-2"
-                                >
-                                    {!formState.title ? "Giveaway Title" : formState.title}
-                                </Dialog.Title>
+                            <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <div className="mt-2">
+                                    <ToastContainer autoClose={1000} position={"top-center"}/>
                                     <form onSubmit={handleScheduleSubmit}>
+                                        <div className="mb-6">
+                                            <input type="text"
+                                                   id="giveaway-title"
+                                                   className="text-xl border-white w-full font-bold leading-6 text-sapin-500 text-center p-2"
+                                                   value={!formState.title ? "Giveaway Title" : formState.title}
+                                                   name="giveaway_title" />
+                                        </div>
                                         <div className="mb-6">
                                             <label
                                                 htmlFor="giveaway_img_link"
-                                                className="block mb-2 text-base font-semibold text-sapin-500"
+                                                className="block mb-2 text-base font-semibold text-sapin-500 bg-white"
                                             >
                                                 Image Link
                                             </label>
@@ -635,7 +653,7 @@ const Calendar = (props) => {
                                         </div>
                                         <div className="mb-6">
                                             <h4 className="block mb-2 text-base font-semibold text-sapin-500">Shoutout</h4>
-                                            <p>{formState.formatted_shoutout}</p>
+                                            <p className="whitespace-pre overflow-hidden cursor-pointer" onClick={shoutoutClick}>{formState.formatted_shoutout}</p>
                                         </div>
                                         <div className="mb-6">
                                             <table>
@@ -644,8 +662,8 @@ const Calendar = (props) => {
                                                     <th className="w-[50%] mb-2 text-base font-semibold text-center text-sapin-500">NMT/Bells</th>
                                                 </tr>
                                                 <tr>
-                                                    <td className="text-center">{formState.items}</td>
-                                                    <td className="text-center">{formState.currencies}</td>
+                                                    <td className="text-center cursor-pointer" onClick={itemsClick}>{formState.items}</td>
+                                                    <td className="text-center cursor-pointer" onClick={CurrenciesClick}>{formState.currencies}</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -659,7 +677,7 @@ const Calendar = (props) => {
                                             <input
                                                 type="date"
                                                 id="giveaway_scheduled_date"
-                                                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
+                                                className="text-center bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-full p-2.50y-600r-gray-400-blue-500er-blue-500"
                                                 name="giveaway_scheduled_date"
                                                 defaultValue={formState.scheduled_date}
                                             />
