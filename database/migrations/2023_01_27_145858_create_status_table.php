@@ -29,7 +29,8 @@ return new class extends Migration
             ['slug' => 'scheduleddiscord', 'status' => 'Queued for Discord', 'visible' => 1],
             ['slug' => 'scheduledprograms', 'status' => 'Queued for Programs', 'visible' => 1],
             ['slug' => 'complete', 'status' => 'Complete', 'visible' => 1],
-            ['slug' => 'cancelled', 'status' => 'Cancelled', 'visible' => 1]]);
+            ['slug' => 'cancelled', 'status' => 'Cancelled', 'visible' => 1],
+            ['slug' => 'nostatus', 'status' => '', 'visible' => 1]]);
     }
 
     /**
