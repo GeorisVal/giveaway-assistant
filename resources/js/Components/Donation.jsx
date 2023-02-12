@@ -107,6 +107,7 @@ const Donation = (props) => {
                         <option value="Queued for Programs">Scheduled Programs</option>
                         <option value="Completed">Done</option>
                         <option value="Cancelled">Cancelled</option>
+                        <option value="">No Status</option>
                     </select>
                 </form>
             </td>
