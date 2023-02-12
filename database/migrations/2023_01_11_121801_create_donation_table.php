@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id('id');
             $table->string('timestamp');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->string('notes')->nullable();
             $table->date('schedule_date')->nullable();
             $table->string('platform');
