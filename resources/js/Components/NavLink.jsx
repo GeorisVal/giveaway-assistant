@@ -43,8 +43,9 @@ export default function NavLink(props) {
                                 </li>
                                 <li>
                                     <SecondaryButton>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button"
-                                        >Log out<i className="fa-solid fa-right-from-bracket pl-2"></i></Dropdown.Link>
+                                        <Dropdown.Link href={route('logout')} method="post" as="button">
+                                            Log out<i className="fa-solid fa-right-from-bracket pl-2"></i>
+                                        </Dropdown.Link>
                                     </SecondaryButton>
                                 </li>
                             </ul>
