@@ -8,17 +8,19 @@ console.log(props.status);
     const toggleFilters = () => setShow(!show);
     console.log(props);
     const { data, setData } = useForm({
+        nostatus: props.status[0].visible,
+        cancelled: props.status[1].visible,
+        complete: props.status[2].visible,
         dnr: props.status[3].visible,
+        contacted: props.status[4].visible,
         invalid: props.status[5].visible,
-        contacted: props.status[2].visible,
-        pending: props.status[6].visible,
-        collected: props.status[1].visible,
-        scheduledweb: props.status[9].visible,
-        scheduleddisc: props.status[7].visible,
-        scheduledprog: props.status[8].visible,
-        done: props.status[4].visible,
-        cancelled: props.status[0].visible,
+        collected: props.status[6].visible,
+        pending: props.status[7].visible,
+        scheduleddisc: props.status[8].visible,
+        scheduledprog: props.status[9].visible,
+        scheduledweb: props.status[10].visible,
     });
+    console.log(data);
     function submit(e) {
         e.preventDefault();
         for (const status of Object.keys(data)) {
@@ -27,9 +29,9 @@ console.log(props.status);
                 .then((response) => {console.log(status + response)})
         }
         toggleFilters();
-        // setTimeout(function(){
-        //     window.location.reload();
-        // }, 2000);
+        setTimeout(function(){
+             window.location.reload();
+        }, 1000);
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -75,12 +77,16 @@ return (
                     <span className="ml-2">Scheduled Programs</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="done" name="done" value={data.remember} checked={data["done"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Done</span>
+                    <Checkbox id="complete" name="complete" value={data.remember} checked={data["complete"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Completed</span>
                 </label>
                 <label>
                     <Checkbox id="cancelled" name="cancelled" value={data.remember} checked={data["cancelled"]} handleChange={onHandleChange} />
                     <span className="ml-2">Cancelled</span>
+                </label>
+                <label className="col-span-2 text-center">
+                    <Checkbox id="nostatus" name="nostatus" value={data.remember} checked={data["nostatus"]} handleChange={onHandleChange} />
+                    <span className="ml-2">No Status</span>
                 </label>
                     <button type="submit" className="bg-green-200 col-span-2">Apply Filters</button>
             </form>
