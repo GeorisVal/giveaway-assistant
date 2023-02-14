@@ -169,22 +169,22 @@ const Calendar = (props) => {
         days.push(i);
     }
 
-    const temp = () => {
-        let newDays = {}
-        let newDaysArray = []
-        days.map((day) => (donations.map((donation) => {
-            let currentDay = `${currentDate.getFullYear()}-${currentDate.getMonth().toString().length == 1 ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`;
-            if (donation.schedule_date === currentDay) {
-                //newDaysArray.push(currentDay + " " + donation.status)
-                newDays.date = currentDay;
-                newDays.status = donation.status;
-                newDaysArray.push(newDays);
-            }
-            })))
-        return newDaysArray;
-    }
+    // const temp = () => {
+    //     let newDays = {}
+    //     let newDaysArray = []
+    //     days.map((day) => (donations.map((donation) => {
+    //         let currentDay = `${currentDate.getFullYear()}-${currentDate.getMonth().toString().length == 1 ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`;
+    //         if (donation.schedule_date === currentDay) {
+    //             //newDaysArray.push(currentDay + " " + donation.status)
+    //             newDays.date = currentDay;
+    //             newDays.status = donation.status;
+    //             newDaysArray.push(newDays);
+    //         }
+    //         })))
+    //     return newDaysArray;
+    // }
 
-    const tempDate = (hey) => { temp().filter(x => x.includes(hey)) }
+    // const tempDate = (hey) => { temp().filter(x => x.includes(hey)) }
     // console.log(tempDate.toString().split(" "))
     const dayNames = [
         "Monday",
