@@ -20,3 +20,4 @@ yarn-error.log
 /app/google-calendar/service-account-credentials.json
 *.csr
 *.key
+/.env.good
