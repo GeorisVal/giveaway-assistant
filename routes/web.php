@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth']);
 Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth']);
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
+Route::get('/donations-scheduled', [\App\Http\Controllers\DonationController::class, 'indexScheduled'])->name('scheduled')->middleware(['auth']);
+Route::put('/donations-scheduled', [\App\Http\Controllers\DonationController::class, 'update']);
 Route::patch('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibility']);
 
 Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);
