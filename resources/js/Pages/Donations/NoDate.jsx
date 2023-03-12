@@ -1,5 +1,5 @@
 import React from 'react';
-import Donation from '@/Components/Donation';
+import Donation from '@/Components/DonationNoDate';
 import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
 import { Head, useForm } from '@inertiajs/react';
@@ -27,6 +27,9 @@ export default function Index({ donations }) {
                                 Status
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
+                                Scheduled date
+                            </th>
+                            <th scope="col" className="px-6 py-3 truncate ...">
                                 Notes
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
@@ -52,9 +55,6 @@ export default function Index({ donations }) {
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
                                 Items
-                            </th>
-                            <th scope="col" className="px-6 py-3 truncate ...">
-                                Scheduled date
                             </th>
                         </tr>
                         </thead>
