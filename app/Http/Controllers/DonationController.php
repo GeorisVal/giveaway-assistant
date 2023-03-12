@@ -38,6 +38,15 @@ class DonationController extends Controller
             ->get()]);
     }
 
+    public function indexScheduled()
+    {
+        return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')
+            ->where('status', '=', 'Queued for Website')->where('schedule_date', '!=', null)
+            ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '!=', null)
+            ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '!=', null)
+            ->get()]);
+    }
+
     public function indexAPI()
     {
         return DB::table('donations')->get();
