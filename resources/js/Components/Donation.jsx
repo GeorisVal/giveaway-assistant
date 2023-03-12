@@ -107,7 +107,7 @@ const Donation = (props) => {
                         <option value="Queued for Programs">Scheduled Programs</option>
                         <option value="Completed">Done</option>
                         <option value="Cancelled">Cancelled</option>
-                        <option value="">No Status</option>
+                        <option value=""></option>
                     </select>
                 </form>
             </td>
@@ -137,7 +137,7 @@ const Donation = (props) => {
             <td className="px-6 py-4 truncate ...">
                 {props.currencies}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 py-4 truncate max-w-[250px] hover:max-w-[5000px] ...">
                 {props.items}
             </td>
             <td className="px-6 py-4 truncate ...">
