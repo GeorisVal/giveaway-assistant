@@ -16,9 +16,9 @@ console.log(props.status);
         invalid: props.status[5].visible,
         collected: props.status[6].visible,
         pending: props.status[7].visible,
-        scheduleddisc: props.status[8].visible,
-        scheduledprog: props.status[9].visible,
-        scheduledweb: props.status[10].visible,
+        scheduleddiscord: props.status[8].visible,
+        scheduledprograms: props.status[9].visible,
+        scheduledwebsite: props.status[10].visible,
     });
     console.log(data);
     function submit(e) {
@@ -31,11 +31,45 @@ console.log(props.status);
         toggleFilters();
         setTimeout(function(){
              window.location.reload();
-        }, 1000);
+        }, 2000);
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
+    const clearAll = () => {
+        setData(
+            {
+                nostatus: false,
+                cancelled: false,
+                complete: false,
+                dnr: false,
+                contacted: false,
+                invalid: false,
+                collected: false,
+                pending: false,
+                scheduleddiscord: false,
+                scheduledprograms: false,
+                scheduledwebsite: false
+            }
+        )
+    }
+    const checkAll = () => {
+        setData(
+            {
+                nostatus: true,
+                cancelled: true,
+                complete: true,
+                dnr: true,
+                contacted: true,
+                invalid: true,
+                collected: true,
+                pending: true,
+                scheduleddiscord: true,
+                scheduledprograms: true,
+                scheduledwebsite: true
+            }
+        )
+    }
 
 return (
     <>
@@ -65,15 +99,15 @@ return (
                     <span className="ml-2">Collected</span>
                 </label>
                 <label>
-                    <Checkbox id="scheduledweb" name="scheduledweb" value={data.remember} checked={data["scheduledweb"]} handleChange={onHandleChange} />
+                    <Checkbox id="scheduledwebsite" name="scheduledwebsite" value={data.remember} checked={data["scheduledwebsite"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Web</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="scheduleddisc" name="scheduleddisc" value={data.remember} checked={data["scheduleddisc"]} handleChange={onHandleChange} />
+                    <Checkbox id="scheduleddiscord" name="scheduleddiscord" value={data.remember} checked={data["scheduleddiscord"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Discord</span>
                 </label>
                 <label>
-                    <Checkbox id="scheduledprog" name="scheduledprog" value={data.remember} checked={data["scheduledprog"]} handleChange={onHandleChange} />
+                    <Checkbox id="scheduledprograms" name="scheduledprograms" value={data.remember} checked={data["scheduledprograms"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Programs</span>
                 </label>
                 <label className="mr-6">
@@ -88,6 +122,8 @@ return (
                     <Checkbox id="nostatus" name="nostatus" value={data.remember} checked={data["nostatus"]} handleChange={onHandleChange} />
                     <span className="ml-2">No Status</span>
                 </label>
+                    <p onClick={clearAll} className="bg-red-200 text-center cursor-pointer">Clear All</p>
+                    <p onClick={checkAll} className="bg-green-200 text-center cursor-pointer">Check All</p>
                     <button type="submit" className="bg-green-200 col-span-2">Apply Filters</button>
             </form>
         }
