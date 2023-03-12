@@ -73,7 +73,7 @@ console.log(props.status);
 
 return (
     <>
-        <p onClick={toggleFilters} className="cursor-default">status</p>
+        <p onClick={toggleFilters} className="cursor-default">status ⇅</p>
         {show &&
             <form className="w-auto h-auto bg-white absolute top-[3em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-10" onSubmit={submit}>
                 <label className="mr-6">
