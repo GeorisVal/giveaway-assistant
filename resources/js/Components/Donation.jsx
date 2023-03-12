@@ -14,7 +14,7 @@ const Donation = (props) => {
 
     const shoutout = () => {
         switch (props.shoutout) {
-            case "Yes - shout out my Nookazon account":
+            case "Yes - Shout out my Nookazon account":
                 return "Yes - Nookazon"
             case "Yes - shout out my Discord account":
                 return "Yes - Discord"
@@ -26,27 +26,27 @@ const Donation = (props) => {
         // console.log("read")
         switch (data.status) {
             case "Pending pick up":
-                return "bg-cream-550 truncate ..."
+                return "bg-cream-550 border-[#e5e5e5] py-1 truncate ..."
             case "Did Not Respond":
-                return "bg-red-575 truncate ..."
+                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
             case "Queued for Programs":
-                return "bg-purple-550 truncate ..."
+                return "bg-purple-550 border-[#e5e5e5] py-1 truncate ..."
             case "Queued for Website":
-                return "bg-lightgreen-550 truncate ..."
+                return "bg-lightgreen-550 border-[#e5e5e5] py-1 truncate ..."
             case "Queued for Discord":
-                return "bg-discord-550 truncate ..."
+                return "bg-discord-550 border-[#e5e5e5] py-1 truncate ..."
             case "Donator Contacted":
-                return "bg-yellow-550 truncate ..."
+                return "bg-yellow-550 border-[#e5e5e5] py-1 truncate ..."
             case "Items Collected":
-                return "bg-orange-550 truncate ..."
+                return "bg-orange-550 border-[#e5e5e5] py-1 truncate ..."
             case "Invalid":
-                return "bg-red-575 truncate ..."
+                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
             case "Cancelled":
-                return "bg-red-575 truncate ..."
+                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
             case "Complete":
-                return "bg-gris-550 truncate ..."
+                return "bg-gris-550 border-[#e5e5e5] py-1 truncate ..."
             default:
-                return "bg-white"
+                return "bg-white border-[#e5e5e5] py-1"
         }
     }
 
@@ -85,14 +85,14 @@ const Donation = (props) => {
             });
     };
     return (
-        <tr className={checkbox ? "bg-yellow-300 border-b leading-tight" : "bg-white border-b leading-tight"}>
-            <td className="px-6 py-2">
+        <tr className={checkbox ? "bg-[#fffbab] border-b leading-tight" : "bg-white border-b leading-tight"}>
+            <td className="pl-6">
                 {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
                 {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
                 {/*</a>*/}
                 <input type="checkbox" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="pr-6 truncate ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
             <td className="">
@@ -112,38 +112,38 @@ const Donation = (props) => {
                     </select>
                 </form>
             </td>
-            <td className="pl-6 py-4 truncate ...">
+            <td className="pl-6 truncate ...">
                 <form id={"note" + props.id} onSubmit={handleNoteSubmit} className="flex flex-row">
-                    <input type="text" defaultValue={props.notes} className="leading-3" onChange={e => setNote(e.target.value)} onFocus={() => setVisibleButton(true)} onBlur={() => setVisibleButton(false)}/>
+                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#e5e5e5]" onChange={e => setNote(e.target.value)} onFocus={() => setVisibleButton(true)} onBlur={() => setVisibleButton(false)}/>
                     <button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "flex items-center bg-green-200 ml-1 px-2 border-2 border-black invisible"}>✓</button>
                 </form>
             </td>
-            <td className="px-6 py-4 truncate ...">
-                {props.platform}
+            <td className="px-6 truncate ...">
+                {props.platform == "Nookazon Programs (i.e. Streams, Contests, etc.)" ? "Nookazon Programs" : props.platform}
             </td>
-            <td className="px-6 text-center py-4 truncate ...">
+            <td className="px-6 text-center truncate ...">
                 {shoutout()}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 truncate ...">
                 {props.contact_method}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 truncate ...">
                 {props.discord_username}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 truncate ...">
                 {props.discord_id}
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 truncate ...">
                 <a href={props.nookazon_link}>{props.nookazon_username}</a>
             </td>
-            <td className="px-6 py-4 truncate ...">
+            <td className="px-6 truncate ...">
                 {props.currencies}
             </td>
-            <td className="px-6 py-4 truncate max-w-[250px] hover:max-w-[5000px] ...">
+            <td className="px-6 truncate max-w-[250px] hover:max-w-[5000px] ...">
                 {props.items}
             </td>
-            <td className="px-6 py-4 truncate ...">
-                <input type="date" min={today} className={props.schedule_date ? "" : "text-red-500 border-red-500"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+            <td className="px-6 truncate ...">
+                <input type="date" min={today} className={props.schedule_date ? "border-[#e5e5e5] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
 
             </td>
