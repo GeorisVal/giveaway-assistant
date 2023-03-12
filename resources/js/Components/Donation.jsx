@@ -9,7 +9,7 @@ const Donation = (props) => {
     });
     const [note, setNote] = React.useState({note: props.notes});
     {/*{moment(props.schedule_date).format('MMMM Do YYYY')}*/}
-
+    const [visibleButton, setVisibleButton] = React.useState(false)
     const [checkbox, setCheckbox] = React.useState(0);
 
     const shoutout = () => {
@@ -65,6 +65,7 @@ const Donation = (props) => {
     };
     const handleNoteSubmit = (e) => {
         e.preventDefault()
+        document.activeElement.blur()
         axios
             .put("/api/donations/" + props.id, {
                 notes: note,
@@ -112,8 +113,9 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
-                <form id={"note" + props.id} onSubmit={handleNoteSubmit}>
-                    <input type="text" defaultValue={props.notes} className="leading-3" onChange={e => setNote(e.target.value)} />
+                <form id={"note" + props.id} onSubmit={handleNoteSubmit} className="flex flex-row">
+                    <input type="text" defaultValue={props.notes} className="leading-3" onChange={e => setNote(e.target.value)} onFocus={() => setVisibleButton(true)} onBlur={() => setVisibleButton(false)}/>
+                    <button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "hidden"}>✓</button>
                 </form>
             </td>
             <td className="px-6 py-4 truncate ...">
