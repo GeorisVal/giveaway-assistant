@@ -10,7 +10,7 @@ console.log(props.status);
     const { data, setData } = useForm({
         nostatus: props.status[0].visible,
         cancelled: props.status[1].visible,
-        complete: props.status[2].visible,
+        completed: props.status[2].visible,
         dnr: props.status[3].visible,
         contacted: props.status[4].visible,
         invalid: props.status[5].visible,
@@ -41,7 +41,7 @@ console.log(props.status);
             {
                 nostatus: false,
                 cancelled: false,
-                complete: false,
+                completed: false,
                 dnr: false,
                 contacted: false,
                 invalid: false,
@@ -58,7 +58,7 @@ console.log(props.status);
             {
                 nostatus: true,
                 cancelled: true,
-                complete: true,
+                completed: true,
                 dnr: true,
                 contacted: true,
                 invalid: true,
@@ -92,7 +92,7 @@ return (
                 <label>
                     <Checkbox id="pending" name="pending" value={data.remember}
                               checked={data["pending"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Pending</span>
+                    <span className="ml-2">Pending Pickup</span>
                 </label>
                 <label className="mr-6">
                     <Checkbox id="collected" name="collected" value={data.remember} checked={data["collected"]} handleChange={onHandleChange} />
@@ -111,7 +111,7 @@ return (
                     <span className="ml-2">Scheduled Programs</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="complete" name="complete" value={data.remember} checked={data["complete"]} handleChange={onHandleChange} />
+                    <Checkbox id="completed" name="completed" value={data.remember} checked={data["completed"]} handleChange={onHandleChange} />
                     <span className="ml-2">Completed</span>
                 </label>
                 <label>
