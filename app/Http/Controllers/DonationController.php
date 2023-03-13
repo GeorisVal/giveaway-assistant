@@ -20,9 +20,11 @@ class DonationController extends Controller
         return Inertia::render('Donations/Index', ['donations' =>
             DB::table('donations')
                 ->join('status', 'donations.status', '=', 'status.status')
-                ->where('visible', '=', 1)
+                ->join('platform', 'donations.platform', '=', 'platform.platform')
+                ->where('status.visible', '=', 1)
+                ->where('platform.visible', '=', 1)
                 ->get()
-        ] + ['status' => DB::table('status')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
+        ] + ['status' => DB::table('status')->get()] + ['platform' => DB::table('platform')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
     }
     /**
      * Display a listing of the resource.
@@ -80,6 +82,11 @@ class DonationController extends Controller
     {
         $data = $request->validate(['visible' => 'required']);
         DB::table('status')->where('slug', $status)->update($data);
+    }
+    public function updatePlatformVisibilityAPI(Request $request, $status)
+    {
+        $data = $request->validate(['visible' => 'required']);
+        DB::table('platform')->where('slug', $status)->update($data);
     }
     public function updateStatusVisibility(Request $request)
     {
