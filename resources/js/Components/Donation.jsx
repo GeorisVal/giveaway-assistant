@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const Donation = (props) => {
+    const notify = (content) => toast("Copied " + content + " to clipboard");
     // API call to update the status of a donation
     const [data, setData] = React.useState({
         status: props.status,
@@ -54,7 +56,6 @@ const Donation = (props) => {
 
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
-        console.log(data);
         axios
             .put("/api/donations/" + props.id, {
                 status: e.target.value,
@@ -65,7 +66,7 @@ const Donation = (props) => {
     };
     const handleNoteSubmit = (e) => {
         e.preventDefault()
-        document.activeElement.blur()
+        setItemz(false);
         axios
             .put("/api/donations/" + props.id, {
                 notes: note,
@@ -74,6 +75,11 @@ const Donation = (props) => {
                 console.log(response);
             });
     };
+    async function idClick() {
+        await navigator.clipboard.writeText(props.discord_id);
+        await notify(props.discord_username + "'s ID ");
+    }
+
     const handleDateChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -114,8 +120,8 @@ const Donation = (props) => {
             </td>
             <td className="pl-6 truncate ...">
                 <form id={"note" + props.id} onSubmit={handleNoteSubmit} className="flex flex-row">
-                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#e5e5e5]" onChange={e => setNote(e.target.value)} onFocus={() => setVisibleButton(true)} onBlur={() => setVisibleButton(false)}/>
-                    <button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "flex items-center bg-green-200 ml-1 px-2 border-2 border-black invisible"}>✓</button>
+                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#e5e5e5]" onChange={e => setNote(e.target.value)} onBlur={handleNoteSubmit}/>
+                    {/*<button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "flex items-center bg-green-200 ml-1 px-2 border-2 border-black invisible"}>✓</button>*/}
                 </form>
             </td>
             <td className="px-6 truncate ...">
@@ -127,10 +133,10 @@ const Donation = (props) => {
             <td className="px-6 truncate ...">
                 {props.contact_method}
             </td>
-            <td className="px-6 truncate ...">
+            <td className="px-6 truncate max-w-[195px] hover:max-w-[5000px] ...">
                 {props.discord_username}
             </td>
-            <td className="px-6 truncate ...">
+            <td className="px-6 truncate max-w-[195px] hover:max-w-[5000px] hover:cursor-pointer ..." onClick={idClick}>
                 {props.discord_id}
             </td>
             <td className="px-6 truncate ...">
@@ -139,7 +145,7 @@ const Donation = (props) => {
             <td className="px-6 truncate ...">
                 {props.currencies}
             </td>
-            <td className="px-6 truncate max-w-[250px] hover:max-w-[5000px] ...">
+            <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 {props.items}
             </td>
             <td className="px-6 truncate ...">
@@ -148,7 +154,6 @@ const Donation = (props) => {
 
             </td>
         </tr>
-
     );
 
 };
