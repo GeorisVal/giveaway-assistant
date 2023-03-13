@@ -3,7 +3,6 @@ import { useForm } from "@inertiajs/react";
 import React, {useState, useEffect} from "react";
 
 export default function Filters(props) {
-console.log(props.status);
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
     console.log(props);
@@ -20,7 +19,6 @@ console.log(props.status);
         scheduledprograms: props.status[9].visible,
         scheduledwebsite: props.status[10].visible,
     });
-    console.log(data);
     function submit(e) {
         e.preventDefault();
         for (const status of Object.keys(data)) {
