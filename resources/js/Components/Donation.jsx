@@ -133,16 +133,16 @@ const Donation = (props) => {
             <td className="px-6 truncate ...">
                 {props.contact_method}
             </td>
-            <td className="px-6 truncate max-w-[195px] hover:max-w-[5000px] ...">
+            <td className="px-6 truncate max-w-[215px] hover:max-w-[5000px] ...">
                 {props.discord_username}
             </td>
-            <td className="px-6 truncate max-w-[195px] hover:max-w-[5000px] hover:cursor-pointer ..." onClick={idClick}>
+            <td className="px-6 truncate max-w-[215px] hover:max-w-[5000px] hover:cursor-pointer ..." onClick={idClick}>
                 {props.discord_id}
             </td>
             <td className="px-6 truncate ...">
                 <a href={props.nookazon_link}>{props.nookazon_username}</a>
             </td>
-            <td className="px-6 truncate ...">
+            <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 {props.currencies}
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
