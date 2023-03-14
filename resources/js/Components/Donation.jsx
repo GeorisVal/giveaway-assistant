@@ -119,7 +119,7 @@ const Donation = (props) => {
             </td>
             <td className="pl-6 truncate ...">
                 <form id={"note" + props.id} onSubmit={handleNoteSubmit} className="flex flex-row">
-                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#e5e5e5]" onChange={e => setNote(e.target.value)} onBlur={handleNoteSubmit}/>
+                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#e5e5e5]" onChange={e => setNote(e.target.value)} onBlur={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit}/>
                     {/*<button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "flex items-center bg-green-200 ml-1 px-2 border-2 border-black invisible"}>✓</button>*/}
                 </form>
             </td>
