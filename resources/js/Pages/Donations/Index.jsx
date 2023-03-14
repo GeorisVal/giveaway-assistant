@@ -7,6 +7,7 @@ import Buttons from '@/Components/Buttons';
 // import Footer from '@/Components/Footer';
 import { Head, useForm } from '@inertiajs/react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Index( {donations, status, auth, link, platform} ) {
     return (

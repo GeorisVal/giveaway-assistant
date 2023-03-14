@@ -5,6 +5,8 @@ import Buttons from '@/Components/Buttons';
 import { Head, useForm } from '@inertiajs/react';
 import Responsive from '@/Components/Responsive';
 import FilterPlatform from "@/Components/PlatformList";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Index({ donations, platform }) {
     return (
@@ -14,6 +16,7 @@ export default function Index({ donations, platform }) {
                 <header>
                     <NavLink auth={{user: "logged"}}></NavLink>
                 </header>
+                <ToastContainer autoClose={1000} position={"top-center"}/>
                 <div className="max-md:hidden">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
