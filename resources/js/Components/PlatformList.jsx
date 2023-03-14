@@ -54,8 +54,8 @@ return (
         {show &&
             <form className="w-auto h-auto bg-white absolute top-[3em] left-[45em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-10" onSubmit={submit}>
                 <label className="mr-6">
-                    <Checkbox id="either" name="either" value={data.remember} checked={data["either"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Either</span>
+                    <Checkbox id="discord" name="discord" value={data.remember} checked={data["discord"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Discord</span>
                 </label>
                 <label>
                     <Checkbox id="programs" name="programs" value={data.remember}
@@ -67,9 +67,9 @@ return (
                     <span className="ml-2">website</span>
                 </label>
                 <label>
-                    <Checkbox id="discord" name="discord" value={data.remember}
-                              checked={data["discord"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Discord</span>
+                    <Checkbox id="either" name="either" value={data.remember}
+                              checked={data["either"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Either</span>
                 </label>
                     <p onClick={clearAll} className="bg-red-200 text-center cursor-pointer">Clear All</p>
                     <p onClick={checkAll} className="bg-green-200 text-center cursor-pointer">Check All</p>
