@@ -21,7 +21,8 @@ export default function Index( {donations, status, auth, link, platform} ) {
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black-550 uppercase bg-gray-50">
                     <tr>
-                        <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
+
                     </th>
                     <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Date
