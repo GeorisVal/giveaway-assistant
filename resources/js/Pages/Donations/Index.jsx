@@ -6,7 +6,7 @@ import NavLink from '@/Components/NavLink'
 import Buttons from '@/Components/Buttons';
 // import Footer from '@/Components/Footer';
 import { Head, useForm } from '@inertiajs/react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Index( {donations, status, auth, link, platform} ) {
     return (
@@ -17,9 +17,9 @@ export default function Index( {donations, status, auth, link, platform} ) {
                 <NavLink auth={auth} link={link}></NavLink>
             </header>
             <ToastContainer autoClose={1000} position={"top-center"}/>
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="relative overflow-x-scroll shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500">
-                    <thead className="text-xs text-black-550 uppercase bg-gray-50">
+                    <thead className="text-xs text-black-550 uppercase bg-gray-50 sticky top-0">
                     <tr>
                     <th scope="col" className="px-6 py-3">
 
