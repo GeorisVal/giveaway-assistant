@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import moment from 'moment';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Donation = (props) => {
     const notify = (content) => toast("Copied " + content + " to clipboard");
@@ -66,7 +66,6 @@ const Donation = (props) => {
     };
     const handleNoteSubmit = (e) => {
         e.preventDefault()
-        setItemz(false);
         axios
             .put("/api/donations/" + props.id, {
                 notes: note,
@@ -96,14 +95,14 @@ const Donation = (props) => {
                 {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
                 {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
                 {/*</a>*/}
-                <input type="checkbox" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
+                <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
             <td className="pr-6 truncate ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
             <td className="">
                 <form id={"form" + props.id}>
-                    <select name="status" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
+                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
                         <option value="Invalid">Invalid</option>
                         <option value="Did Not Respond">DNR</option>
                         <option value="Donator Contacted">Contacted</option>
@@ -140,7 +139,7 @@ const Donation = (props) => {
                 {props.discord_id}
             </td>
             <td className="px-6 truncate ...">
-                <a href={props.nookazon_link}>{props.nookazon_username}</a>
+                <a href={props.nookazon_link} tabIndex="-1">{props.nookazon_username}</a>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 {props.currencies}
@@ -149,7 +148,7 @@ const Donation = (props) => {
                 {props.items}
             </td>
             <td className="px-6 truncate ...">
-                <input type="date" min={today} className={props.schedule_date ? "border-[#e5e5e5] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                <input type="date" min={today} tabIndex="-1" className={props.schedule_date ? "border-[#e5e5e5] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
 
             </td>
