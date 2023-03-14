@@ -52,6 +52,16 @@ const Calendar = (props) => {
         }
 
     }
+    function calendarCaseColor (donation) {
+        switch (donation) {
+            case "Queued for Discord":
+                return "bg-[#d7ddf5]";
+            case "Queued for Website":
+                return "bg-[#d8f2df]";
+            case "Queued for Programs":
+                return "bg-[#fbecdd]"
+        }
+    }
 
     async function shoutoutClick() {
         await navigator.clipboard.writeText(formState.formatted_shoutout);
@@ -301,7 +311,7 @@ const Calendar = (props) => {
                                         ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
                                     {
                                     return (
-                                        <div className={(donation.status === "Queued for Discord" ? "bg-[#d7ddf5]" : "bg-[#d8f2df]") + " rounded-lg h-[99%] w-[99%] absolute"}>
+                                        <div className={calendarCaseColor(donation.status) + " rounded-lg h-[99%] w-[99%] absolute"}>
                                         </div>
                                     );
                                     }
