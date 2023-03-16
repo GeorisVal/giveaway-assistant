@@ -21,9 +21,9 @@ class DonationController extends Controller
             DB::table('donations')
                 ->join('status', 'donations.status', '=', 'status.status')
                 ->join('platform', 'donations.platform', '=', 'platform.platform')
+                ->orderByDesc('donations.timestamp')
                 ->where('status.visible', '=', 1)
                 ->where('platform.visible', '=', 1)
-                ->orderBy('donations.timestamp', 'desc')
                 ->get()
         ] + ['status' => DB::table('status')->get()] + ['platform' => DB::table('platform')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
     }
