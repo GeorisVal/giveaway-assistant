@@ -45,7 +45,7 @@ const Donation = (props) => {
                 return "bg-red-575 border-[#f9fafb]"
             case "Cancelled":
                 return "bg-red-575 border-[#f9fafb]"
-            case "Complete":
+            case "Completed":
                 return "bg-gris-550 border-[#f9fafb]"
             default:
                 return "bg-white border-[#f9fafb]"
@@ -111,7 +111,7 @@ const Donation = (props) => {
                         <option value="Queued for Website">Scheduled Web</option>
                         <option value="Queued for Discord">Scheduled Discord</option>
                         <option value="Queued for Programs">Scheduled Programs</option>
-                        <option value="Completed">Done</option>
+                        <option value="Completed">Completed</option>
                         <option value="Cancelled">Cancelled</option>
                         <option value=""></option>
                     </select>
