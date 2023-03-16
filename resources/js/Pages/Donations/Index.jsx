@@ -18,7 +18,7 @@ export default function Index( {donations, status, auth, link, platform} ) {
                 <NavLink auth={auth} link={link}></NavLink>
             </header>
             <ToastContainer autoClose={1000} position={"top-center"}/>
-            <div className="relative overflow-x-scroll overflow-y-scroll max-h-[68vh] shadow-md sm:rounded-lg">
+            <div className="relative overflow-x-scroll overflow-y-scroll max-h-[78vh] shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black-550 uppercase bg-gray-50 z-20 sticky top-0">
                     <tr>
