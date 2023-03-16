@@ -28,23 +28,23 @@ const Donation = (props) => {
         // console.log("read")
         switch (data.status) {
             case "Pending pick up":
-                return "bg-cream-550 border-[#f9fafb]"
+                return "bg-cream-550 border-[#f9fafb] py-1"
             case "Did Not Respond":
-                return "bg-red-575 border-[#f9fafb]"
+                return "bg-red-575 border-[#f9fafb] py-1"
             case "Queued for Programs":
-                return "bg-purple-550 border-[#f9fafb]"
+                return "bg-purple-550 border-[#f9fafb] py-1"
             case "Queued for Website":
-                return "bg-lightgreen-550 border-[#f9fafb]"
+                return "bg-lightgreen-550 border-[#f9fafb] py-1"
             case "Queued for Discord":
-                return "bg-discord-550 border-[#f9fafb]"
+                return "bg-discord-550 border-[#f9fafb] py-1"
             case "Donator Contacted":
-                return "bg-yellow-550 border-[#f9fafb]"
+                return "bg-yellow-550 border-[#f9fafb] py-1"
             case "Items Collected":
-                return "bg-orange-550 border-[#f9fafb]"
+                return "bg-orange-550 border-[#f9fafb] py-1"
             case "Invalid":
-                return "bg-red-575 border-[#f9fafb]"
+                return "bg-red-575 border-[#f9fafb] py-1"
             case "Cancelled":
-                return "bg-red-575 border-[#f9fafb]"
+                return "bg-red-575 border-[#f9fafb] py-1"
             case "Complete":
                 return "bg-gris-550 border-[#f9fafb]"
             default:
