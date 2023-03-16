@@ -3,231 +3,231 @@
     "file": "assets/ReactToastify-2a37359d.css",
     "src": "ReactToastify.css"
   },
-  "_ApplicationLogo-8aae0355.js": {
-    "file": "assets/ApplicationLogo-8aae0355.js",
+  "_ApplicationLogo-202cd73a.js": {
+    "file": "assets/ApplicationLogo-202cd73a.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Appointment-dc3791bb.js": {
-    "file": "assets/Appointment-dc3791bb.js",
+  "_Appointment-8dcb0cf4.js": {
+    "file": "assets/Appointment-8dcb0cf4.js",
     "imports": [
       "resources/js/app.jsx",
       "_moment-fbc5633a.js"
     ]
   },
-  "_Buttons-dbb97bfc.js": {
-    "file": "assets/Buttons-dbb97bfc.js",
+  "_Buttons-2faf9641.js": {
+    "file": "assets/Buttons-2faf9641.js",
     "imports": [
       "resources/js/app.jsx",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js"
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js"
     ]
   },
-  "_Checkbox-aec03bf7.js": {
-    "file": "assets/Checkbox-aec03bf7.js",
+  "_Checkbox-f9dc6a65.js": {
+    "file": "assets/Checkbox-f9dc6a65.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Donation-7c8f338b.js": {
-    "file": "assets/Donation-7c8f338b.js",
+  "_Donation-6743a0d0.js": {
+    "file": "assets/Donation-6743a0d0.js",
     "imports": [
       "resources/js/app.jsx",
       "_moment-fbc5633a.js",
-      "_react-toastify.esm-a6bd3ce6.js"
+      "_react-toastify.esm-9e57c519.js"
     ]
   },
-  "_GuestLayout-f2330d4e.js": {
-    "file": "assets/GuestLayout-f2330d4e.js",
+  "_GuestLayout-904d849e.js": {
+    "file": "assets/GuestLayout-904d849e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_ApplicationLogo-8aae0355.js"
+      "_ApplicationLogo-202cd73a.js"
     ]
   },
-  "_InputLabel-d274a981.js": {
-    "file": "assets/InputLabel-d274a981.js",
+  "_InputLabel-00f26839.js": {
+    "file": "assets/InputLabel-00f26839.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_NavLink-ee483a4f.js": {
-    "file": "assets/NavLink-ee483a4f.js",
+  "_NavLink-643a8492.js": {
+    "file": "assets/NavLink-643a8492.js",
     "imports": [
       "resources/js/app.jsx",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js"
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js"
     ]
   },
-  "_PlatformList-9afb3813.js": {
-    "file": "assets/PlatformList-9afb3813.js",
+  "_PlatformList-67c4e815.js": {
+    "file": "assets/PlatformList-67c4e815.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Checkbox-aec03bf7.js"
+      "_Checkbox-f9dc6a65.js"
     ]
   },
-  "_PrimaryButton-f483cb05.js": {
-    "file": "assets/PrimaryButton-f483cb05.js",
+  "_PrimaryButton-03494d1f.js": {
+    "file": "assets/PrimaryButton-03494d1f.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Responsive-2f54881c.js": {
-    "file": "assets/Responsive-2f54881c.js",
+  "_Responsive-05e5b405.js": {
+    "file": "assets/Responsive-05e5b405.js",
     "imports": [
       "resources/js/app.jsx",
-      "_NavLink-ee483a4f.js"
+      "_NavLink-643a8492.js"
     ]
   },
-  "_SecondaryButton-08ee3534.js": {
-    "file": "assets/SecondaryButton-08ee3534.js",
+  "_SecondaryButton-ac16e09d.js": {
+    "file": "assets/SecondaryButton-ac16e09d.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_TextInput-a680536f.js": {
-    "file": "assets/TextInput-a680536f.js",
+  "_TextInput-2f95fbf6.js": {
+    "file": "assets/TextInput-2f95fbf6.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_dialog-b2f367f4.js": {
-    "file": "assets/dialog-b2f367f4.js",
+  "_dialog-5e766cbd.js": {
+    "file": "assets/dialog-5e766cbd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_transition-85c95923.js"
+      "_transition-3cf1030a.js"
     ]
   },
   "_moment-fbc5633a.js": {
     "file": "assets/moment-fbc5633a.js"
   },
-  "_react-toastify.esm-a6bd3ce6.js": {
-    "file": "assets/react-toastify.esm-a6bd3ce6.js",
+  "_react-toastify.esm-9e57c519.js": {
+    "file": "assets/react-toastify.esm-9e57c519.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_transition-85c95923.js": {
-    "file": "assets/transition-85c95923.js",
+  "_transition-3cf1030a.js": {
+    "file": "assets/transition-3cf1030a.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-8d22a56c.css",
+    "file": "assets/app-953d7a65.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Pages/Appointments/Index.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Index-a510ec5f.js",
+    "file": "assets/Index-fb87c386.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Appointment-dc3791bb.js",
-      "_NavLink-ee483a4f.js",
-      "_Buttons-dbb97bfc.js",
-      "_Responsive-2f54881c.js",
+      "_Appointment-8dcb0cf4.js",
+      "_NavLink-643a8492.js",
+      "_Buttons-2faf9641.js",
+      "_Responsive-05e5b405.js",
       "_moment-fbc5633a.js",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js"
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Appointments/Index.jsx"
   },
   "resources/js/Pages/Auth/ConfirmPassword.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/ConfirmPassword-fa886f83.js",
+    "file": "assets/ConfirmPassword-04467c44.js",
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-f2330d4e.js",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_GuestLayout-904d849e.js",
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ConfirmPassword.jsx"
   },
   "resources/js/Pages/Auth/ForgotPassword.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/ForgotPassword-18ae9186.js",
+    "file": "assets/ForgotPassword-45e969e5.js",
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-f2330d4e.js",
-      "_TextInput-a680536f.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_GuestLayout-904d849e.js",
+      "_TextInput-2f95fbf6.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ForgotPassword.jsx"
   },
   "resources/js/Pages/Auth/Login.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Login-56ba76b8.js",
+    "file": "assets/Login-4ebf22f9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Checkbox-aec03bf7.js",
-      "_GuestLayout-f2330d4e.js",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_Checkbox-f9dc6a65.js",
+      "_GuestLayout-904d849e.js",
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Login.jsx"
   },
   "resources/js/Pages/Auth/Register.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Register-a044f0b1.js",
+    "file": "assets/Register-1e5c2a8d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-f2330d4e.js",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_GuestLayout-904d849e.js",
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Register.jsx"
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/ResetPassword-330fcf73.js",
+    "file": "assets/ResetPassword-f7b2ecd5.js",
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-f2330d4e.js",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_GuestLayout-904d849e.js",
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ResetPassword.jsx"
   },
   "resources/js/Pages/Auth/VerifyEmail.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/VerifyEmail-0dc9ce25.js",
+    "file": "assets/VerifyEmail-acf56b40.js",
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-f2330d4e.js",
-      "_PrimaryButton-f483cb05.js",
-      "_ApplicationLogo-8aae0355.js"
+      "_GuestLayout-904d849e.js",
+      "_PrimaryButton-03494d1f.js",
+      "_ApplicationLogo-202cd73a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/VerifyEmail.jsx"
@@ -235,19 +235,19 @@
   "resources/js/Pages/Calendar/Index.jsx": {
     "css": [
       "assets/ReactToastify-2a37359d.css",
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Index-010b2fa2.js",
+    "file": "assets/Index-3693384b.js",
     "imports": [
       "resources/js/app.jsx",
       "_moment-fbc5633a.js",
-      "_react-toastify.esm-a6bd3ce6.js",
-      "_dialog-b2f367f4.js",
-      "_transition-85c95923.js",
-      "_NavLink-ee483a4f.js",
-      "_Responsive-2f54881c.js",
-      "_SecondaryButton-08ee3534.js",
-      "_PrimaryButton-f483cb05.js"
+      "_react-toastify.esm-9e57c519.js",
+      "_dialog-5e766cbd.js",
+      "_transition-3cf1030a.js",
+      "_NavLink-643a8492.js",
+      "_Responsive-05e5b405.js",
+      "_SecondaryButton-ac16e09d.js",
+      "_PrimaryButton-03494d1f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Calendar/Index.jsx"
@@ -255,21 +255,21 @@
   "resources/js/Pages/Donations/Index.jsx": {
     "css": [
       "assets/ReactToastify-2a37359d.css",
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Index-5db677bd.js",
+    "file": "assets/Index-b116818e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Donation-7c8f338b.js",
-      "_Checkbox-aec03bf7.js",
-      "_PlatformList-9afb3813.js",
-      "_NavLink-ee483a4f.js",
-      "_Buttons-dbb97bfc.js",
-      "_react-toastify.esm-a6bd3ce6.js",
+      "_Donation-6743a0d0.js",
+      "_Checkbox-f9dc6a65.js",
+      "_PlatformList-67c4e815.js",
+      "_NavLink-643a8492.js",
+      "_Buttons-2faf9641.js",
+      "_react-toastify.esm-9e57c519.js",
       "_moment-fbc5633a.js",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js"
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Donations/Index.jsx"
@@ -277,116 +277,116 @@
   "resources/js/Pages/Donations/NoDate.jsx": {
     "css": [
       "assets/ReactToastify-2a37359d.css",
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/NoDate-0b798c95.js",
+    "file": "assets/NoDate-b4267c06.js",
     "imports": [
       "resources/js/app.jsx",
       "_moment-fbc5633a.js",
-      "_react-toastify.esm-a6bd3ce6.js",
-      "_NavLink-ee483a4f.js",
-      "_Buttons-dbb97bfc.js",
-      "_Responsive-2f54881c.js",
-      "_PlatformList-9afb3813.js",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js",
-      "_Checkbox-aec03bf7.js"
+      "_react-toastify.esm-9e57c519.js",
+      "_NavLink-643a8492.js",
+      "_Buttons-2faf9641.js",
+      "_Responsive-05e5b405.js",
+      "_PlatformList-67c4e815.js",
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js",
+      "_Checkbox-f9dc6a65.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Donations/NoDate.jsx"
   },
   "resources/js/Pages/Profile/Edit.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Edit-b6b53b31.js",
+    "file": "assets/Edit-5b909ec9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_ApplicationLogo-8aae0355.js",
-      "_NavLink-ee483a4f.js",
+      "_ApplicationLogo-202cd73a.js",
+      "_NavLink-643a8492.js",
       "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
       "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
       "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_dialog-b2f367f4.js"
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js",
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_dialog-5e766cbd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Edit.jsx"
   },
   "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/DeleteUserForm-10b32305.js",
+    "file": "assets/DeleteUserForm-3c7b2ea4.js",
     "imports": [
       "resources/js/app.jsx",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_transition-85c95923.js",
-      "_dialog-b2f367f4.js",
-      "_SecondaryButton-08ee3534.js"
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_transition-3cf1030a.js",
+      "_dialog-5e766cbd.js",
+      "_SecondaryButton-ac16e09d.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx"
   },
   "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/UpdatePasswordForm-dfd040e1.js",
+    "file": "assets/UpdatePasswordForm-a0f44bce.js",
     "imports": [
       "resources/js/app.jsx",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_transition-85c95923.js"
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_transition-3cf1030a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx"
   },
   "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/UpdateProfileInformationForm-2c43a5a2.js",
+    "file": "assets/UpdateProfileInformationForm-a1f2b6dc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_TextInput-a680536f.js",
-      "_InputLabel-d274a981.js",
-      "_PrimaryButton-f483cb05.js",
-      "_transition-85c95923.js"
+      "_TextInput-2f95fbf6.js",
+      "_InputLabel-00f26839.js",
+      "_PrimaryButton-03494d1f.js",
+      "_transition-3cf1030a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx"
   },
   "resources/js/Pages/Thanks.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
-    "file": "assets/Thanks-207069d0.js",
+    "file": "assets/Thanks-c0547ecb.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Donation-7c8f338b.js",
-      "_NavLink-ee483a4f.js",
-      "_Appointment-dc3791bb.js",
-      "_Responsive-2f54881c.js",
+      "_Donation-6743a0d0.js",
+      "_NavLink-643a8492.js",
+      "_Appointment-8dcb0cf4.js",
+      "_Responsive-05e5b405.js",
       "_moment-fbc5633a.js",
-      "_react-toastify.esm-a6bd3ce6.js",
-      "_transition-85c95923.js",
-      "_PrimaryButton-f483cb05.js",
-      "_SecondaryButton-08ee3534.js"
+      "_react-toastify.esm-9e57c519.js",
+      "_transition-3cf1030a.js",
+      "_PrimaryButton-03494d1f.js",
+      "_SecondaryButton-ac16e09d.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Thanks.jsx"
   },
   "resources/js/app.jsx": {
     "css": [
-      "assets/app-8d22a56c.css"
+      "assets/app-953d7a65.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Appointments/Index.jsx",
@@ -405,7 +405,7 @@
       "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
       "resources/js/Pages/Thanks.jsx"
     ],
-    "file": "assets/app-23652127.js",
+    "file": "assets/app-00c7c761.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
