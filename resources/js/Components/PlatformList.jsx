@@ -52,7 +52,7 @@ return (
     <>
         <p onClick={toggleFilters} className="cursor-default">platform ⇅</p>
         {show &&
-            <form className="w-auto h-auto bg-white absolute top-[3em] left-[45em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-10" onSubmit={submit}>
+            <form className="w-auto h-auto bg-white absolute top-[3em] left-[45em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-50" onSubmit={submit}>
                 <label className="mr-6">
                     <Checkbox id="discord" name="discord" value={data.remember} checked={data["discord"]} handleChange={onHandleChange} />
                     <span className="ml-2">Discord</span>
