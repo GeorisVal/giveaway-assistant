@@ -28,27 +28,27 @@ const Donation = (props) => {
         // console.log("read")
         switch (data.status) {
             case "Pending pick up":
-                return "bg-cream-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-cream-550 border-[#f9fafb]"
             case "Did Not Respond":
-                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-red-575 border-[#f9fafb]"
             case "Queued for Programs":
-                return "bg-purple-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-purple-550 border-[#f9fafb]"
             case "Queued for Website":
-                return "bg-lightgreen-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-lightgreen-550 border-[#f9fafb]"
             case "Queued for Discord":
-                return "bg-discord-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-discord-550 border-[#f9fafb]"
             case "Donator Contacted":
-                return "bg-yellow-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-yellow-550 border-[#f9fafb]"
             case "Items Collected":
-                return "bg-orange-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-orange-550 border-[#f9fafb]"
             case "Invalid":
-                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-red-575 border-[#f9fafb]"
             case "Cancelled":
-                return "bg-red-575 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-red-575 border-[#f9fafb]"
             case "Complete":
-                return "bg-gris-550 border-[#e5e5e5] py-1 truncate ..."
+                return "bg-gris-550 border-[#f9fafb]"
             default:
-                return "bg-white border-[#e5e5e5] py-1"
+                return "bg-white border-[#f9fafb]"
         }
     }
 
@@ -99,16 +99,16 @@ const Donation = (props) => {
     }
     return (
         <tr className={checkbox ? "bg-[#fffbab] border-b leading-tight" : "bg-white border-b leading-tight"}>
-            <td className="pl-6">
+            <td className="pl-6 sticky z-10 bg-white left-0">
                 {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
                 {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
                 {/*</a>*/}
                 <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
             </td>
-            <td className="pr-6 truncate ...">
+            <td className="pr-6 truncate z-10 bg-white sticky left-[3rem] ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
-            <td className="">
+            <td className="sticky z-10 left-[9.5rem]">
                 <form id={"form" + props.id}>
                     <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
                         <option value="Invalid">Invalid</option>
