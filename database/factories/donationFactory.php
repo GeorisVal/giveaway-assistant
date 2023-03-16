@@ -16,7 +16,7 @@ class donationFactory extends Factory
      */
     public function definition() {
         return [
-            'timestamp' => now(),
+            'timestamp' => fake()->dateTimeThisMonth(),
             'status' => fake()->randomElement(['Invalid', 'Did Not Respond', 'Donator Contacted', 'Pending pick up', 'Items Collected', 'Queued for Website', 'Queued for Discord', 'Queued for Programs', 'Completed', 'Cancelled', '']),
             'schedule_date' => fake()->randomElement([null, fake()->dateTimeThisMonth()]),
             'platform' => fake()->randomElement(['Discord', 'Website', 'Nookazon Programs (i.e. Streams, Contests, etc.)']),
