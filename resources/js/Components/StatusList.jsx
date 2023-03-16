@@ -73,7 +73,7 @@ return (
     <>
         <p onClick={toggleFilters} className="cursor-default">status ⇅</p>
         {show &&
-            <form className="w-auto h-auto bg-white absolute top-[3em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-50" onSubmit={submit}>
+            <form className="w-auto h-auto bg-white top-[11em] left-[8em] p-2 grid grid-cols-2 rounded-md border-2 gap-2 fixed z-50" onSubmit={submit}>
                 <label className="mr-6">
                     <Checkbox id="dnr" name="dnr" value={data.remember} checked={data["dnr"]} handleChange={onHandleChange} />
                     <span className="ml-2">DNR</span>
