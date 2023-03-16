@@ -18,20 +18,20 @@ export default function Index( {donations, status, auth, link, platform} ) {
                 <NavLink auth={auth} link={link}></NavLink>
             </header>
             <ToastContainer autoClose={1000} position={"top-center"}/>
-            <div className="relative overflow-x-scroll shadow-md sm:rounded-lg">
+            <div className="relative overflow-x-scroll overflow-y-scroll max-h-[68vh] shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500">
-                    <thead className="text-xs text-black-550 uppercase bg-gray-50 sticky top-0">
+                    <thead className="text-xs text-black-550 uppercase bg-gray-50 z-20 sticky top-0">
                     <tr>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-3 bg-gray-50 sticky left-0">
 
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
+                    <th scope="col" className="px-6 py-3 truncate bg-gray-50 sticky left-[3rem] cursor-default ...">
                         Date
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
+                    <th scope="col" className="px-6 py-3 truncate bg-gray-50 cursor-default sticky left-[9.5rem] ...">
                         <Filters status={status}/>
                     </th>
-                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
+                    <th scope="col" className="px-6 py-3 truncate cursor-default text-left...">
                         Notes
                     </th>
                     <th scope="col" className="px-6 py-3 truncate cursor-default ...">
