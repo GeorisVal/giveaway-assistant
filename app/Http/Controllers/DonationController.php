@@ -74,7 +74,7 @@ class DonationController extends Controller
     }
     public function updateAPI(Request $request, $id)
     {
-        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable']);
+        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable', 'items' => 'nullable', 'currencies' => 'nullable']);
         DB::table('donations')
             ->where('id', $id)
             ->update($data);
