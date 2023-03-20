@@ -115,14 +115,14 @@ const Donation = (props) => {
                 {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
                 {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
                 {/*</a>*/}
-                <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)} disabled={!props.auth.user.canEdit} />
+                <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)} disabled={!props.canEdit} />
             </td>
             <td className="pr-6 truncate z-10 bg-white sticky left-[3rem] ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
             <td className="sticky z-10 left-[9.5rem]">
                 <form id={"form" + props.id}>
-                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status() + " py-1 ml-[-2px] truncate ..."} onChange={handleStatusChange} disabled={!props.auth.user.canEdit}>
+                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status() + " py-1 ml-[-2px] truncate ..."} onChange={handleStatusChange} disabled={!props.canEdit}>
                         <option value="Invalid">Invalid</option>
                         <option value="Did Not Respond">DNR</option>
                         <option value="Donator Contacted">Contacted</option>
@@ -139,7 +139,7 @@ const Donation = (props) => {
             </td>
             <td className="pl-6 truncate ...">
                 <form id={"note" + props.id} onSubmit={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit} className="flex flex-row">
-                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setNote(e.target.value)} onBlur={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit} disabled={!props.auth.user.canEdit}/>
+                    <input type="text" defaultValue={props.notes} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setNote(e.target.value)} onBlur={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit} disabled={!props.canEdit}/>
                     {/*<button type="submit" id={"noteButton" + props.id} className={visibleButton ? "flex items-center bg-green-200 ml-1 px-2 border-2 border-black" : "flex items-center bg-green-200 ml-1 px-2 border-2 border-black invisible"}>✓</button>*/}
                 </form>
             </td>
@@ -172,7 +172,7 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 truncate ...">
-                <input type="date" min={today} tabIndex="-1" className={props.schedule_date ? "border-[#f9fafb] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.auth.user.canEdit}/>
+                <input type="date" min={today} tabIndex="-1" className={props.schedule_date ? "border-[#f9fafb] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
 
             </td>

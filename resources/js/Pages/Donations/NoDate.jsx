@@ -38,7 +38,7 @@ export default function Index({ donations, platform, auth }) {
                                 Notes
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
-                                <FilterPlatform platform={platform}/>
+                                {auth.user.canEdit ? <FilterPlatform platform={platform}/> : <p className="cursor-not-allowed">platform ⇅</p>}
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
                                 Shoutout ?

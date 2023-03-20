@@ -29,13 +29,13 @@ export default function Index( {donations, status, auth, link, platform} ) {
                         Date
                     </th>
                     <th scope="col" className="px-6 py-3 truncate bg-gray-50 cursor-default sticky left-[9.5rem] ...">
-                        <Filters status={status}/>
+                        {auth.user.canEdit ? <Filters status={status}/> : <p className="cursor-not-allowed">status ⇅</p>}
                     </th>
                     <th scope="col" className="px-6 py-3 truncate cursor-default text-left...">
                         Notes
                     </th>
                     <th scope="col" className="px-6 py-3 truncate cursor-default ...">
-                        <FilterPlatform platform={platform}/>
+                        {auth.user.canEdit ? <FilterPlatform platform={platform}/> : <p className="cursor-not-allowed">platform ⇅</p>}
                     </th>
                     <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Shoutout ?
@@ -65,7 +65,7 @@ export default function Index( {donations, status, auth, link, platform} ) {
                 </thead>
                 <tbody>
                 {donations.map((donation) =>
-                    <Donation key={donation.id} id={donation.id} timestamp={donation.timestamp} status={donation.status} notes={donation.notes} schedule_date={donation.schedule_date} platform={donation.platform} shoutout={donation.shoutout} contact_method={donation.contact_method} discord_username={donation.discord_username} discord_id={donation.discord_id} nookazon_username={donation.nookazon_username} nookazon_link={donation.nookazon_link} currencies={donation.currencies} items={donation.items} auth={auth}/>)}
+                    <Donation key={donation.id} id={donation.id} timestamp={donation.timestamp} status={donation.status} notes={donation.notes} schedule_date={donation.schedule_date} platform={donation.platform} shoutout={donation.shoutout} contact_method={donation.contact_method} discord_username={donation.discord_username} discord_id={donation.discord_id} nookazon_username={donation.nookazon_username} nookazon_link={donation.nookazon_link} currencies={donation.currencies} items={donation.items} canEdit={auth.user.canEdit}/>)}
                 </tbody>
             </table>
         </div>

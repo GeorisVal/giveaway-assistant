@@ -170,12 +170,12 @@ const Donation = (props) => {
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
-                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className="cursor-pointer" onClick={() => setEditCurrencies(true)}>{currencies.currencies}</p>}
+                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={() => props.canEdit ? setEditCurrencies(true) : setEditCurrencies(false)}>{currencies.currencies}</p>}
                 </form>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"items" + props.id} onSubmit={props.items === items.items ? () => setEditItems(false) : handleItemsChange} className="flex flex-row">
-                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className="cursor-pointer" onClick={() => setEditItems(true)}>{items.items}</p>}
+                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={() => props.canEdit ? setEditItems(true) : setEditItems(false)}>{items.items}</p>}
                 </form>
             </td>
         </tr>
