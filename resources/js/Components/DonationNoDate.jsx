@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import moment from 'moment';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Donation = (props) => {
     const notify = (content) => toast("Copied " + content + " to clipboard");
@@ -65,13 +65,6 @@ const Donation = (props) => {
                 // console.log(response);
             });
     };
-    function handleNoteBlur (baseNote) {
-        if (baseNote === note.note)
-        {console.log("Samesie")}
-    }
-    const doNothing = () => {
-        return;
-    }
     const handleNoteSubmit = (e) => {
         e.preventDefault()
         document.activeElement.blur()
@@ -103,14 +96,14 @@ const Donation = (props) => {
                 {/*<a href="#" className="font-medium text-lightgreen-500 hover:underline">*/}
                 {/*    <i className="fa-solid fa-pen-to-square"></i>*/}
                 {/*</a>*/}
-                <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)}/>
+                <input type="checkbox" tabIndex="-1" id={"checkbox"+props.id} onChange={e => setCheckbox(!checkbox)} disabled={!props.canEdit}/>
             </td>
             <td className="pr-6 truncate z-10 bg-white sticky left-[3rem] ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
             <td className="sticky z-10 left-[9.5rem]">
                 <form id={"form" + props.id}>
-                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange}>
+                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange} disabled={!props.canEdit}>
                         <option value="Invalid">Invalid</option>
                         <option value="Did Not Respond">DNR</option>
                         <option value="Donator Contacted">Contacted</option>
@@ -126,12 +119,12 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 truncate ...">
-                <input type="date" tabIndex="-1" min={today} className={props.schedule_date ? "py-1 border-[#e5e5e5]" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange}/>
+                <input type="date" tabIndex="-1" min={today} className={props.schedule_date ? "py-1 border-[#e5e5e5]" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
             <td className="pl-6 truncate ...">
                 <form id={"note" + props.id} onSubmit={handleNoteSubmit} className="flex flex-row">
-                    <input type="text" defaultValue={props.notes} className="leading-3 border-[#e5e5e5] py-1" onChange={e => setNote(e.target.value)} onBlur={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit}/>
+                    <input type="text" defaultValue={props.notes} className="leading-3 border-[#e5e5e5] py-1" onChange={e => setNote(e.target.value)} onBlur={props.notes === note.note ? () => console.log("If you see this, you are too curious.") : handleNoteSubmit} disabled={!props.canEdit}/>
                 </form>
             </td>
             <td className="px-6 truncate ...">
