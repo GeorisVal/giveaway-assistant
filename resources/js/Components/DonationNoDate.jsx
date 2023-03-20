@@ -9,7 +9,11 @@ const Donation = (props) => {
     const [data, setData] = React.useState({
         status: props.status,
     });
+    const [currencies, setCurrencies] = React.useState({currencies: props.currencies});
+    const [editCurrencies, setEditCurrencies] = React.useState(false)
     const [note, setNote] = React.useState({note: props.notes});
+    const [items, setItems] = React.useState({items: props.items});
+    const [editItems, setEditItems] = React.useState(false);
     {/*{moment(props.schedule_date).format('MMMM Do YYYY')}*/}
     const [visibleButton, setVisibleButton] = React.useState(false)
     const [checkbox, setCheckbox] = React.useState(0);
@@ -53,6 +57,25 @@ const Donation = (props) => {
     }
 
     const today = moment(new Date()).format("YYYY-MM-DD");
+
+    const handleItemsChange = (e) => {
+        e.preventDefault()
+        setEditItems(false)
+        setItems({items: items})
+        axios
+            .put("/api/donations/" + props.id, {
+                items: items,
+            })
+    }
+    const handleCurrenciesChange = (e) => {
+        setEditCurrencies(false)
+        e.preventDefault()
+        setCurrencies({currencies: currencies})
+        axios
+            .put("/api/donations/" + props.id, {
+                currencies: currencies,
+            })
+    }
 
     const handleStatusChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -152,11 +175,15 @@ const Donation = (props) => {
             <td className="px-6 truncate ...">
                 <a href={props.nookazon_link} tabIndex="-1">{props.nookazon_username}</a>
             </td>
-            <td className="px-6 truncate max-w-[250px] hover:max-w-[5000px] ...">
-                {props.currencies}
+            <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
+                <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
+                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className="cursor-pointer" onClick={() => setEditCurrencies(true)}>{currencies.currencies}</p>}
+                </form>
             </td>
-            <td className="px-6 truncate max-w-[250px] hover:max-w-[5000px] ...">
-                {props.items}
+            <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
+                <form id={"items" + props.id} onSubmit={props.items === items.items ? () => setEditItems(false) : handleItemsChange} className="flex flex-row">
+                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className="cursor-pointer" onClick={() => setEditItems(true)}>{items.items}</p>}
+                </form>
             </td>
         </tr>
 
