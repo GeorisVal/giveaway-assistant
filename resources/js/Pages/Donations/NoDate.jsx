@@ -31,7 +31,7 @@ export default function Index({ donations, platform, auth }) {
                             <th scope="col" className="px-6 py-3 truncate bg-gray-50 cursor-default sticky left-[9.5rem] ...">
                                 Status
                             </th>
-                            <th scope="col" className="px-6 py-3 truncate ...">
+                            <th scope="col" className="px-6 py-3 truncate bg-gray-50 cursor-default sticky left-[23.2rem] ...">
                                 Scheduled date
                             </th>
                             <th scope="col" className="px-6 py-3 truncate ...">
