@@ -21,10 +21,12 @@ const Donation = (props) => {
         switch (props.shoutout) {
             case "Yes - Shout out my Nookazon account":
                 return "Yes - Nookazon"
-            case "Yes - shout out my Discord account":
+            case "Yes - Shout out my Discord account":
                 return "Yes - Discord"
-            default:
+            case "No - I would like to remain anonymous":
                 return "No"
+            default:
+                return "Something went wrong"
         }
     }
     const status = () => {
