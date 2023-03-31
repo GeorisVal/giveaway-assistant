@@ -22,10 +22,12 @@ const Donation = (props) => {
         switch (props.shoutout) {
             case "Yes - Shout out my Nookazon account":
                 return "Yes - Nookazon"
-            case "Yes - shout out my Discord account":
+            case "Yes - Shout out my Discord account":
                 return "Yes - Discord"
-            default:
+            case "No - I would like to remain anonymous":
                 return "No"
+            default:
+                return "Something went wrong"
         }
     }
     const status = () => {
@@ -124,7 +126,7 @@ const Donation = (props) => {
             <td className="pr-6 truncate z-10 bg-white sticky left-[3rem] ...">
                 {moment(props.timestamp).format("DD-MM-YYYY")}
             </td>
-            <td className="sticky z-10 left-[9.5rem]">
+            <td className="sticky z-10 left-[9.5rem] bg-white px-2">
                 <form id={"form" + props.id}>
                     <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange} disabled={!props.canEdit}>
                         <option value="Invalid">Invalid</option>
@@ -141,7 +143,7 @@ const Donation = (props) => {
                     </select>
                 </form>
             </td>
-            <td className="px-6 truncate ...">
+            <td className="sticky z-10 left-[23.2rem] bg-white px-3">
                 <input type="date" tabIndex="-1" min={today} className={props.schedule_date ? "py-1 border-[#e5e5e5]" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
