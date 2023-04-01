@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nookazon_username')->nullable();
             $table->string('discord_username')->nullable();
             $table->date('appointment_date');
-            $table->time('appointment_time');
+            $table->time('appointment_time_start');
+            $table->time('appointment_time_end');
             $table->string('contact_method');
             $table->string('appointment_type')->nullable();
             $table->dateTime('updated_at')->nullable();
