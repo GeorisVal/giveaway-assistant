@@ -23,6 +23,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('google_id')->nullable();
             $table->boolean('canEdit')->default(false);
+            $table->boolean('verified')->default(false);
+            $table->boolean('isAdmin')->default(false);
         });
     }
 
