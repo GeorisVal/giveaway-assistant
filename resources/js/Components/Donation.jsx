@@ -101,6 +101,23 @@ const Donation = (props) => {
         await notify(props.discord_username + "'s ID ");
     }
 
+    async function clickHandlerItems(e) {
+        if (!props.canEdit) {return}
+        if (e.shiftKey) {setEditItems(true)}
+        else {
+            await navigator.clipboard.writeText(props.items);
+            await notify('"' + props.items + '"');
+        }
+    }
+    async function clickHandlerCurrency(e) {
+        if (!props.canEdit) {return}
+        if (e.shiftKey) {setEditCurrencies(true)}
+        else {
+            await navigator.clipboard.writeText(props.currencies);
+            await notify('"' + props.currencies + '"');
+        }
+    }
+
     const handleDateChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
         axios
@@ -165,12 +182,12 @@ const Donation = (props) => {
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
-                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className="cursor-pointer" onClick={() => setEditCurrencies(true)}>{currencies.currencies}</p>}
+                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-text"} onClick={clickHandlerCurrency}>{currencies.currencies}</p>}
                 </form>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"items" + props.id} onSubmit={props.items === items.items ? () => setEditItems(false) : handleItemsChange} className="flex flex-row">
-                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className="cursor-pointer" onClick={() => setEditItems(true)}>{items.items}</p>}
+                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-text"} onClick={clickHandlerItems}>{items.items}</p>}
                 </form>
             </td>
             <td className="px-6 truncate ...">

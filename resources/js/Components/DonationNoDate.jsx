@@ -115,6 +115,28 @@ const Donation = (props) => {
         await navigator.clipboard.writeText(props.discord_id);
         await notify(props.discord_username + "'s ID ");
     }
+
+    async function clickHandlerItems(e) {
+        if (!props.canEdit) {return}
+        if (e.shiftKey) {
+            setEditItems(true)
+        }
+        else {
+            await navigator.clipboard.writeText(props.items);
+            await notify('"' + props.items + '"');
+        }
+    }
+    async function clickHandlerCurrency(e) {
+        if (!props.canEdit) {return}
+        if (e.shiftKey) {
+            setEditCurrencies(true)
+        }
+        else {
+            await navigator.clipboard.writeText(props.currencies);
+            await notify('"' + props.currencies + '"');
+        }
+    }
+
     return (
         <tr className={checkbox ? "bg-[#fffbab] border-b leading-tight" : "bg-white border-b leading-tight"}>
             <td className="pl-6 sticky z-10 bg-white left-0">
@@ -172,12 +194,12 @@ const Donation = (props) => {
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
-                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={() => props.canEdit ? setEditCurrencies(true) : setEditCurrencies(false)}>{currencies.currencies}</p>}
+                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={clickHandlerCurrency}>{currencies.currencies}</p>}
                 </form>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"items" + props.id} onSubmit={props.items === items.items ? () => setEditItems(false) : handleItemsChange} className="flex flex-row">
-                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={() => props.canEdit ? setEditItems(true) : setEditItems(false)}>{items.items}</p>}
+                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-default"} onClick={clickHandlerItems}>{items.items}</p>}
                 </form>
             </td>
         </tr>
