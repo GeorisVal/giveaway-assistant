@@ -47,23 +47,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth']);
-Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth']);
+Route::resource('/donations', \App\Http\Controllers\DonationController::class)->only(['index', 'update'])->middleware(['auth', 'manualverified']);
+Route::get('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'indexNoDate'])->name('indexNoDate')->middleware(['auth', 'manualverified']);
 Route::put('/donations-nodate', [\App\Http\Controllers\DonationController::class, 'update']);
-Route::get('/donations-scheduled', [\App\Http\Controllers\DonationController::class, 'indexScheduled'])->name('scheduled')->middleware(['auth']);
+Route::get('/donations-scheduled', [\App\Http\Controllers\DonationController::class, 'indexScheduled'])->name('scheduled')->middleware(['auth', 'manualverified']);
 Route::put('/donations-scheduled', [\App\Http\Controllers\DonationController::class, 'update']);
 Route::patch('/donations-status/send', [\App\Http\Controllers\DonationController::class, 'updateStatusVisibility']);
 
-Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth']);
+Route::resource('/appointments', \App\Http\Controllers\AppointmentsController::class)->only(['index', 'store'])->middleware(['auth', 'manualverified']);
 
-Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar');
+Route::get('/', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('calendar')->middleware('manualverified');
 
 Route::get('/test', [\App\Http\Controllers\AppointmentsController::class, 'calendarPage'])->name('test')->middleware('signed');
 
-Route::get('/generate', [\App\Http\Controllers\TokenController::class, 'generateLink'])->middleware('auth');
+Route::get('/generate', [\App\Http\Controllers\TokenController::class, 'generateLink'])->middleware(['auth', 'manualverified']);
 
 Route::get('/thanks', function () {
     return Inertia::render('Thanks');
 })->name('thanks');
+
+Route::get('/pending', function () {return Inertia::render('OnHold');})->name('pending');
 
 require __DIR__.'/auth.php';
