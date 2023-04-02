@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useState} from "react";
 import axios from "axios";
 import moment from "moment";
-import { Dialog, Transition } from "@headlessui/react";
-import { ToastContainer, toast } from 'react-toastify';
+import {Dialog, Transition} from "@headlessui/react";
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Calendar = (props) => {
@@ -33,7 +33,8 @@ const Calendar = (props) => {
         nookazon_username: "",
         nookazon_link: "",
         formatted_shoutout: "",
-        currencies: ""
+        currencies: "",
+        where: ""
     })
     // useEffect(() => {
     //     const timer = mouseOver && setTimeout(onTimeout, 500);
@@ -45,7 +46,7 @@ const Calendar = (props) => {
         switch (shoutout) {
             case "Yes - Shout out my Nookazon account":
                 return nookname + " (" + nooklink + ")"
-            case "Yes - shout out my Discord account":
+            case "Yes - Shout out my Discord account":
                 return discname + " (<@" + discid + ">)"
             default:
                 return "Anonymous Donor"
@@ -63,6 +64,11 @@ const Calendar = (props) => {
         }
     }
 
+    function isDiscord (entry) {
+        let string = entry.toString();
+        return string.includes("Discord")
+    }
+
     async function shoutoutClick() {
         await navigator.clipboard.writeText(formState.formatted_shoutout);
         await notify("shoutout");
@@ -74,6 +80,10 @@ const Calendar = (props) => {
     async function CurrenciesClick() {
         await navigator.clipboard.writeText(formState.currencies);
         await notify("NMT/Bells");
+    }
+    async function messageClick() {
+        await navigator.clipboard.writeText("Shout out to " + formState.formatted_shoutout + " for sponsoring this giveaway! \n\n Winner will be contacted by <@339868596589035527> once rolled! \n\n <@&709538031459237968> By entering our giveaway, you are agreeing to the giveaway terms found here: https://bit.ly/NookazonSweepstakes \n\n To be notified (or stop receiving notifications) of future giveaways head on over to <#698965706254974987> and press the 📆! \n\n > *🎁 Interested in sponsoring a giveaway? Please fill out the form linked in <#698965706254974987>*")
+        await notify("Discord copypasta")
     }
 
     function clickHandler(e, day) {
@@ -99,6 +109,7 @@ const Calendar = (props) => {
             let nookazon_username = [];
             let nookazon_link = [];
             let shoutout_formatted = [];
+            let status = [];
             Object.keys(results).forEach(key => {
                 items.push(results[key].items);
                 shoutout.push(results[key].shoutout);
@@ -108,8 +119,8 @@ const Calendar = (props) => {
                 nookazon_username.push(results[key].nookazon_username);
                 nookazon_link.push(results[key].nookazon_link);
                 shoutout_formatted.push(formatShoutout(results[key].shoutout, results[key].nookazon_username, results[key].nookazon_link, results[key].discord_username, results[key].discord_id));
+                status.push(results[key].status)
             })
-            console.log(results[0]);
             // donations.map((donation) => {
             setFormState({
                 scheduled_date: results[0].schedule_date,
@@ -123,7 +134,8 @@ const Calendar = (props) => {
                 nookazon_username: nookazon_username,
                 nookazon_link: nookazon_link,
                 currencies: currencies.join(', '),
-                formatted_shoutout: shoutout_formatted.join("\n")
+                formatted_shoutout: shoutout_formatted.join(" and "),
+                where: status
             });
             // setShiftDayClicked(true);
             //console.log(donations[index].schedule_date);
@@ -253,7 +265,6 @@ const Calendar = (props) => {
             email: e.target.email.value,
             appointment_type: "donor",
         };
-        console.log(data);
         axios.post("/api/appointments", data).then((res) => {
             setAppointments(res.data[0]);
         });
@@ -650,7 +661,6 @@ const Calendar = (props) => {
                                                 placeholder="Image link..."
                                                 name="giveaway_img_link"
                                                 defaultValue={formState.imglink}
-                                                required
                                             />
                                         </div>
                                         <div className="mb-6">
@@ -707,6 +717,8 @@ const Calendar = (props) => {
                                         >
                                             Submit
                                         </button>
+                                        <span className={!isDiscord(formState.where) ? "hidden" : "" + " text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Discord Message</span>
+                                        <p>{isDiscord(formState.where)}</p>
                                     </form>
                                 </div>
                             </div>
