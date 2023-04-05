@@ -61,6 +61,9 @@ export default function Index( {donations, status, auth, link, platform} ) {
                     <th scope="col" className="px-6 py-3 truncate cursor-default ...">
                         Scheduled date
                     </th>
+                    <th scope="col" className="px-6 py-3 truncate cursor-default ...">
+                        Split
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
