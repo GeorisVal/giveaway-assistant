@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/donations', [DonationController::class, 'indexAPI']);
 Route::get('/donations/{id}', [DonationController::class, 'showAPI']);
 Route::put('/donations/{id}', [DonationController::class, 'updateAPI']);
+Route::post('/donations/split', [DonationController::class, 'splitAPI']);
 Route::get('/donations-status', [DonationController::class, 'statusAPI']);
 Route::put('/donations-status/{status}', [DonationController::class, 'updateStatusVisibilityAPI']);
 Route::put('/donations-platform/{platform}', [DonationController::class, 'updatePlatformVisibilityAPI']);
