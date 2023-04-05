@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import moment from 'moment';
 import { toast, ToastContainer } from 'react-toastify';
+import Split from "@/Components/Split";
 
 const Donation = (props) => {
     const notify = (content) => toast("Copied " + content + " to clipboard");
@@ -55,7 +56,6 @@ const Donation = (props) => {
                 return "bg-white border-[#f9fafb]"
         }
     }
-
     const today = moment(new Date()).format("YYYY-MM-DD");
 
     const handleItemsChange = (e) => {
@@ -193,7 +193,9 @@ const Donation = (props) => {
             <td className="px-6 truncate ...">
                 <input type="date" min={today} tabIndex="-1" className={props.schedule_date ? "border-[#f9fafb] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
-
+            </td>
+            <td className={props.canEdit ? "" : "hidden" + " px-6 truncate ..."}>
+                <Split props={props}/>
             </td>
         </tr>
     );
