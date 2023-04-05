@@ -5,7 +5,6 @@ import React, {useState, useEffect} from "react";
 export default function Filters(props) {
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
-    console.log(props);
     const { data, setData } = useForm({
         nostatus: props.status[0].visible,
         cancelled: props.status[1].visible,

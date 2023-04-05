@@ -3,7 +3,6 @@ import { useForm } from "@inertiajs/react";
 import React, {useState, useEffect} from "react";
 
 export default function FilterPlatform(props) {
-console.log(props.platform);
     const [show, setShow] = useState(false);
     const toggleFilters = () => setShow(!show);
     const { data, setData } = useForm({
