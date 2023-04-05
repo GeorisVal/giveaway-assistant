@@ -103,6 +103,11 @@ class DonationController extends Controller
             ->where('schedule_date', $date)
             ->update($data);
     }
+
+    public function splitAPI(Request $request)
+    {
+        dd($request);
+    }
     /**
      * Show the form for creating a new resource.
      *
