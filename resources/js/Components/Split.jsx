@@ -101,11 +101,11 @@ export default function Split(props) {
                                     <h2 className="font-bold">Base Items</h2>
                                     <p className="pb-4">{prop.items}</p>
                                     <form onSubmit={handleSubmit}>
-                                        <label htmlFor="split_items" className="font-bold">New Items</label><br />
-                                        <input type="text" id="split_items" defaultValue={data.items} onChange={(e) => handleItemsChange(e)} className="w-full" />
-                                        <br />
-                                        <label htmlFor="split_currencies" className="font-bold">NMT/Bells</label> <br />
+                                        <label htmlFor="split_currencies" className="font-bold">New NMT/Bells</label><br />
                                         <input type="text" id="split_currencies" defaultValue={data.currencies} onChange={(e) => handleCurrencyChange(e)} className="w-full" />
+                                        <br />
+                                        <label htmlFor="split_items" className="font-bold">New Items</label> <br />
+                                        <input type="text" id="split_items" defaultValue={data.items} onChange={(e) => handleItemsChange(e)} className="w-full" />
                                         <br />
                                         <label htmlFor="dropdown" className="font-bold">Number of Lines</label> <br />
                                         <select name="dropdown" id="dropdown" defaultValue={data.lines} onChange={(e) => handleLineChange(e)}>
