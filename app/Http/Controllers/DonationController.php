@@ -106,7 +106,22 @@ class DonationController extends Controller
 
     public function splitAPI(Request $request)
     {
-        dd($request);
+        $lines = $request['lines'];
+        for ($i = 1; $lines >= $i; $i++) {
+            DB::table('donations')->insert([
+                'timestamp' => $request['timestamp'],
+                'status' => '',
+                'platform' => $request['platform'],
+                'shoutout' => $request['shoutout'],
+                'contact_method' => $request['contact_method'],
+                'discord_username' => $request['discord_username'],
+                'discord_id' => $request['discord_id'],
+                'nookazon_username' => $request['nookazon_username'],
+                'nookazon_link' => $request['nookazon_link'],
+                'currencies' => $request['currencies'],
+                'items' => $request['items']
+            ]);
+        }
     }
     /**
      * Show the form for creating a new resource.

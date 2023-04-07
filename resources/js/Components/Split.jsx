@@ -50,7 +50,7 @@ export default function Split(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("/donations/split", data)
+            .post("/api/donations-split", data)
             .then((res) => {console.log(res)});
             setSplit(false);
     }
