@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 
 export default function Filters(props) {
     const [show, setShow] = useState(false);
+    console.log(props.status);
     const toggleFilters = () => setShow(!show);
     const { data, setData } = useForm({
         nostatus: props.status[0].visible,
@@ -17,6 +18,7 @@ export default function Filters(props) {
         scheduleddiscord: props.status[8].visible,
         scheduledprograms: props.status[9].visible,
         scheduledwebsite: props.status[10].visible,
+        splitted: props.status[11].visible
     });
     function submit(e) {
         e.preventDefault();
@@ -46,7 +48,8 @@ export default function Filters(props) {
                 pending: false,
                 scheduleddiscord: false,
                 scheduledprograms: false,
-                scheduledwebsite: false
+                scheduledwebsite: false,
+                splitted: false
             }
         )
     }
@@ -63,7 +66,8 @@ export default function Filters(props) {
                 pending: true,
                 scheduleddiscord: true,
                 scheduledprograms: true,
-                scheduledwebsite: true
+                scheduledwebsite: true,
+                splitted: true
             }
         )
     }
@@ -115,9 +119,13 @@ return (
                     <Checkbox id="cancelled" name="cancelled" value={data.remember} checked={data["cancelled"]} handleChange={onHandleChange} />
                     <span className="ml-2">Cancelled</span>
                 </label>
-                <label className="col-span-2 text-center">
+                <label className="mr-6">
                     <Checkbox id="nostatus" name="nostatus" value={data.remember} checked={data["nostatus"]} handleChange={onHandleChange} />
                     <span className="ml-2">No Status</span>
+                </label>
+                <label>
+                    <Checkbox id="splitted" name="splitted" value={data.remember} checked={data["splitted"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Splitted</span>
                 </label>
                     <p onClick={clearAll} className="bg-red-200 text-center cursor-pointer">Clear All</p>
                     <p onClick={checkAll} className="bg-green-200 text-center cursor-pointer">Check All</p>
