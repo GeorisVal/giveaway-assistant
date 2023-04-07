@@ -143,6 +143,7 @@ const Donation = (props) => {
                 <form id={"form" + props.id}>
                     <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status() + " py-1 ml-[-2px] truncate ..."} onChange={handleStatusChange} disabled={!props.canEdit}>
                         <option value="Invalid">Invalid</option>
+                        <option value="Splitted">Splitted</option>
                         <option value="Did Not Respond">DNR</option>
                         <option value="Donator Contacted">Contacted</option>
                         <option value="Pending pick up">Pending Pickup</option>
