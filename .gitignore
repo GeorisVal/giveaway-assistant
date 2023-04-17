@@ -18,3 +18,8 @@ yarn-error.log
 /.vscode
 /app/google-calendar/oauth-credentials.json
 /app/google-calendar/service-account-credentials.json
+*.csr
+*.key
+/.env.good
+/.env.prod
+/.env.local

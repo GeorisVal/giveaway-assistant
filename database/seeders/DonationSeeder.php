@@ -14,6 +14,9 @@ class DonationSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\donation::factory(10)->create();
+        \App\Models\donation::factory(25)->create();
+        // \App\Models\donation::factory()->create([
+        //     'discord_id' => 'this is just a random length of string'
+        // ]);
     }
 }

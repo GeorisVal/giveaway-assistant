@@ -20,9 +20,12 @@ class DonationController extends Controller
         return Inertia::render('Donations/Index', ['donations' =>
             DB::table('donations')
                 ->join('status', 'donations.status', '=', 'status.status')
-                ->where('visible', '=', 1)
+                ->join('platform', 'donations.platform', '=', 'platform.platform')
+                ->where('status.visible', '=', 1)
+                ->where('platform.visible', '=', 1)
+                ->orderBy('donations.timestamp')
                 ->get()
-        ] + ['status' => DB::table('status')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
+        ] + ['status' => DB::table('status')->get()] + ['platform' => DB::table('platform')->get()] + ['link' => URL::temporarySignedRoute('test', now()->addMinutes(2))]);
     }
     /**
      * Display a listing of the resource.
@@ -31,11 +34,20 @@ class DonationController extends Controller
      */
     public function indexNoDate()
     {
-        return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')
+        return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')->join('platform', 'donations.platform', '=', 'platform.platform')
             ->where('status', '=', 'Queued for Website')->where('schedule_date', '=', null)
             ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '=', null)
             ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '=', null)
-            ->get()]);
+            ->get()] + ['platform' => DB::table('platform')->get()]);
+    }
+
+    public function indexScheduled()
+    {
+        return Inertia::render('Donations/NoDate', ['donations' => DB::table('donations')->join('platform', 'donations.platform', '=', 'platform.platform')
+            ->where('status', '=', 'Queued for Website')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
+            ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
+            ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
+            ->get()] + ['platform' => DB::table('platform')->get()]);
     }
 
     public function indexAPI()
@@ -62,7 +74,7 @@ class DonationController extends Controller
     }
     public function updateAPI(Request $request, $id)
     {
-        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable']);
+        $data = $request->validate(['status' => 'nullable', 'notes' => 'nullable', 'schedule_date' => 'nullable', 'items' => 'nullable', 'currencies' => 'nullable']);
         DB::table('donations')
             ->where('id', $id)
             ->update($data);
@@ -71,6 +83,11 @@ class DonationController extends Controller
     {
         $data = $request->validate(['visible' => 'required']);
         DB::table('status')->where('slug', $status)->update($data);
+    }
+    public function updatePlatformVisibilityAPI(Request $request, $status)
+    {
+        $data = $request->validate(['visible' => 'required']);
+        DB::table('platform')->where('slug', $status)->update($data);
     }
     public function updateStatusVisibility(Request $request)
     {
@@ -85,6 +102,26 @@ class DonationController extends Controller
         DB::table('donations')
             ->where('schedule_date', $date)
             ->update($data);
+    }
+
+    public function splitAPI(Request $request)
+    {
+        $lines = $request['lines'];
+        for ($i = 1; $lines >= $i; $i++) {
+            DB::table('donations')->insert([
+                'timestamp' => $request['timestamp'],
+                'status' => '',
+                'platform' => $request['platform'],
+                'shoutout' => $request['shoutout'],
+                'contact_method' => $request['contact_method'],
+                'discord_username' => $request['discord_username'],
+                'discord_id' => $request['discord_id'],
+                'nookazon_username' => $request['nookazon_username'],
+                'nookazon_link' => $request['nookazon_link'],
+                'currencies' => $request['currencies'],
+                'items' => $request['items']
+            ]);
+        }
     }
     /**
      * Show the form for creating a new resource.
