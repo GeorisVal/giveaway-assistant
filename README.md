@@ -11,7 +11,7 @@ It helps them for intern organization.
 
 The project also contains the ability to make forms to collect informations the easiest way about players.
 
-*(You can see the finish project here.)*
+You can see the finish project [here](https://www.nookazongiveawayplanner.live/).
 
 ## **Who did this project ?**
 ![Team members](https://github.com/l4ur4nn3/giveaway-assistant/blob/master/resources/Untitled.png?raw=true)
