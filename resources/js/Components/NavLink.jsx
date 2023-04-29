@@ -28,6 +28,13 @@ export default function NavLink(props) {
                         <div className="block w-auto max-md:hidden" id="navbar-default">
                             <ul className="flex flex-row p-4 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-100">
                                 <li>
+                                    <a href="https://docs.google.com/spreadsheets/d/1S4_yGtCH_6VjcLTU3xxzBjwDpqDEHMJ06Nyivi7_ngo" target="_blank">
+                                        <PrimaryButton>
+                                            Customer Support Sheet
+                                        </PrimaryButton>
+                                    </a>
+                                </li>
+                                <li>
                                     <Dropdown.Link href={route('calendar')} aria-current="page">
                                         <PrimaryButton>
                                             Calendar
