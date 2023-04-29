@@ -151,7 +151,9 @@ const Donation = (props) => {
                         <option value="Queued for Website">Scheduled Web</option>
                         <option value="Queued for Discord">Scheduled Discord</option>
                         <option value="Queued for Programs">Scheduled Programs</option>
+                        <option value="Giveaway Live">Giveaway Live</option>
                         <option value="Completed">Completed</option>
+                        <option value="Winner Contacted">Winner Contacted</option>
                         <option value="Cancelled">Cancelled</option>
                         <option value=""></option>
                     </select>
@@ -179,7 +181,7 @@ const Donation = (props) => {
                 {props.discord_id}
             </td>
             <td className="px-6 truncate ...">
-                <a href={props.nookazon_link} tabIndex="-1">{props.nookazon_username}</a>
+                <a href={props.nookazon_link} tabIndex="-1" target="_blank">{props.nookazon_username}</a>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
@@ -192,7 +194,7 @@ const Donation = (props) => {
                 </form>
             </td>
             <td className="px-6 truncate ...">
-                <input type="date" min={today} tabIndex="-1" className={props.schedule_date ? "border-[#f9fafb] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
+                <input type="date" tabIndex="-1" className={props.schedule_date ? "border-[#f9fafb] py-1" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
             <td className={props.canEdit ? "" : "hidden" + " px-6 truncate ..."}>
