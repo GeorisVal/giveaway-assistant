@@ -82,8 +82,14 @@ const Calendar = (props) => {
         await notify("NMT/Bells");
     }
     async function messageClick() {
-        await navigator.clipboard.writeText("Shout out to " + formState.formatted_shoutout + " for sponsoring this giveaway! \n\n Winner will be contacted by <@339868596589035527> once rolled! \n\n <@&709538031459237968> By entering our giveaway, you are agreeing to the giveaway terms found here: https://bit.ly/NookazonSweepstakes \n\n To be notified (or stop receiving notifications) of future giveaways head on over to <#698965706254974987> and press the 📆! \n\n > *🎁 Interested in sponsoring a giveaway? Please fill out the form linked in <#698965706254974987>*")
-        await notify("Discord copypasta")
+        if (formState.where == "Queued for Discord" || formState.where == "Queued for Discord,Queued for Discord" || formState.where == "Queued for Discord,Queued for Discord,Queued for Discord") {
+            await navigator.clipboard.writeText("Shout out to " + formState.formatted_shoutout + " for sponsoring this giveaway! \n\n Winner will be contacted by <@339868596589035527> once rolled! \n\n <@&709538031459237968> By entering our giveaway, you are agreeing to the giveaway terms found here: https://bit.ly/NookazonSweepstakes \n\n To be notified (or stop receiving notifications) of future giveaways head on over to <#698965706254974987> and press the 📆! \n\n > *🎁 Interested in sponsoring a giveaway? Please fill out the form linked in <#698965706254974987>*")
+            await notify("Discord copypasta")
+        }
+        else {
+            await navigator.clipboard.writeText(formState.description + "\n \n Thanks to " + formState.formatted_shoutout + " for sponsoring this giveaway !")
+            await notify("Website copypasta")
+        }
     }
 
     function clickHandler(e, day) {
@@ -644,6 +650,7 @@ const Calendar = (props) => {
                                                    id="giveaway-title"
                                                    className="text-xl border-white w-full font-bold leading-6 text-sapin-500 text-center p-2"
                                                    defaultValue={!formState.title ? "Giveaway Title" : formState.title}
+                                                   onChange={e => setFormState(formState => ({...formState, title: e.target.value}))}
                                                    name="giveaway_title"
                                                    required/>
                                         </div>
@@ -717,7 +724,7 @@ const Calendar = (props) => {
                                         >
                                             Submit
                                         </button>
-                                        <span className={!isDiscord(formState.where) ? "hidden" : "" + " text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Discord Message</span>
+                                        <span className={"text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Copypasta Message</span>
                                         <p>{isDiscord(formState.where)}</p>
                                     </form>
                                 </div>
