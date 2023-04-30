@@ -47,6 +47,7 @@ class DonationController extends Controller
             ->where('status', '=', 'Queued for Website')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
             ->orWhere('status', '=', 'Queued for Programs')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
             ->orWhere('status', '=', 'Queued for Discord')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
+            ->orWhere('status', '=', 'Giveaway Live')->where('schedule_date', '!=', null)->where('platform.visible', '=', '1')
             ->get()] + ['platform' => DB::table('platform')->get()]);
     }
 
