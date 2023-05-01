@@ -12,7 +12,7 @@ import Filters from "@/Components/StatusList";
 export default function Index({ donations, platform, auth }) {
     return (
         <>
-            <Head title="Scheduled" />
+            <Head title="Scheduled w/o dates" />
             <div className='mx-20'>
                 <header>
                     <NavLink auth={{user: "logged"}}></NavLink>

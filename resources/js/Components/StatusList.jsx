@@ -12,15 +12,13 @@ export default function Filters(props) {
         completed: props.status[2].visible,
         dnr: props.status[3].visible,
         contacted: props.status[4].visible,
-        invalid: props.status[6].visible,
+        invalid: props.status[5].visible,
         collected: props.status[6].visible,
         pending: props.status[7].visible,
         scheduleddiscord: props.status[8].visible,
         scheduledprograms: props.status[9].visible,
         scheduledwebsite: props.status[10].visible,
-        splitted: props.status[11].visible,
-        winnercontacted: props.status[13].visible,
-        giveawaylive: props.status[5].visible
+        splitted: props.status[11].visible
     });
     function submit(e) {
         e.preventDefault();
@@ -32,7 +30,7 @@ export default function Filters(props) {
         toggleFilters();
         setTimeout(function(){
              window.location.reload();
-        }, 2500);
+        }, 2000);
     }
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -51,9 +49,7 @@ export default function Filters(props) {
                 scheduleddiscord: false,
                 scheduledprograms: false,
                 scheduledwebsite: false,
-                splitted: false,
-                winnercontacted: false,
-                giveawaylive: false
+                splitted: false
             }
         )
     }
@@ -71,9 +67,7 @@ export default function Filters(props) {
                 scheduleddiscord: true,
                 scheduledprograms: true,
                 scheduledwebsite: true,
-                splitted: true,
-                winnercontacted: true,
-                giveawaylive: true
+                splitted: true
             }
         )
     }
@@ -118,16 +112,8 @@ return (
                     <span className="ml-2">Scheduled Programs</span>
                 </label>
                 <label className="mr-6">
-                    <Checkbox id="giveawaylive" name="giveawaylive" value={data.remember} checked={data["giveawaylive"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Giveaway Live</span>
-                </label>
-                <label className="mr-6">
                     <Checkbox id="completed" name="completed" value={data.remember} checked={data["completed"]} handleChange={onHandleChange} />
                     <span className="ml-2">Completed</span>
-                </label>
-                <label className="mr-6">
-                    <Checkbox id="winnercontacted" name="winnercontacted" value={data.remember} checked={data["winnercontacted"]} handleChange={onHandleChange} />
-                    <span className="ml-2">Winner Contacted</span>
                 </label>
                 <label>
                     <Checkbox id="cancelled" name="cancelled" value={data.remember} checked={data["cancelled"]} handleChange={onHandleChange} />

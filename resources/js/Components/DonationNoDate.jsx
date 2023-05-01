@@ -150,7 +150,7 @@ const Donation = (props) => {
             </td>
             <td className="sticky z-10 left-[9.5rem] bg-white px-2">
                 <form id={"form" + props.id}>
-                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status() + " py-1 ml-[-2px] truncate ..."} onChange={handleStatusChange} disabled={!props.canEdit}>
+                    <select name="status" tabIndex="-1" id={"status" + props.id} value={data.status} defaultValue={props.status} className={status()} onChange={handleStatusChange} disabled={!props.canEdit}>
                         <option value="Invalid">Invalid</option>
                         <option value="Did Not Respond">DNR</option>
                         <option value="Donator Contacted">Contacted</option>
@@ -159,16 +159,14 @@ const Donation = (props) => {
                         <option value="Queued for Website">Scheduled Web</option>
                         <option value="Queued for Discord">Scheduled Discord</option>
                         <option value="Queued for Programs">Scheduled Programs</option>
-                        <option value="Giveaway Live">Giveaway Live</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Winner Contacted">Winner Contacted</option>
+                        <option value="Completed">Done</option>
                         <option value="Cancelled">Cancelled</option>
                         <option value=""></option>
                     </select>
                 </form>
             </td>
             <td className="sticky z-10 left-[23.2rem] bg-white px-3">
-                <input type="date" tabIndex="-1" className={props.schedule_date ? "py-1 border-[#e5e5e5]" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
+                <input type="date" tabIndex="-1" min={today} className={props.schedule_date ? "py-1 border-[#e5e5e5]" : "text-red-500 border-[#FED3CD] py-1"} defaultValue={props.schedule_date} onChange={handleDateChange} disabled={!props.canEdit}/>
                 {/*{moment(props.schedule_date).format('Do MMM. YYYY')}*/}
             </td>
             <td className="pl-6 truncate ...">
@@ -192,7 +190,7 @@ const Donation = (props) => {
                 {props.discord_id}
             </td>
             <td className="px-6 truncate ...">
-                <a href={props.nookazon_link} tabIndex="-1" target="_blank">{props.nookazon_username}</a>
+                <a href={props.nookazon_link} tabIndex="-1">{props.nookazon_username}</a>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
