@@ -98,7 +98,7 @@ class DonationController extends Controller
 
     public function updateGiveawayDetailsAPI(Request $request, $date)
     {
-        $data = $request->validate(['title' => 'nullable', 'img_link' => 'nullable', 'description' => 'nullable', 'schedule_date' => 'required']);
+        $data = $request->validate(['title' => 'nullable', 'img_link' => 'nullable', 'description' => 'nullable', 'schedule_date' => 'required', 'status' => 'nullable']);
         DB::table('donations')
             ->where('schedule_date', $date)
             ->update($data);
