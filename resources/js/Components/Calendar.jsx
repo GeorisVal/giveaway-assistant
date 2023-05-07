@@ -25,6 +25,7 @@ const Calendar = (props) => {
         title: "title",
         imglink: "",
         description: "",
+        status: "",
         shoutout: "",
         items: "",
         scheduled_date: "",
@@ -33,8 +34,7 @@ const Calendar = (props) => {
         nookazon_username: "",
         nookazon_link: "",
         formatted_shoutout: "",
-        currencies: "",
-        where: ""
+        currencies: ""
     })
     // useEffect(() => {
     //     const timer = mouseOver && setTimeout(onTimeout, 500);
@@ -97,7 +97,7 @@ const Calendar = (props) => {
             setDayValue(clickedDayFormatted);
             // const index = donations.map(donation => donation.schedule_date).indexOf(moment([clickedDay["day"], clickedDay["month"], clickedDay["year"]], "DD-MM-YYYY").format("YYYY-MM-DD"));
             const results = donations.filter(function (donation) {return donation.schedule_date == clickedDayFormatted;});
-            if (results.length == 0) {
+            if (results.length === 0) {
                 return
             }
             setShiftDayClicked(true);
@@ -121,6 +121,7 @@ const Calendar = (props) => {
                 shoutout_formatted.push(formatShoutout(results[key].shoutout, results[key].nookazon_username, results[key].nookazon_link, results[key].discord_username, results[key].discord_id));
                 status.push(results[key].status)
             })
+            console.log(results);
             // donations.map((donation) => {
             setFormState({
                 scheduled_date: results[0].schedule_date,
@@ -135,7 +136,7 @@ const Calendar = (props) => {
                 nookazon_link: nookazon_link,
                 currencies: currencies.join(', '),
                 formatted_shoutout: shoutout_formatted.join(" and "),
-                where: status
+                status: status
             });
             // setShiftDayClicked(true);
             //console.log(donations[index].schedule_date);
@@ -251,6 +252,17 @@ const Calendar = (props) => {
             .then((res) => {console.log(res)});
         setShiftDayClicked(false);
     }
+
+    function handleChangeStatusSubmit(e) {
+        e.preventDefault();
+        const data = {
+            status: e.target.giveaway_status.value
+        }
+        axios
+            .put("/api/calendar/details" + dayValue, data)
+            .then((res)=>{console.log(res)})
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         const data = {
@@ -711,14 +723,39 @@ const Calendar = (props) => {
                                                 required
                                             />
                                         </div>
+                                        <div className="mb-6">
+                                            <label
+                                                htmlFor="giveaway_status"
+                                                className="block mb-2 text-base font-semibold text-sapin-500"
+                                            >
+                                                Giveaway Status
+                                            </label>
+                                            <div class="flex flex-row">
+                                            <form onSubmit={handleChangeStatusSubmit}>
+                                                <select
+                                                    id="giveaway_status"
+                                                    className="text-center bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-sapin-500 focus:border-sapin-500 block w-[15em] p-2.50y-600r-gray-400-blue-500er-blue-500 py-1 ml-[-2px]"
+                                                    name="giveaway_status"
+                                                    defaultValue={formState.status === "Queued for Discord" || "Queued for Website" ? "Scheduled" : formState.status}
+                                                    required
+                                                >
+                                                    <option disabled>Scheduled</option>
+                                                    <option>Giveaway Live</option>
+                                                    <option>Winner Contacted</option>
+                                                    <option>Completed</option>
+                                                </select>
+                                            </form>
+                                            <button type="submit" className="ml-6 text-sapin-500 underline text-sm">Change</button>
+                                            </div>
+                                        </div>
                                         <button
                                             type="submit"
                                             className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800"
                                         >
                                             Submit
                                         </button>
-                                        <span className={!isDiscord(formState.where) ? "hidden" : "" + " text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Discord Message</span>
-                                        <p>{isDiscord(formState.where)}</p>
+                                        <span className={!isDiscord(formState.status) ? "hidden" : "" + " text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Discord Message</span>
+                                        <p>{isDiscord(formState.status)}</p>
                                     </form>
                                 </div>
                             </div>
