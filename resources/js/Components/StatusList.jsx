@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 
 export default function Filters(props) {
     const [show, setShow] = useState(false);
-    console.log(props.status);
+    // console.log(props.status);
     const toggleFilters = () => setShow(!show);
     const { data, setData } = useForm({
         nostatus: props.status[0].visible,
@@ -12,13 +12,15 @@ export default function Filters(props) {
         completed: props.status[2].visible,
         dnr: props.status[3].visible,
         contacted: props.status[4].visible,
-        invalid: props.status[5].visible,
-        collected: props.status[6].visible,
-        pending: props.status[7].visible,
-        scheduleddiscord: props.status[8].visible,
-        scheduledprograms: props.status[9].visible,
-        scheduledwebsite: props.status[10].visible,
-        splitted: props.status[11].visible
+        giveawaylive: props.status[5].visible,
+        invalid: props.status[6].visible,
+        collected: props.status[7].visible,
+        pending: props.status[8].visible,
+        scheduleddiscord: props.status[9].visible,
+        scheduledprograms: props.status[10].visible,
+        scheduledwebsite: props.status[11].visible,
+        splitted: props.status[12].visible,
+        winnercontacted: props.status[13].visible
     });
     function submit(e) {
         e.preventDefault();
@@ -43,13 +45,15 @@ export default function Filters(props) {
                 completed: false,
                 dnr: false,
                 contacted: false,
+                giveawaylive: false,
                 invalid: false,
                 collected: false,
                 pending: false,
                 scheduleddiscord: false,
                 scheduledprograms: false,
                 scheduledwebsite: false,
-                splitted: false
+                splitted: false,
+                winnercontacted: false
             }
         )
     }
@@ -61,13 +65,15 @@ export default function Filters(props) {
                 completed: true,
                 dnr: true,
                 contacted: true,
+                giveawaylive: true,
                 invalid: true,
                 collected: true,
                 pending: true,
                 scheduleddiscord: true,
                 scheduledprograms: true,
                 scheduledwebsite: true,
-                splitted: true
+                splitted: true,
+                winnercontacted: true
             }
         )
     }
@@ -99,6 +105,10 @@ return (
                     <Checkbox id="collected" name="collected" value={data.remember} checked={data["collected"]} handleChange={onHandleChange} />
                     <span className="ml-2">Collected</span>
                 </label>
+                <label className="mr-6">
+                    <Checkbox id="giveawaylive" name="giveawaylive" value={data.remember} checked={data["giveawaylive"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Giveaway Live</span>
+                </label>
                 <label>
                     <Checkbox id="scheduledwebsite" name="scheduledwebsite" value={data.remember} checked={data["scheduledwebsite"]} handleChange={onHandleChange} />
                     <span className="ml-2">Scheduled Web</span>
@@ -126,6 +136,10 @@ return (
                 <label>
                     <Checkbox id="splitted" name="splitted" value={data.remember} checked={data["splitted"]} handleChange={onHandleChange} />
                     <span className="ml-2">Splitted</span>
+                </label>
+                <label>
+                    <Checkbox id="winnercontacted" name="winnercontacted" value={data.remember} checked={data["winnercontacted"]} handleChange={onHandleChange} />
+                    <span className="ml-2">Winner Contacted</span>
                 </label>
                     <p onClick={clearAll} className="bg-red-200 text-center cursor-pointer">Clear All</p>
                     <p onClick={checkAll} className="bg-green-200 text-center cursor-pointer">Check All</p>

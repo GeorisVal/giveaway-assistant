@@ -103,7 +103,8 @@ const Donation = (props) => {
 
     async function clickHandlerItems(e) {
         if (!props.canEdit) {return}
-        if (e.shiftKey) {setEditItems(true)}
+        if (e.shiftKey) {setEditItems(true); return}
+        if (props.items === "") {return}
         else {
             await navigator.clipboard.writeText(props.items);
             await notify('"' + props.items + '"');
@@ -111,7 +112,8 @@ const Donation = (props) => {
     }
     async function clickHandlerCurrency(e) {
         if (!props.canEdit) {return}
-        if (e.shiftKey) {setEditCurrencies(true)}
+        if (e.shiftKey) {setEditCurrencies(true); return}
+        if (props.currencies === "") {return}
         else {
             await navigator.clipboard.writeText(props.currencies);
             await notify('"' + props.currencies + '"');
@@ -151,7 +153,9 @@ const Donation = (props) => {
                         <option value="Queued for Website">Scheduled Web</option>
                         <option value="Queued for Discord">Scheduled Discord</option>
                         <option value="Queued for Programs">Scheduled Programs</option>
+                        <option value="Giveaway Live">Giveaway Live</option>
                         <option value="Completed">Completed</option>
+                        <option value="Winner Contacted">Winner Contacted</option>
                         <option value="Cancelled">Cancelled</option>
                         <option value=""></option>
                     </select>
@@ -183,12 +187,12 @@ const Donation = (props) => {
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"currencies" + props.id} onSubmit={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange} className="flex flex-row">
-                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-text"} onClick={clickHandlerCurrency}>{currencies.currencies}</p>}
+                    {editCurrencies ? <input type="text" autoFocus={true} defaultValue={currencies.currencies} className="leading-3 p-1 border-[#f9fafb]" onChange={e => setCurrencies(e.target.value)} onBlur={props.currencies === currencies.currencies ? () => setEditCurrencies(false) : handleCurrenciesChange}/> : <p className={props.canEdit ? `cursor-pointer ${currencies.currencies === "" ? "text-gray-300 italic" : ""}` : "cursor-text"} onClick={clickHandlerCurrency}>{currencies.currencies === "" ? "No Bells/NMTs" : currencies.currencies}</p> }
                 </form>
             </td>
             <td className="px-6 max-w-[250px] hover:max-w-[5000px] truncate ...">
                 <form id={"items" + props.id} onSubmit={props.items === items.items ? () => setEditItems(false) : handleItemsChange} className="flex flex-row">
-                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? "cursor-pointer" : "cursor-text"} onClick={clickHandlerItems}>{items.items}</p>}
+                    {editItems ? <input type="text" autoFocus={true} defaultValue={items.items} className="leading-3 p-1 border-[#f9fafb] w-auto" onChange={e => setItems(e.target.value)} onBlur={props.items === items.items ? () => setEditItems(false) : handleItemsChange}/> : <p className={props.canEdit ? `cursor-pointer ${items.items === "" ? "text-gray-300 italic" : ""}`: "cursor-text "} onClick={clickHandlerItems}>{items.items === "" ? "No items" : items.items}</p>}
                 </form>
             </td>
             <td className="px-6 truncate ...">
