@@ -53,14 +53,20 @@ const Calendar = (props) => {
         }
 
     }
-    function calendarCaseColor (platform) {
-        switch (platform) {
-            case "Nookazon Discord":
+    function calendarCaseColor (status) {
+        switch (status) {
+            case "Queued for Discord":
                 return "bg-[#d7ddf5]";
-            case "Nookazon Website":
+            case "Queued for Website":
                 return "bg-[#d8f2df]";
-            case "Nookazon Programs (i.e. Streams, Contests, etc.)":
-                return "bg-[#fbecdd]"
+            case "Queued for Programs":
+                return "bg-[#fbecdd]";
+            case "Winner Contacted":
+                return "bg-[#ccbad6]";
+            case "Completed":
+                return "bg-green-100";
+            case "Giveaway Live":
+                return "bg-[#ccbad6]"
         }
     }
 
@@ -326,7 +332,7 @@ const Calendar = (props) => {
                                         ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
                                     {
                                     return (
-                                        <div className={calendarCaseColor(donation.platform) + " rounded-lg h-[99%] w-[99%] absolute"} key={index}>
+                                        <div className={calendarCaseColor(donation.status) + " rounded-lg h-[99%] w-[99%] absolute"} key={index}>
                                         </div>
                                     );
                                     }
