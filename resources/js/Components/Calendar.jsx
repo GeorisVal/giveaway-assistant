@@ -260,7 +260,9 @@ const Calendar = (props) => {
         setShiftDayClicked(false);
     }
 
-
+    function copypastaClick() {
+        console.log('copy-pasta placeholder')
+    }
     function handleSubmit(e) {
         e.preventDefault();
         const data = {
@@ -604,6 +606,7 @@ const Calendar = (props) => {
                                         >
                                             Submit
                                         </button>
+                                        <button onClick={copypastaClick} className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800">Copypasta</button>
                                     </form>
                                 </div>
                             </div>
