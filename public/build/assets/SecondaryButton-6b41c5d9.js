@@ -1,0 +1,2 @@
+import{a as u}from"./app-533f5948.js";function a({type:o="button",className:e="",processing:t,children:n,onClick:i}){return u("button",{type:o,onClick:i,className:`text-white bg-warmpink-500 hover:bg-cream-500 hover:text-warmpink-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2-700 focus:outline-noneue-800
+                focus:outline-none focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 ${t&&"opacity-25"} `+e,disabled:t,children:n})}export{a as S};

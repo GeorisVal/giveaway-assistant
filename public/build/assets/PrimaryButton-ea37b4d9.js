@@ -1,2 +1,0 @@
-import{a as r}from"./app-28e9b726.js";function a({type:e="submit",className:n="",processing:t,children:o,onClick:i}){return r("button",{type:e,onClick:i,className:`text-white bg-sapin-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2-700 focus:outline-noneue-800
-                transition ease-in-out duration-150 ${t&&"opacity-25"} `+n,disabled:t,children:o})}export{a as P};
