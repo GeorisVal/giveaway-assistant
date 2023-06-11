@@ -87,9 +87,14 @@ const Calendar = (props) => {
         await navigator.clipboard.writeText(formState.currencies);
         await notify("NMT/Bells");
     }
-    async function messageClick() {
+    async function messageDiscordClick() {
         await navigator.clipboard.writeText("Shout out to " + formState.formatted_shoutout + " for sponsoring this giveaway! \n\n Winner will be contacted by <@339868596589035527> once rolled! \n\n <@&709538031459237968> By entering our giveaway, you are agreeing to the giveaway terms found here: https://bit.ly/NookazonSweepstakes \n\n To be notified (or stop receiving notifications) of future giveaways head on over to <#698965706254974987> and press the 📆! \n\n > *🎁 Interested in sponsoring a giveaway? Please fill out the form linked in <#698965706254974987>*")
         await notify("Discord copypasta")
+    }
+
+    async function messageWebsiteClick() {
+        await navigator.clipboard.writeText(formState.description + "\n \n Thanks to " +formState.formatted_shoutout + " for sponsoring this giveaway!")
+        await notify("Website description")
     }
 
     function clickHandler(e, day) {
@@ -606,7 +611,6 @@ const Calendar = (props) => {
                                         >
                                             Submit
                                         </button>
-                                        <button onClick={copypastaClick} className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center0lue-700-blue-800">Copypasta</button>
                                     </form>
                                 </div>
                             </div>
@@ -752,7 +756,7 @@ const Calendar = (props) => {
                                         >
                                             Submit
                                         </button>
-                                        <span className={!isDiscord(formState.status) ? "hidden" : "" + " text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer"} onClick={messageClick}>Discord Message</span>
+                                        <span className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 ml-4 cursor-pointer" onClick={isDiscord(formState.status) ? messageDiscordClick : messageWebsiteClick}>{isDiscord(formState.status) ? "Discord Message" : "Website Copypasta"}</span>
                                         <p>{isDiscord(formState.status)}</p>
                                     </form>
                                 </div>
