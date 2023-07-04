@@ -339,7 +339,7 @@ const Calendar = (props) => {
                                         ? "0" + (currentDate.getMonth() + 1) : currentDate.getMonth()}-${day.toString().length == 1 ? "0" + day : day}`)
                                     {
                                     return (
-                                        <div className={calendarCaseColor(donation.status) + " rounded-lg h-[99%] w-[99%] absolute"} key={index}>
+                                        <div className={calendarCaseColor(donation.status) + " rounded-xl h-full w-full right-[0.5px] bottom-[0.1px] absolute"} key={index}>
                                         </div>
                                     );
                                     }
