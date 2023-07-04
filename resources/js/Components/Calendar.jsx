@@ -289,7 +289,7 @@ const Calendar = (props) => {
         location.href = '/thanks';
     }
     return (
-        <div className="mx-auto max-w-7xl mb-5 bg-gray-100">
+        <div className="mx-auto max-w-7xl mb-5 bg-[#fcfcff]">
             <div className="flex justify-evenly w-full my-4">
                 <div className="flex flex-row gap-4">
                     <button
@@ -317,9 +317,9 @@ const Calendar = (props) => {
                             currentDate.getMonth() === new Date().getMonth() &&
                             currentDate.getFullYear() ===
                                 new Date().getFullYear()
-                                ? "border-red-500"
-                                : "border-sapin-500") +
-                            " relative w-full h-32 border-2 cursor-pointer rounded-lg mx-auto bg-white"
+                                ? "border-blue-300 border-[1px]"
+                                : "border-b-blue-50") +
+                            " relative w-full h-32 border-[1px] cursor-pointer rounded-xl mx-auto bg-white shadow-md"
                         }
                         key={index}
 
@@ -695,7 +695,10 @@ const Calendar = (props) => {
                                                 defaultValue={formState.description}
                                             />
                                         </div>
-                                        <div className="mb-6 text-center">
+                                        <div className="w-full text-center">
+                                            <span className="text-white bg-lightgreen-500 hover:bg-lightgreen-500 hover:text-sapin-500 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-24 px-5 py-2.5 text-center0lue-700-blue-800 cursor-pointer">Generate Title & Description</span>
+                                        </div>
+                                        <div className="mb-6 mt-6 text-center">
                                             <h4 className="block mb-2 text-base font-semibold text-sapin-500">Shoutout</h4>
                                             <p className="whitespace-pre overflow-hidden cursor-pointer" onClick={shoutoutClick}>{formState.formatted_shoutout}</p>
                                         </div>
