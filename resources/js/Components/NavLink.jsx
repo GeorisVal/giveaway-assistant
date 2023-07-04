@@ -16,7 +16,7 @@ export default function NavLink(props) {
     if(props.auth.user != null) {
         return (
             <>
-                <nav className="bg-gray-100 border-gray-200 py-2.5 rounded">
+                <nav className="bg-[#fcfcff] border-gray-200 py-2.5 rounded">
                     <div className="flex flex-wrap justify-between items-center w-full">
                         <div className="">
                             <Link href="/" className="flex items-center">
@@ -26,7 +26,7 @@ export default function NavLink(props) {
                             </Link>
                         </div>
                         <div className="block w-auto max-md:hidden" id="navbar-default">
-                            <ul className="flex flex-row p-4 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-100">
+                            <ul className="flex flex-row p-4 border-[#fcfcff] rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-[#fcfcff]">
                                 <li>
                                     <a href={'https://docs.google.com/spreadsheets/d/1S4_yGtCH_6VjcLTU3xxzBjwDpqDEHMJ06Nyivi7_ngo/edit#gid=1151497179'} aria-current="page" target="_blank">
                                         <PrimaryButton>
@@ -66,7 +66,7 @@ export default function NavLink(props) {
     else
         {
             return (
-                <nav className="bg-gray-100 border-gray-200 py-2.5 rounded">
+                <nav className="bg-[#fcfcff] border-gray-200 py-2.5 rounded">
                     <div className="flex flex-wrap items-center w-full sm:max-xl:flex-col sm:max-xl:items-start">
                         <div className="flex sm:max-xl:flex-col">
                             <img src="ga.png" className="h-20 mr-3 cursor-pointer" alt="logo" onClick={(event) => {clickHandler(event)}}/>

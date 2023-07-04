@@ -19,7 +19,7 @@ export default function CalendarPage(props) {
     return (
         <>
             <Head title="Calendar" />
-            <div className='mx-20 bg-gray-100'>
+            <div className='mx-20 bg-[#fcfcff]'>
             <NavLink auth={props.auth}></NavLink>
                 <div className="max-md:hidden">
                     <Calendar auth={props.auth} appointments={props.appointments} donations={props.donations}/>
